@@ -20,4 +20,3 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 Route::group(['prefix' => 'v1','namespace' => '\\App\\Http\\Controllers\\Api\\V1','as' => 'api.'], function() {
     Route::get('/home', 'IndexController@getListQuest');
 });
-require __DIR__.'/auth.php';
