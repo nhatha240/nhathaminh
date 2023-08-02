@@ -19,6 +19,7 @@ import 'vue3-toastify/dist/index.css';
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue-next/dist/bootstrap-vue-next.css'
 import BootstrapVueNext from 'bootstrap-vue-next'
+import 'animate.css';
 const app = createApp(App);
 const vfm = createVfm()
 app.use(router);
