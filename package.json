@@ -1,38 +1,48 @@
 {
     "private": true,
+    "workspaces": {
+        "packages": [
+            "platform/**/*"
+        ]
+    },
     "scripts": {
-        "dev": "vite",
-        "build": "vite build"
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production"
     },
     "devDependencies": {
-        "@popperjs/core": "^2.11.8",
-        "axios": "^1.4.0",
+        "@fullhuman/postcss-purgecss": "^5.0.0",
+        "autoprefixer": "^10.4.14",
+        "cross-env": "^7.0.3",
+        "css-loader": "^6.7.3",
         "laravel-mix": "^6.0.49",
-        "laravel-vite-plugin": "^0.7.2",
-        "lodash": "^4.17.19",
-        "postcss": "^8.1.14",
-        "sass": "^1.63.3",
-        "vite": "^4.0.0",
-        "vue-loader": "^17.0.1"
+        "postcss": "^8.4.23",
+        "resolve-url-loader": "^5.0.0",
+        "sass": "^1.62.1",
+        "sass-loader": "^13.2.2"
     },
     "dependencies": {
-        "@vee-validate/i18n": "^4.9.6",
-        "@vee-validate/rules": "^4.9.6",
-        "@vitejs/plugin-vue": "^4.2.3",
-        "animate.css": "^4.1.1",
-        "bootstrap": "^5.3.0",
-        "bootstrap-vue-next": "^0.9.15",
+        "@popperjs/core": "^2.11.7",
+        "axios": "^1.4.0",
+        "bootstrap": "^5.2.3",
+        "bootstrap-vue": "^2.23.1",
+        "cropperjs": "^1.5.13",
+        "epic-spinners": "^1.1.0",
+        "glob": "^10.2.2",
+        "iframe-resizer": "^4.3.6",
+        "jquery": "^3.6.4",
+        "lodash": "^4.17.21",
         "moment": "^2.29.4",
-        "pinia": "^2.0.0",
-        "v-calendar": "^3.0.3",
-        "vee-validate": "^4.9.6",
-        "vue": "^3.3.4",
-        "vue-final-modal": "^4.4.2",
-        "vue-loading": "^0.1.4",
-        "vue-loading-overlay": "^6.0.3",
-        "vue-router": "^4.2.2",
-        "vue3-carousel": "^0.3.1",
-        "vue3-qr-reader": "^1.0.0",
-        "vue3-toastify": "^0.1.11"
+        "rtlcss": "^4.1.0",
+        "sanitize-html": "^2.10.0",
+        "tiny-emitter": "^2.1.0",
+        "vue": "2.6.14",
+        "vue-loader": "15.9.8",
+        "vue-template-compiler": "2.6.14",
+        "vue2-timeago": "^2.0.9"
     }
 }
