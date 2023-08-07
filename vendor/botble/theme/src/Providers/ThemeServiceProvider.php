@@ -56,18 +56,18 @@ class ThemeServiceProvider extends ServiceProvider
                     'permissions' => [],
                 ]);
 
-            if ($this->app['config']->get('packages.theme.general.display_theme_manager_in_admin_panel', true)) {
-                dashboard_menu()
-                    ->registerItem([
-                        'id' => 'cms-core-theme',
-                        'priority' => 1,
-                        'parent_id' => 'cms-core-appearance',
-                        'name' => 'packages/theme::theme.name',
-                        'icon' => null,
-                        'url' => route('theme.index'),
-                        'permissions' => ['theme.index'],
-                    ]);
-            }
+            // if ($this->app['config']->get('packages.theme.general.display_theme_manager_in_admin_panel', true)) {
+            //     dashboard_menu()
+            //         ->registerItem([
+            //             'id' => 'cms-core-theme',
+            //             'priority' => 1,
+            //             'parent_id' => 'cms-core-appearance',
+            //             'name' => 'packages/theme::theme.name',
+            //             'icon' => null,
+            //             'url' => route('theme.index'),
+            //             'permissions' => ['theme.index'],
+            //         ]);
+            // }
 
             dashboard_menu()
                 ->registerItem([

@@ -1,4 +1,1042 @@
-(()=>{var t={3746:(t,e,i)=>{"use strict";i.d(e,{O:()=>a,s:()=>o});var a=$.parseJSON(localStorage.getItem("MediaConfig"))||{},n={app_key:RV_MEDIA_CONFIG.random_hash?RV_MEDIA_CONFIG.random_hash:"21d06709fe1d3abdf0e35ddda89c4b279",request_params:{view_type:"tiles",filter:"everything",view_in:"all_media",sort_by:"created_at-desc",folder_id:0},hide_details_pane:!1,icons:{folder:"fa fa-folder"},actions_list:{basic:[{icon:"fa fa-eye",name:"Preview",action:"preview",order:0,class:"rv-action-preview"},{icon:"fa fa-crop",name:"Crop",action:"crop",order:1,class:"rv-action-crop"}],file:[{icon:"fa fa-link",name:"Copy link",action:"copy_link",order:0,class:"rv-action-copy-link"},{icon:"far fa-edit",name:"Rename",action:"rename",order:1,class:"rv-action-rename"},{icon:"fa fa-copy",name:"Make a copy",action:"make_copy",order:2,class:"rv-action-make-copy"},{icon:"fas fa-file-signature",name:"Alt text",action:"alt_text",order:3,class:"rv-action-alt-text"}],user:[{icon:"fa fa-star",name:"Favorite",action:"favorite",order:2,class:"rv-action-favorite"},{icon:"fa fa-star",name:"Remove favorite",action:"remove_favorite",order:3,class:"rv-action-favorite"}],other:[{icon:"fa fa-download",name:"Download",action:"download",order:0,class:"rv-action-download"},{icon:"fa fa-trash",name:"Move to trash",action:"trash",order:1,class:"rv-action-trash"},{icon:"fa fa-eraser",name:"Delete permanently",action:"delete",order:2,class:"rv-action-delete"},{icon:"fa fa-undo",name:"Restore",action:"restore",order:3,class:"rv-action-restore"}]}};a.app_key&&a.app_key===n.app_key||(a=n),a.request_params.search="";var o=$.parseJSON(localStorage.getItem("RecentItems"))||[]},3341:(t,e,i)=>{"use strict";i.d(e,{Z:()=>r});var a=i(3746);function n(t){return n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},n(t)}function o(t,e){for(var i=0;i<e.length;i++){var a=e[i];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(t,(o=a.key,r=void 0,r=function(t,e){if("object"!==n(t)||null===t)return t;var i=t[Symbol.toPrimitive];if(void 0!==i){var a=i.call(t,e||"default");if("object"!==n(a))return a;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===e?String:Number)(t)}(o,"string"),"symbol"===n(r)?r:String(r)),a)}var o,r}var r=function(){function t(){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,t)}var e,i,n;return e=t,n=[{key:"getUrlParam",value:function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null;e||(e=window.location.search);var i=new RegExp("(?:[?&]|&)"+t+"=([^&]+)","i"),a=e.match(i);return a&&a.length>1?a[1]:null}},{key:"asset",value:function(t){if("//"===t.substring(0,2)||"http://"===t.substring(0,7)||"https://"===t.substring(0,8))return t;var e="/"!==RV_MEDIA_URL.base_url.substr(-1,1)?RV_MEDIA_URL.base_url+"/":RV_MEDIA_URL.base_url;return"/"===t.substring(0,1)?e+t.substring(1):e+t}},{key:"showAjaxLoading",value:function(){(arguments.length>0&&void 0!==arguments[0]?arguments[0]:$(".rv-media-main")).addClass("on-loading").append($("#rv_media_loading").html())}},{key:"hideAjaxLoading",value:function(){(arguments.length>0&&void 0!==arguments[0]?arguments[0]:$(".rv-media-main")).removeClass("on-loading").find(".loading-wrapper").remove()}},{key:"isOnAjaxLoading",value:function(){return(arguments.length>0&&void 0!==arguments[0]?arguments[0]:$(".rv-media-items")).hasClass("on-loading")}},{key:"jsonEncode",value:function(t){return void 0===t&&(t=null),JSON.stringify(t)}},{key:"jsonDecode",value:function(t,e){if(!t)return e;if("string"==typeof t){var i;try{i=$.parseJSON(t)}catch(t){i=e}return i}return t}},{key:"getRequestParams",value:function(){return window.rvMedia.options&&"modal"===window.rvMedia.options.open_in?$.extend(!0,a.O.request_params,window.rvMedia.options||{}):a.O.request_params}},{key:"setSelectedFile",value:function(t){void 0!==window.rvMedia.options?window.rvMedia.options.selected_file_id=t:a.O.request_params.selected_file_id=t}},{key:"getConfigs",value:function(){return a.O}},{key:"storeConfig",value:function(){localStorage.setItem("MediaConfig",t.jsonEncode(a.O))}},{key:"storeRecentItems",value:function(){localStorage.setItem("RecentItems",t.jsonEncode(a.s))}},{key:"addToRecent",value:function(t){t instanceof Array?_.each(t,(function(t){a.s.push(t)})):(a.s.push(t),this.storeRecentItems())}},{key:"getItems",value:function(){var t=[];return $(".js-media-list-title").each((function(e,i){var a=$(i),n=a.data()||{};n.index_key=a.index(),t.push(n)})),t}},{key:"getSelectedItems",value:function(){var t=[];return $(".js-media-list-title input[type=checkbox]:checked").each((function(e,i){var a=$(i).closest(".js-media-list-title"),n=a.data()||{};n.index_key=a.index(),t.push(n)})),t}},{key:"getSelectedFiles",value:function(){var t=[];return $(".js-media-list-title[data-context=file] input[type=checkbox]:checked").each((function(e,i){var a=$(i).closest(".js-media-list-title"),n=a.data()||{};n.index_key=a.index(),t.push(n)})),t}},{key:"getSelectedFolder",value:function(){var t=[];return $(".js-media-list-title[data-context=folder] input[type=checkbox]:checked").each((function(e,i){var a=$(i).closest(".js-media-list-title"),n=a.data()||{};n.index_key=a.index(),t.push(n)})),t}},{key:"isUseInModal",value:function(){return window.rvMedia&&window.rvMedia.options&&"modal"===window.rvMedia.options.open_in}},{key:"resetPagination",value:function(){RV_MEDIA_CONFIG.pagination={paged:1,posts_per_page:40,in_process_get_media:!1,has_more:!0}}}],(i=null)&&o(e.prototype,i),n&&o(e,n),Object.defineProperty(e,"prototype",{writable:!1}),t}()},99:(t,e,i)=>{"use strict";i.d(e,{b:()=>l});var a=i(3746),n=i(3341),o=i(7705),r=i(3129),s=i.n(r);function c(t){return c="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},c(t)}function h(t,e){for(var i=0;i<e.length;i++){var a=e[i];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(t,(n=a.key,o=void 0,o=function(t,e){if("object"!==c(t)||null===t)return t;var i=t[Symbol.toPrimitive];if(void 0!==i){var a=i.call(t,e||"default");if("object"!==c(a))return a;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===e?String:Number)(t)}(n,"string"),"symbol"===c(o)?o:String(o)),a)}var n,o}var l=function(){function t(){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,t)}var e,i,r;return e=t,r=[{key:"handleDropdown",value:function(){var e=_.size(n.Z.getSelectedItems());t.renderActions(),e>0?$(".rv-dropdown-actions").removeClass("disabled"):$(".rv-dropdown-actions").addClass("disabled")}},{key:"handlePreview",value:function(){var t=[];_.each(n.Z.getSelectedFiles(),(function(e){e.preview_url&&(t.push({src:e.preview_url,type:e.preview_type}),a.s.push(e.id))})),_.size(t)>0?($.fancybox.open(t),n.Z.storeRecentItems()):this.handleGlobalAction("download")}},{key:"renderCropImage",value:function(){var t,e=$("#rv_media_crop_image").html(),i=$("#modal_crop_image .crop-image").empty(),a=n.Z.getSelectedItems()[0],o=$("#modal_crop_image .form-crop"),r=e.replace(/__src__/gi,a.full_url);i.append(r);var c=i.find("img")[0],h={minContainerWidth:550,minContainerHeight:550,dragMode:"move",crop:function(e){t=e.detail,o.find('input[name="image_id"]').val(a.id),o.find('input[name="crop_data"]').val(JSON.stringify(t)),d(t.height),u(t.width)}},l=new(s())(c,h);o.find("#aspectRatio").on("click",(function(){l.destroy(),$(this).is(":checked")?h.aspectRatio=t.width/t.height:h.aspectRatio=null,l=new(s())(c,h)})),o.find("#dataHeight").on("change",(function(){t.height=parseFloat($(this).val()),l.setData(t),d(t.height)})),o.find("#dataWidth").on("change",(function(){t.width=parseFloat($(this).val()),l.setData(t),u(t.width)}));var d=function(t){o.find("#dataHeight").val(parseInt(t))},u=function(t){o.find("#dataWidth").val(parseInt(t))}}},{key:"handleCopyLink",value:function(){var t="";_.each(n.Z.getSelectedFiles(),(function(e){_.isEmpty(t)||(t+="\n"),t+=e.full_url}));var e=$(".js-rv-clipboard-temp");e.data("clipboard-text",t),new Clipboard(".js-rv-clipboard-temp",{text:function(){return t}}),o.e.showMessage("success",RV_MEDIA_CONFIG.translations.clipboard.success,RV_MEDIA_CONFIG.translations.message.success_header),e.trigger("click")}},{key:"handleGlobalAction",value:function(e,i){var a=[];switch(_.each(n.Z.getSelectedItems(),(function(t){a.push({is_folder:t.is_folder,id:t.id,full_url:t.full_url})})),e){case"rename":$("#modal_rename_items").modal("show").find("form.rv-form").data("action",e);break;case"copy_link":t.handleCopyLink();break;case"preview":t.handlePreview();break;case"alt_text":$("#modal_alt_text_items").modal("show").find("form.rv-form").data("action",e);break;case"crop":$("#modal_crop_image").modal("show").find("form.rv-form").data("action",e);break;case"trash":$("#modal_trash_items").modal("show").find("form.rv-form").data("action",e);break;case"delete":$("#modal_delete_items").modal("show").find("form.rv-form").data("action",e);break;case"empty_trash":$("#modal_empty_trash").modal("show").find("form.rv-form").data("action",e);break;case"download":var r=[];_.each(n.Z.getSelectedItems(),(function(t){_.includes(n.Z.getConfigs().denied_download,t.mime_type)||r.push({id:t.id,is_folder:t.is_folder})})),r.length?t.handleDownload(r):o.e.showMessage("error",RV_MEDIA_CONFIG.translations.download.error,RV_MEDIA_CONFIG.translations.message.error_header);break;default:t.processAction({selected:a,action:e},i)}}},{key:"processAction",value:function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null;$.ajax({url:RV_MEDIA_URL.global_actions,type:"POST",data:t,dataType:"json",beforeSend:function(){n.Z.showAjaxLoading()},success:function(t){n.Z.resetPagination(),t.error?o.e.showMessage("error",t.message,RV_MEDIA_CONFIG.translations.message.error_header):o.e.showMessage("success",t.message,RV_MEDIA_CONFIG.translations.message.success_header),e&&e(t)},complete:function(){n.Z.hideAjaxLoading()},error:function(t){o.e.handleError(t)}})}},{key:"renderRenameItems",value:function(){var t=$("#rv_media_rename_item").html(),e=$("#modal_rename_items .rename-items").empty();_.each(n.Z.getSelectedItems(),(function(i){var a=t.replace(/__icon__/gi,i.icon||"fa fa-file").replace(/__placeholder__/gi,"Input file name").replace(/__value__/gi,i.name),n=$(a);n.data("id",i.id),n.data("is_folder",i.is_folder),n.data("name",i.name),e.append(n)}))}},{key:"renderAltTextItems",value:function(){var t=$("#rv_media_alt_text_item").html(),e=$("#modal_alt_text_items .alt-text-items").empty();_.each(n.Z.getSelectedItems(),(function(i){var a=t.replace(/__icon__/gi,i.icon||"fa fa-file").replace(/__placeholder__/gi,"Input file alt").replace(/__value__/gi,null===i.alt?"":i.alt),n=$(a);n.data("id",i.id),n.data("alt",i.alt),e.append(n)}))}},{key:"renderActions",value:function(){var t=n.Z.getSelectedFolder().length>0,e=$("#rv_action_item").html(),i=0,a=$(".rv-dropdown-actions .dropdown-menu");a.empty();var o=$.extend({},!0,n.Z.getConfigs().actions_list);t&&(o.basic=_.reject(o.basic,(function(t){return"preview"===t.action})),o.basic=_.reject(o.basic,(function(t){return"crop"===t.action})),o.file=_.reject(o.file,(function(t){return"alt_text"===t.action})),o.file=_.reject(o.file,(function(t){return"copy_link"===t.action})),_.includes(RV_MEDIA_CONFIG.permissions,"folders.create")||(o.file=_.reject(o.file,(function(t){return"make_copy"===t.action}))),_.includes(RV_MEDIA_CONFIG.permissions,"folders.edit")||(o.file=_.reject(o.file,(function(t){return _.includes(["rename"],t.action)})),o.user=_.reject(o.user,(function(t){return _.includes(["rename"],t.action)}))),_.includes(RV_MEDIA_CONFIG.permissions,"folders.trash")||(o.other=_.reject(o.other,(function(t){return _.includes(["trash","restore"],t.action)}))),_.includes(RV_MEDIA_CONFIG.permissions,"folders.destroy")||(o.other=_.reject(o.other,(function(t){return _.includes(["delete"],t.action)}))),_.includes(RV_MEDIA_CONFIG.permissions,"folders.favorite")||(o.other=_.reject(o.other,(function(t){return _.includes(["favorite","remove_favorite"],t.action)}))));var r=n.Z.getSelectedFiles();_.filter(r,(function(t){return t.preview_url})).length||(o.basic=_.reject(o.basic,(function(t){return"preview"===t.action}))),_.filter(r,(function(t){return"image"===t.type})).length||(o.basic=_.reject(o.basic,(function(t){return"crop"===t.action})),o.file=_.reject(o.file,(function(t){return"alt_text"===t.action}))),r.length>0&&(_.includes(RV_MEDIA_CONFIG.permissions,"files.create")||(o.file=_.reject(o.file,(function(t){return"make_copy"===t.action}))),_.includes(RV_MEDIA_CONFIG.permissions,"files.edit")||(o.file=_.reject(o.file,(function(t){return _.includes(["rename"],t.action)}))),_.includes(RV_MEDIA_CONFIG.permissions,"files.trash")||(o.other=_.reject(o.other,(function(t){return _.includes(["trash","restore"],t.action)}))),_.includes(RV_MEDIA_CONFIG.permissions,"files.destroy")||(o.other=_.reject(o.other,(function(t){return _.includes(["delete"],t.action)}))),_.includes(RV_MEDIA_CONFIG.permissions,"files.favorite")||(o.other=_.reject(o.other,(function(t){return _.includes(["favorite","remove_favorite"],t.action)}))),r.length>1&&(o.basic=_.reject(o.basic,(function(t){return"crop"===t.action})))),_.each(o,(function(t,o){_.each(t,(function(t,r){var s=!1;switch(n.Z.getRequestParams().view_in){case"all_media":_.includes(["remove_favorite","delete","restore"],t.action)&&(s=!0);break;case"recent":_.includes(["remove_favorite","delete","restore","make_copy"],t.action)&&(s=!0);break;case"favorites":_.includes(["favorite","delete","restore","make_copy"],t.action)&&(s=!0);break;case"trash":_.includes(["preview","delete","restore","rename","download"],t.action)||(s=!0)}if(!s){var c=e.replace(/__action__/gi,t.action||"").replace(/__icon__/gi,t.icon||"").replace(/__name__/gi,RV_MEDIA_CONFIG.translations.actions_list[o][t.action]||t.name);!r&&i&&(c='<li role="separator" class="divider"></li>'+c),a.append(c)}})),t.length>0&&i++}))}},{key:"handleDownload",value:function(t){var e=$(".media-download-popup"),i=null;$.ajax({url:RV_MEDIA_URL.download,method:"POST",data:{selected:t},xhrFields:{responseType:"blob"},beforeSend:function(){i=setTimeout((function(){e.show()}),1e3)},success:function(t,e,i){if(t.error)o.e.showMessage("error",t.message);else{var a=URL.createObjectURL(t),n=document.createElement("a"),r=i.getResponseHeader("Content-Disposition").split("filename=")[1].split(";")[0];n.href=a,n.download=r,document.body.appendChild(n),n.click(),n.remove(),window.URL.revokeObjectURL(a)}},complete:function(){e.hide(),clearTimeout(i)},error:function(t){o.e.handleError(t)}})}}],(i=null)&&h(e.prototype,i),r&&h(e,r),Object.defineProperty(e,"prototype",{writable:!1}),t}()},4669:(t,e,i)=>{"use strict";i.d(e,{L:()=>s});var a=i(99),n=i(3341);function o(t){return o="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},o(t)}function r(t,e){for(var i=0;i<e.length;i++){var a=e[i];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(t,(n=a.key,r=void 0,r=function(t,e){if("object"!==o(t)||null===t)return t;var i=t[Symbol.toPrimitive];if(void 0!==i){var a=i.call(t,e||"default");if("object"!==o(a))return a;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===e?String:Number)(t)}(n,"string"),"symbol"===o(r)?r:String(r)),a)}var n,r}var s=function(){function t(){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,t)}var e,i,o;return e=t,o=[{key:"initContext",value:function(){jQuery().contextMenu&&($.contextMenu({selector:'.js-context-menu[data-context="file"]',build:function(){return{items:t._fileContextMenu()}}}),$.contextMenu({selector:'.js-context-menu[data-context="folder"]',build:function(){return{items:t._folderContextMenu()}}}))}},{key:"_fileContextMenu",value:function(){var t={preview:{name:"Preview",icon:function(t,e,i,a){return e.html('<i class="fa fa-eye" aria-hidden="true"></i> '+a.name),"context-menu-icon-updated"},callback:function(){a.b.handlePreview()}}};_.each(n.Z.getConfigs().actions_list,(function(e,i){_.each(e,(function(e){t[e.action]={name:e.name,icon:function(t,a,n,o){return a.html('<i class="'+e.icon+'" aria-hidden="true"></i> '+(RV_MEDIA_CONFIG.translations.actions_list[i][e.action]||o.name)),"context-menu-icon-updated"},callback:function(){$('.js-files-action[data-action="'+e.action+'"]').trigger("click")}}}))}));var e=[];switch(n.Z.getRequestParams().view_in){case"all_media":e=["remove_favorite","delete","restore"];break;case"recent":e=["remove_favorite","delete","restore","make_copy"];break;case"favorites":e=["favorite","delete","restore","make_copy"];break;case"trash":t={preview:t.preview,rename:t.rename,download:t.download,delete:t.delete,restore:t.restore}}_.each(e,(function(e){t[e]=void 0})),n.Z.getSelectedFolder().length>0&&(t.preview=void 0,t.crop=void 0,t.copy_link=void 0,_.includes(RV_MEDIA_CONFIG.permissions,"folders.create")||(t.make_copy=void 0),_.includes(RV_MEDIA_CONFIG.permissions,"folders.edit")||(t.rename=void 0),_.includes(RV_MEDIA_CONFIG.permissions,"folders.trash")||(t.trash=void 0,t.restore=void 0),_.includes(RV_MEDIA_CONFIG.permissions,"folders.destroy")||(t.delete=void 0),_.includes(RV_MEDIA_CONFIG.permissions,"folders.favorite")||(t.favorite=void 0,t.remove_favorite=void 0));var i=n.Z.getSelectedFiles();return i.length>0&&(_.includes(RV_MEDIA_CONFIG.permissions,"files.create")||(t.make_copy=void 0),_.includes(RV_MEDIA_CONFIG.permissions,"files.edit")||(t.rename=void 0),_.includes(RV_MEDIA_CONFIG.permissions,"files.trash")||(t.trash=void 0,t.restore=void 0),_.includes(RV_MEDIA_CONFIG.permissions,"files.destroy")||(t.delete=void 0),_.includes(RV_MEDIA_CONFIG.permissions,"files.favorite")||(t.favorite=void 0,t.remove_favorite=void 0),i.length>1&&(t.crop=void 0)),_.filter(i,(function(t){return t.preview_url})).length||(t.preview=void 0),_.filter(i,(function(t){return"image"===t.type})).length||(t.crop=void 0,t.alt_text=void 0),t}},{key:"_folderContextMenu",value:function(){var e=t._fileContextMenu();return e.preview=void 0,e.copy_link=void 0,e}},{key:"destroyContext",value:function(){jQuery().contextMenu&&$.contextMenu("destroy")}}],(i=null)&&r(e.prototype,i),o&&r(e,o),Object.defineProperty(e,"prototype",{writable:!1}),t}()},7705:(t,e,i)=>{"use strict";function a(t){return a="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},a(t)}function n(t,e){for(var i=0;i<e.length;i++){var n=e[i];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(t,(o=n.key,r=void 0,r=function(t,e){if("object"!==a(t)||null===t)return t;var i=t[Symbol.toPrimitive];if(void 0!==i){var n=i.call(t,e||"default");if("object"!==a(n))return n;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===e?String:Number)(t)}(o,"string"),"symbol"===a(r)?r:String(r)),n)}var o,r}i.d(e,{e:()=>o});var o=function(){function t(){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,t)}var e,i,a;return e=t,a=[{key:"showMessage",value:function(t,e){toastr.options={closeButton:!0,progressBar:!0,positionClass:"toast-bottom-right",onclick:null,showDuration:1e3,hideDuration:1e3,timeOut:1e4,extendedTimeOut:1e3,showEasing:"swing",hideEasing:"linear",showMethod:"fadeIn",hideMethod:"fadeOut"};var i="";switch(t){case"error":i=RV_MEDIA_CONFIG.translations.message.error_header;break;case"success":i=RV_MEDIA_CONFIG.translations.message.success_header}toastr[t](e,i)}},{key:"handleError",value:function(e){void 0===e.responseJSON||_.isArray(e.errors)?void 0!==e.responseJSON?void 0!==e.responseJSON.errors?422===e.status&&t.handleValidationError(e.responseJSON.errors):void 0!==e.responseJSON.message?t.showMessage("error",e.responseJSON.message):$.each(e.responseJSON,(function(e,i){$.each(i,(function(e,i){t.showMessage("error",i)}))})):t.showMessage("error",e.statusText):t.handleValidationError(e.responseJSON.errors)}},{key:"handleValidationError",value:function(e){var i="";$.each(e,(function(t,e){i+=e+"<br />",$('*[name="'+t+'"]').addClass("field-has-error"),$('*[name$="['+t+']"]').addClass("field-has-error")})),t.showMessage("error",i)}}],(i=null)&&n(e.prototype,i),a&&n(e,a),Object.defineProperty(e,"prototype",{writable:!1}),t}()},3129:function(t){
+/******/ (() => { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./platform/core/media/resources/assets/js/App/Config/MediaConfig.js":
+/*!***************************************************************************!*\
+  !*** ./platform/core/media/resources/assets/js/App/Config/MediaConfig.js ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   MediaConfig: () => (/* binding */ MediaConfig),
+/* harmony export */   RecentItems: () => (/* binding */ RecentItems)
+/* harmony export */ });
+var MediaConfig = $.parseJSON(localStorage.getItem('MediaConfig')) || {};
+var defaultConfig = {
+  app_key: RV_MEDIA_CONFIG.random_hash ? RV_MEDIA_CONFIG.random_hash : '21d06709fe1d3abdf0e35ddda89c4b279',
+  request_params: {
+    view_type: 'tiles',
+    filter: 'everything',
+    view_in: 'all_media',
+    sort_by: 'created_at-desc',
+    folder_id: 0
+  },
+  hide_details_pane: false,
+  icons: {
+    folder: 'fa fa-folder'
+  },
+  actions_list: {
+    basic: [{
+      icon: 'fa fa-eye',
+      name: 'Preview',
+      action: 'preview',
+      order: 0,
+      "class": 'rv-action-preview'
+    }, {
+      icon: 'fa fa-crop',
+      name: 'Crop',
+      action: 'crop',
+      order: 1,
+      "class": 'rv-action-crop'
+    }],
+    file: [{
+      icon: 'fa fa-link',
+      name: 'Copy link',
+      action: 'copy_link',
+      order: 0,
+      "class": 'rv-action-copy-link'
+    }, {
+      icon: 'far fa-edit',
+      name: 'Rename',
+      action: 'rename',
+      order: 1,
+      "class": 'rv-action-rename'
+    }, {
+      icon: 'fa fa-copy',
+      name: 'Make a copy',
+      action: 'make_copy',
+      order: 2,
+      "class": 'rv-action-make-copy'
+    }, {
+      icon: 'fas fa-file-signature',
+      name: 'Alt text',
+      action: 'alt_text',
+      order: 3,
+      "class": 'rv-action-alt-text'
+    }],
+    user: [{
+      icon: 'fa fa-star',
+      name: 'Favorite',
+      action: 'favorite',
+      order: 2,
+      "class": 'rv-action-favorite'
+    }, {
+      icon: 'fa fa-star',
+      name: 'Remove favorite',
+      action: 'remove_favorite',
+      order: 3,
+      "class": 'rv-action-favorite'
+    }],
+    other: [{
+      icon: 'fa fa-download',
+      name: 'Download',
+      action: 'download',
+      order: 0,
+      "class": 'rv-action-download'
+    }, {
+      icon: 'fa fa-trash',
+      name: 'Move to trash',
+      action: 'trash',
+      order: 1,
+      "class": 'rv-action-trash'
+    }, {
+      icon: 'fa fa-eraser',
+      name: 'Delete permanently',
+      action: 'delete',
+      order: 2,
+      "class": 'rv-action-delete'
+    }, {
+      icon: 'fa fa-undo',
+      name: 'Restore',
+      action: 'restore',
+      order: 3,
+      "class": 'rv-action-restore'
+    }]
+  }
+};
+if (!MediaConfig.app_key || MediaConfig.app_key !== defaultConfig.app_key) {
+  MediaConfig = defaultConfig;
+}
+MediaConfig.request_params.search = '';
+var RecentItems = $.parseJSON(localStorage.getItem('RecentItems')) || [];
+
+
+/***/ }),
+
+/***/ "./platform/core/media/resources/assets/js/App/Helpers/Helpers.js":
+/*!************************************************************************!*\
+  !*** ./platform/core/media/resources/assets/js/App/Helpers/Helpers.js ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Helpers: () => (/* binding */ Helpers)
+/* harmony export */ });
+/* harmony import */ var _Config_MediaConfig__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Config/MediaConfig */ "./platform/core/media/resources/assets/js/App/Config/MediaConfig.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+
+var Helpers = /*#__PURE__*/function () {
+  function Helpers() {
+    _classCallCheck(this, Helpers);
+  }
+  _createClass(Helpers, null, [{
+    key: "getUrlParam",
+    value: function getUrlParam(paramName) {
+      var url = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      if (!url) {
+        url = window.location.search;
+      }
+      var reParam = new RegExp('(?:[?&]|&)' + paramName + '=([^&]+)', 'i');
+      var match = url.match(reParam);
+      return match && match.length > 1 ? match[1] : null;
+    }
+  }, {
+    key: "asset",
+    value: function asset(url) {
+      if (url.substring(0, 2) === '//' || url.substring(0, 7) === 'http://' || url.substring(0, 8) === 'https://') {
+        return url;
+      }
+      var baseUrl = RV_MEDIA_URL.base_url.substr(-1, 1) !== '/' ? RV_MEDIA_URL.base_url + '/' : RV_MEDIA_URL.base_url;
+      if (url.substring(0, 1) === '/') {
+        return baseUrl + url.substring(1);
+      }
+      return baseUrl + url;
+    }
+  }, {
+    key: "showAjaxLoading",
+    value: function showAjaxLoading() {
+      var $element = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : $('.rv-media-main');
+      $element.addClass('on-loading').append($('#rv_media_loading').html());
+    }
+  }, {
+    key: "hideAjaxLoading",
+    value: function hideAjaxLoading() {
+      var $element = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : $('.rv-media-main');
+      $element.removeClass('on-loading').find('.loading-wrapper').remove();
+    }
+  }, {
+    key: "isOnAjaxLoading",
+    value: function isOnAjaxLoading() {
+      var $element = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : $('.rv-media-items');
+      return $element.hasClass('on-loading');
+    }
+  }, {
+    key: "jsonEncode",
+    value: function jsonEncode(object) {
+      if (typeof object === 'undefined') {
+        object = null;
+      }
+      return JSON.stringify(object);
+    }
+  }, {
+    key: "jsonDecode",
+    value: function jsonDecode(jsonString, defaultValue) {
+      if (!jsonString) {
+        return defaultValue;
+      }
+      if (typeof jsonString === 'string') {
+        var result;
+        try {
+          result = $.parseJSON(jsonString);
+        } catch (err) {
+          result = defaultValue;
+        }
+        return result;
+      }
+      return jsonString;
+    }
+  }, {
+    key: "getRequestParams",
+    value: function getRequestParams() {
+      if (window.rvMedia.options && window.rvMedia.options.open_in === 'modal') {
+        return $.extend(true, _Config_MediaConfig__WEBPACK_IMPORTED_MODULE_0__.MediaConfig.request_params, window.rvMedia.options || {});
+      }
+      return _Config_MediaConfig__WEBPACK_IMPORTED_MODULE_0__.MediaConfig.request_params;
+    }
+  }, {
+    key: "setSelectedFile",
+    value: function setSelectedFile(fileId) {
+      if (typeof window.rvMedia.options !== 'undefined') {
+        window.rvMedia.options.selected_file_id = fileId;
+      } else {
+        _Config_MediaConfig__WEBPACK_IMPORTED_MODULE_0__.MediaConfig.request_params.selected_file_id = fileId;
+      }
+    }
+  }, {
+    key: "getConfigs",
+    value: function getConfigs() {
+      return _Config_MediaConfig__WEBPACK_IMPORTED_MODULE_0__.MediaConfig;
+    }
+  }, {
+    key: "storeConfig",
+    value: function storeConfig() {
+      localStorage.setItem('MediaConfig', Helpers.jsonEncode(_Config_MediaConfig__WEBPACK_IMPORTED_MODULE_0__.MediaConfig));
+    }
+  }, {
+    key: "storeRecentItems",
+    value: function storeRecentItems() {
+      localStorage.setItem('RecentItems', Helpers.jsonEncode(_Config_MediaConfig__WEBPACK_IMPORTED_MODULE_0__.RecentItems));
+    }
+  }, {
+    key: "addToRecent",
+    value: function addToRecent(id) {
+      if (id instanceof Array) {
+        _.each(id, function (value) {
+          _Config_MediaConfig__WEBPACK_IMPORTED_MODULE_0__.RecentItems.push(value);
+        });
+      } else {
+        _Config_MediaConfig__WEBPACK_IMPORTED_MODULE_0__.RecentItems.push(id);
+        this.storeRecentItems();
+      }
+    }
+  }, {
+    key: "getItems",
+    value: function getItems() {
+      var items = [];
+      $('.js-media-list-title').each(function (index, el) {
+        var $box = $(el);
+        var data = $box.data() || {};
+        data.index_key = $box.index();
+        items.push(data);
+      });
+      return items;
+    }
+  }, {
+    key: "getSelectedItems",
+    value: function getSelectedItems() {
+      var selected = [];
+      $('.js-media-list-title input[type=checkbox]:checked').each(function (index, el) {
+        var $box = $(el).closest('.js-media-list-title');
+        var data = $box.data() || {};
+        data.index_key = $box.index();
+        selected.push(data);
+      });
+      return selected;
+    }
+  }, {
+    key: "getSelectedFiles",
+    value: function getSelectedFiles() {
+      var selected = [];
+      $('.js-media-list-title[data-context=file] input[type=checkbox]:checked').each(function (index, el) {
+        var $box = $(el).closest('.js-media-list-title');
+        var data = $box.data() || {};
+        data.index_key = $box.index();
+        selected.push(data);
+      });
+      return selected;
+    }
+  }, {
+    key: "getSelectedFolder",
+    value: function getSelectedFolder() {
+      var selected = [];
+      $('.js-media-list-title[data-context=folder] input[type=checkbox]:checked').each(function (index, el) {
+        var $box = $(el).closest('.js-media-list-title');
+        var data = $box.data() || {};
+        data.index_key = $box.index();
+        selected.push(data);
+      });
+      return selected;
+    }
+  }, {
+    key: "isUseInModal",
+    value: function isUseInModal() {
+      return window.rvMedia && window.rvMedia.options && window.rvMedia.options.open_in === 'modal';
+    }
+  }, {
+    key: "resetPagination",
+    value: function resetPagination() {
+      RV_MEDIA_CONFIG.pagination = {
+        paged: 1,
+        posts_per_page: 40,
+        in_process_get_media: false,
+        has_more: true
+      };
+    }
+  }]);
+  return Helpers;
+}();
+
+/***/ }),
+
+/***/ "./platform/core/media/resources/assets/js/App/Services/ActionsService.js":
+/*!********************************************************************************!*\
+  !*** ./platform/core/media/resources/assets/js/App/Services/ActionsService.js ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ActionsService: () => (/* binding */ ActionsService)
+/* harmony export */ });
+/* harmony import */ var _Config_MediaConfig__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Config/MediaConfig */ "./platform/core/media/resources/assets/js/App/Config/MediaConfig.js");
+/* harmony import */ var _Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Helpers/Helpers */ "./platform/core/media/resources/assets/js/App/Helpers/Helpers.js");
+/* harmony import */ var _MessageService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MessageService */ "./platform/core/media/resources/assets/js/App/Services/MessageService.js");
+/* harmony import */ var cropperjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! cropperjs */ "./node_modules/cropperjs/dist/cropper.js");
+/* harmony import */ var cropperjs__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(cropperjs__WEBPACK_IMPORTED_MODULE_3__);
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+
+
+
+
+var ActionsService = /*#__PURE__*/function () {
+  function ActionsService() {
+    _classCallCheck(this, ActionsService);
+  }
+  _createClass(ActionsService, null, [{
+    key: "handleDropdown",
+    value: function handleDropdown() {
+      var selected = _.size(_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getSelectedItems());
+      ActionsService.renderActions();
+      if (selected > 0) {
+        $('.rv-dropdown-actions').removeClass('disabled');
+      } else {
+        $('.rv-dropdown-actions').addClass('disabled');
+      }
+    }
+  }, {
+    key: "handlePreview",
+    value: function handlePreview() {
+      var selected = [];
+      _.each(_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getSelectedFiles(), function (value) {
+        if (value.preview_url) {
+          selected.push({
+            src: value.preview_url,
+            type: value.preview_type
+          });
+          _Config_MediaConfig__WEBPACK_IMPORTED_MODULE_0__.RecentItems.push(value.id);
+        }
+      });
+      if (_.size(selected) > 0) {
+        $.fancybox.open(selected);
+        _Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.storeRecentItems();
+      } else {
+        this.handleGlobalAction('download');
+      }
+    }
+  }, {
+    key: "renderCropImage",
+    value: function renderCropImage() {
+      var html = $('#rv_media_crop_image').html();
+      var modal = $('#modal_crop_image .crop-image').empty();
+      var item = _Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getSelectedItems()[0];
+      var form = $('#modal_crop_image .form-crop');
+      var cropData;
+      var el = html.replace(/__src__/gi, item.full_url);
+      modal.append(el);
+      var image = modal.find('img')[0];
+      var options = {
+        minContainerWidth: 550,
+        minContainerHeight: 550,
+        dragMode: 'move',
+        crop: function crop(event) {
+          cropData = event.detail;
+          form.find('input[name="image_id"]').val(item.id);
+          form.find('input[name="crop_data"]').val(JSON.stringify(cropData));
+          setHeight(cropData.height);
+          setWidth(cropData.width);
+        }
+      };
+      var cropper = new (cropperjs__WEBPACK_IMPORTED_MODULE_3___default())(image, options);
+      form.find('#aspectRatio').on('click', function () {
+        cropper.destroy();
+        if ($(this).is(':checked')) {
+          options.aspectRatio = cropData.width / cropData.height;
+        } else {
+          options.aspectRatio = null;
+        }
+        cropper = new (cropperjs__WEBPACK_IMPORTED_MODULE_3___default())(image, options);
+      });
+      form.find('#dataHeight').on('change', function () {
+        cropData.height = parseFloat($(this).val());
+        cropper.setData(cropData);
+        setHeight(cropData.height);
+      });
+      form.find('#dataWidth').on('change', function () {
+        cropData.width = parseFloat($(this).val());
+        cropper.setData(cropData);
+        setWidth(cropData.width);
+      });
+      var setHeight = function setHeight(height) {
+        form.find('#dataHeight').val(parseInt(height));
+      };
+      var setWidth = function setWidth(width) {
+        form.find('#dataWidth').val(parseInt(width));
+      };
+    }
+  }, {
+    key: "handleCopyLink",
+    value: function handleCopyLink() {
+      var links = '';
+      _.each(_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getSelectedFiles(), function (value) {
+        if (!_.isEmpty(links)) {
+          links += '\n';
+        }
+        links += value.full_url;
+      });
+      var $clipboardTemp = $('.js-rv-clipboard-temp');
+      $clipboardTemp.data('clipboard-text', links);
+      new Clipboard('.js-rv-clipboard-temp', {
+        text: function text() {
+          return links;
+        }
+      });
+      _MessageService__WEBPACK_IMPORTED_MODULE_2__.MessageService.showMessage('success', RV_MEDIA_CONFIG.translations.clipboard.success, RV_MEDIA_CONFIG.translations.message.success_header);
+      $clipboardTemp.trigger('click');
+    }
+  }, {
+    key: "handleGlobalAction",
+    value: function handleGlobalAction(type, callback) {
+      var selected = [];
+      _.each(_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getSelectedItems(), function (value) {
+        selected.push({
+          is_folder: value.is_folder,
+          id: value.id,
+          full_url: value.full_url
+        });
+      });
+      switch (type) {
+        case 'rename':
+          $('#modal_rename_items').modal('show').find('form.rv-form').data('action', type);
+          break;
+        case 'copy_link':
+          ActionsService.handleCopyLink();
+          break;
+        case 'preview':
+          ActionsService.handlePreview();
+          break;
+        case 'alt_text':
+          $('#modal_alt_text_items').modal('show').find('form.rv-form').data('action', type);
+          break;
+        case 'crop':
+          $('#modal_crop_image').modal('show').find('form.rv-form').data('action', type);
+          break;
+        case 'trash':
+          $('#modal_trash_items').modal('show').find('form.rv-form').data('action', type);
+          break;
+        case 'delete':
+          $('#modal_delete_items').modal('show').find('form.rv-form').data('action', type);
+          break;
+        case 'empty_trash':
+          $('#modal_empty_trash').modal('show').find('form.rv-form').data('action', type);
+          break;
+        case 'download':
+          var files = [];
+          _.each(_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getSelectedItems(), function (value) {
+            if (!_.includes(_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getConfigs().denied_download, value.mime_type)) {
+              files.push({
+                id: value.id,
+                is_folder: value.is_folder
+              });
+            }
+          });
+          if (files.length) {
+            ActionsService.handleDownload(files);
+          } else {
+            _MessageService__WEBPACK_IMPORTED_MODULE_2__.MessageService.showMessage('error', RV_MEDIA_CONFIG.translations.download.error, RV_MEDIA_CONFIG.translations.message.error_header);
+          }
+          break;
+        default:
+          ActionsService.processAction({
+            selected: selected,
+            action: type
+          }, callback);
+          break;
+      }
+    }
+  }, {
+    key: "processAction",
+    value: function processAction(data) {
+      var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      $.ajax({
+        url: RV_MEDIA_URL.global_actions,
+        type: 'POST',
+        data: data,
+        dataType: 'json',
+        beforeSend: function beforeSend() {
+          _Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.showAjaxLoading();
+        },
+        success: function success(res) {
+          _Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.resetPagination();
+          if (!res.error) {
+            _MessageService__WEBPACK_IMPORTED_MODULE_2__.MessageService.showMessage('success', res.message, RV_MEDIA_CONFIG.translations.message.success_header);
+          } else {
+            _MessageService__WEBPACK_IMPORTED_MODULE_2__.MessageService.showMessage('error', res.message, RV_MEDIA_CONFIG.translations.message.error_header);
+          }
+          if (callback) {
+            callback(res);
+          }
+        },
+        complete: function complete() {
+          _Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.hideAjaxLoading();
+        },
+        error: function error(data) {
+          _MessageService__WEBPACK_IMPORTED_MODULE_2__.MessageService.handleError(data);
+        }
+      });
+    }
+  }, {
+    key: "renderRenameItems",
+    value: function renderRenameItems() {
+      var VIEW = $('#rv_media_rename_item').html();
+      var $itemsWrapper = $('#modal_rename_items .rename-items').empty();
+      _.each(_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getSelectedItems(), function (value) {
+        var item = VIEW.replace(/__icon__/gi, value.icon || 'fa fa-file').replace(/__placeholder__/gi, 'Input file name').replace(/__value__/gi, value.name);
+        var $item = $(item);
+        $item.data('id', value.id);
+        $item.data('is_folder', value.is_folder);
+        $item.data('name', value.name);
+        $itemsWrapper.append($item);
+      });
+    }
+  }, {
+    key: "renderAltTextItems",
+    value: function renderAltTextItems() {
+      var VIEW = $('#rv_media_alt_text_item').html();
+      var $itemsWrapper = $('#modal_alt_text_items .alt-text-items').empty();
+      _.each(_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getSelectedItems(), function (value) {
+        var item = VIEW.replace(/__icon__/gi, value.icon || 'fa fa-file').replace(/__placeholder__/gi, 'Input file alt').replace(/__value__/gi, value.alt === null ? '' : value.alt);
+        var $item = $(item);
+        $item.data('id', value.id);
+        $item.data('alt', value.alt);
+        $itemsWrapper.append($item);
+      });
+    }
+  }, {
+    key: "renderActions",
+    value: function renderActions() {
+      var hasFolderSelected = _Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getSelectedFolder().length > 0;
+      var ACTION_TEMPLATE = $('#rv_action_item').html();
+      var initializedItem = 0;
+      var $dropdownActions = $('.rv-dropdown-actions .dropdown-menu');
+      $dropdownActions.empty();
+      var actionsList = $.extend({}, true, _Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getConfigs().actions_list);
+      if (hasFolderSelected) {
+        actionsList.basic = _.reject(actionsList.basic, function (item) {
+          return item.action === 'preview';
+        });
+        actionsList.basic = _.reject(actionsList.basic, function (item) {
+          return item.action === 'crop';
+        });
+        actionsList.file = _.reject(actionsList.file, function (item) {
+          return item.action === 'alt_text';
+        });
+        actionsList.file = _.reject(actionsList.file, function (item) {
+          return item.action === 'copy_link';
+        });
+        if (!_.includes(RV_MEDIA_CONFIG.permissions, 'folders.create')) {
+          actionsList.file = _.reject(actionsList.file, function (item) {
+            return item.action === 'make_copy';
+          });
+        }
+        if (!_.includes(RV_MEDIA_CONFIG.permissions, 'folders.edit')) {
+          actionsList.file = _.reject(actionsList.file, function (item) {
+            return _.includes(['rename'], item.action);
+          });
+          actionsList.user = _.reject(actionsList.user, function (item) {
+            return _.includes(['rename'], item.action);
+          });
+        }
+        if (!_.includes(RV_MEDIA_CONFIG.permissions, 'folders.trash')) {
+          actionsList.other = _.reject(actionsList.other, function (item) {
+            return _.includes(['trash', 'restore'], item.action);
+          });
+        }
+        if (!_.includes(RV_MEDIA_CONFIG.permissions, 'folders.destroy')) {
+          actionsList.other = _.reject(actionsList.other, function (item) {
+            return _.includes(['delete'], item.action);
+          });
+        }
+        if (!_.includes(RV_MEDIA_CONFIG.permissions, 'folders.favorite')) {
+          actionsList.other = _.reject(actionsList.other, function (item) {
+            return _.includes(['favorite', 'remove_favorite'], item.action);
+          });
+        }
+      }
+      var selectedFiles = _Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getSelectedFiles();
+      var canPreview = _.filter(selectedFiles, function (value) {
+        return value.preview_url;
+      }).length;
+      if (!canPreview) {
+        actionsList.basic = _.reject(actionsList.basic, function (item) {
+          return item.action === 'preview';
+        });
+      }
+      var fileIsImage = _.filter(selectedFiles, function (value) {
+        return value.type === 'image';
+      }).length;
+      if (!fileIsImage) {
+        actionsList.basic = _.reject(actionsList.basic, function (item) {
+          return item.action === 'crop';
+        });
+        actionsList.file = _.reject(actionsList.file, function (item) {
+          return item.action === 'alt_text';
+        });
+      }
+      if (selectedFiles.length > 0) {
+        if (!_.includes(RV_MEDIA_CONFIG.permissions, 'files.create')) {
+          actionsList.file = _.reject(actionsList.file, function (item) {
+            return item.action === 'make_copy';
+          });
+        }
+        if (!_.includes(RV_MEDIA_CONFIG.permissions, 'files.edit')) {
+          actionsList.file = _.reject(actionsList.file, function (item) {
+            return _.includes(['rename'], item.action);
+          });
+        }
+        if (!_.includes(RV_MEDIA_CONFIG.permissions, 'files.trash')) {
+          actionsList.other = _.reject(actionsList.other, function (item) {
+            return _.includes(['trash', 'restore'], item.action);
+          });
+        }
+        if (!_.includes(RV_MEDIA_CONFIG.permissions, 'files.destroy')) {
+          actionsList.other = _.reject(actionsList.other, function (item) {
+            return _.includes(['delete'], item.action);
+          });
+        }
+        if (!_.includes(RV_MEDIA_CONFIG.permissions, 'files.favorite')) {
+          actionsList.other = _.reject(actionsList.other, function (item) {
+            return _.includes(['favorite', 'remove_favorite'], item.action);
+          });
+        }
+        if (selectedFiles.length > 1) {
+          actionsList.basic = _.reject(actionsList.basic, function (item) {
+            return item.action === 'crop';
+          });
+        }
+      }
+      _.each(actionsList, function (action, key) {
+        _.each(action, function (item, index) {
+          var is_break = false;
+          switch (_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getRequestParams().view_in) {
+            case 'all_media':
+              if (_.includes(['remove_favorite', 'delete', 'restore'], item.action)) {
+                is_break = true;
+              }
+              break;
+            case 'recent':
+              if (_.includes(['remove_favorite', 'delete', 'restore', 'make_copy'], item.action)) {
+                is_break = true;
+              }
+              break;
+            case 'favorites':
+              if (_.includes(['favorite', 'delete', 'restore', 'make_copy'], item.action)) {
+                is_break = true;
+              }
+              break;
+            case 'trash':
+              if (!_.includes(['preview', 'delete', 'restore', 'rename', 'download'], item.action)) {
+                is_break = true;
+              }
+              break;
+          }
+          if (!is_break) {
+            var template = ACTION_TEMPLATE.replace(/__action__/gi, item.action || '').replace(/__icon__/gi, item.icon || '').replace(/__name__/gi, RV_MEDIA_CONFIG.translations.actions_list[key][item.action] || item.name);
+            if (!index && initializedItem) {
+              template = '<li role="separator" class="divider"></li>' + template;
+            }
+            $dropdownActions.append(template);
+          }
+        });
+        if (action.length > 0) {
+          initializedItem++;
+        }
+      });
+    }
+  }, {
+    key: "handleDownload",
+    value: function handleDownload(files) {
+      var html = $('.media-download-popup');
+      var downloadTimeout = null;
+      $.ajax({
+        url: RV_MEDIA_URL.download,
+        method: 'POST',
+        data: {
+          selected: files
+        },
+        xhrFields: {
+          responseType: 'blob'
+        },
+        beforeSend: function beforeSend() {
+          downloadTimeout = setTimeout(function () {
+            html.show();
+          }, 1000);
+        },
+        success: function success(response, status, xhr) {
+          if (response.error) {
+            _MessageService__WEBPACK_IMPORTED_MODULE_2__.MessageService.showMessage('error', response.message);
+            return;
+          }
+          var downloadUrl = URL.createObjectURL(response);
+          var a = document.createElement('a');
+          var fileName = xhr.getResponseHeader('Content-Disposition').split('filename=')[1].split(';')[0];
+          a.href = downloadUrl;
+          a.download = fileName;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          window.URL.revokeObjectURL(downloadUrl);
+        },
+        complete: function complete() {
+          html.hide();
+          clearTimeout(downloadTimeout);
+        },
+        error: function error(data) {
+          _MessageService__WEBPACK_IMPORTED_MODULE_2__.MessageService.handleError(data);
+        }
+      });
+    }
+  }]);
+  return ActionsService;
+}();
+
+/***/ }),
+
+/***/ "./platform/core/media/resources/assets/js/App/Services/ContextMenuService.js":
+/*!************************************************************************************!*\
+  !*** ./platform/core/media/resources/assets/js/App/Services/ContextMenuService.js ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ContextMenuService: () => (/* binding */ ContextMenuService)
+/* harmony export */ });
+/* harmony import */ var _ActionsService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ActionsService */ "./platform/core/media/resources/assets/js/App/Services/ActionsService.js");
+/* harmony import */ var _Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Helpers/Helpers */ "./platform/core/media/resources/assets/js/App/Helpers/Helpers.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+
+
+var ContextMenuService = /*#__PURE__*/function () {
+  function ContextMenuService() {
+    _classCallCheck(this, ContextMenuService);
+  }
+  _createClass(ContextMenuService, null, [{
+    key: "initContext",
+    value: function initContext() {
+      if (jQuery().contextMenu) {
+        $.contextMenu({
+          selector: '.js-context-menu[data-context="file"]',
+          build: function build() {
+            return {
+              items: ContextMenuService._fileContextMenu()
+            };
+          }
+        });
+        $.contextMenu({
+          selector: '.js-context-menu[data-context="folder"]',
+          build: function build() {
+            return {
+              items: ContextMenuService._folderContextMenu()
+            };
+          }
+        });
+      }
+    }
+  }, {
+    key: "_fileContextMenu",
+    value: function _fileContextMenu() {
+      var items = {
+        preview: {
+          name: 'Preview',
+          icon: function icon(opt, $itemElement, itemKey, item) {
+            $itemElement.html('<i class="fa fa-eye" aria-hidden="true"></i> ' + item.name);
+            return 'context-menu-icon-updated';
+          },
+          callback: function callback() {
+            _ActionsService__WEBPACK_IMPORTED_MODULE_0__.ActionsService.handlePreview();
+          }
+        }
+      };
+      _.each(_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getConfigs().actions_list, function (actionGroup, key) {
+        _.each(actionGroup, function (value) {
+          items[value.action] = {
+            name: value.name,
+            icon: function icon(opt, $itemElement, itemKey, item) {
+              $itemElement.html('<i class="' + value.icon + '" aria-hidden="true"></i> ' + (RV_MEDIA_CONFIG.translations.actions_list[key][value.action] || item.name));
+              return 'context-menu-icon-updated';
+            },
+            callback: function callback() {
+              $('.js-files-action[data-action="' + value.action + '"]').trigger('click');
+            }
+          };
+        });
+      });
+      var except = [];
+      switch (_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getRequestParams().view_in) {
+        case 'all_media':
+          except = ['remove_favorite', 'delete', 'restore'];
+          break;
+        case 'recent':
+          except = ['remove_favorite', 'delete', 'restore', 'make_copy'];
+          break;
+        case 'favorites':
+          except = ['favorite', 'delete', 'restore', 'make_copy'];
+          break;
+        case 'trash':
+          items = {
+            preview: items.preview,
+            rename: items.rename,
+            download: items.download,
+            "delete": items["delete"],
+            restore: items.restore
+          };
+          break;
+      }
+      _.each(except, function (value) {
+        items[value] = undefined;
+      });
+      var hasFolderSelected = _Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getSelectedFolder().length > 0;
+      if (hasFolderSelected) {
+        items.preview = undefined;
+        items.crop = undefined;
+        items.copy_link = undefined;
+        if (!_.includes(RV_MEDIA_CONFIG.permissions, 'folders.create')) {
+          items.make_copy = undefined;
+        }
+        if (!_.includes(RV_MEDIA_CONFIG.permissions, 'folders.edit')) {
+          items.rename = undefined;
+        }
+        if (!_.includes(RV_MEDIA_CONFIG.permissions, 'folders.trash')) {
+          items.trash = undefined;
+          items.restore = undefined;
+        }
+        if (!_.includes(RV_MEDIA_CONFIG.permissions, 'folders.destroy')) {
+          items["delete"] = undefined;
+        }
+        if (!_.includes(RV_MEDIA_CONFIG.permissions, 'folders.favorite')) {
+          items.favorite = undefined;
+          items.remove_favorite = undefined;
+        }
+      }
+      var selectedFiles = _Helpers_Helpers__WEBPACK_IMPORTED_MODULE_1__.Helpers.getSelectedFiles();
+      if (selectedFiles.length > 0) {
+        if (!_.includes(RV_MEDIA_CONFIG.permissions, 'files.create')) {
+          items.make_copy = undefined;
+        }
+        if (!_.includes(RV_MEDIA_CONFIG.permissions, 'files.edit')) {
+          items.rename = undefined;
+        }
+        if (!_.includes(RV_MEDIA_CONFIG.permissions, 'files.trash')) {
+          items.trash = undefined;
+          items.restore = undefined;
+        }
+        if (!_.includes(RV_MEDIA_CONFIG.permissions, 'files.destroy')) {
+          items["delete"] = undefined;
+        }
+        if (!_.includes(RV_MEDIA_CONFIG.permissions, 'files.favorite')) {
+          items.favorite = undefined;
+          items.remove_favorite = undefined;
+        }
+        if (selectedFiles.length > 1) {
+          items.crop = undefined;
+        }
+      }
+      var canPreview = _.filter(selectedFiles, function (value) {
+        return value.preview_url;
+      }).length;
+      if (!canPreview) {
+        items.preview = undefined;
+      }
+      var fileIsImage = _.filter(selectedFiles, function (value) {
+        return value.type === 'image';
+      }).length;
+      if (!fileIsImage) {
+        items.crop = undefined;
+        items.alt_text = undefined;
+      }
+      return items;
+    }
+  }, {
+    key: "_folderContextMenu",
+    value: function _folderContextMenu() {
+      var items = ContextMenuService._fileContextMenu();
+      items.preview = undefined;
+      items.copy_link = undefined;
+      return items;
+    }
+  }, {
+    key: "destroyContext",
+    value: function destroyContext() {
+      if (jQuery().contextMenu) {
+        $.contextMenu('destroy');
+      }
+    }
+  }]);
+  return ContextMenuService;
+}();
+
+/***/ }),
+
+/***/ "./platform/core/media/resources/assets/js/App/Services/MessageService.js":
+/*!********************************************************************************!*\
+  !*** ./platform/core/media/resources/assets/js/App/Services/MessageService.js ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   MessageService: () => (/* binding */ MessageService)
+/* harmony export */ });
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+var MessageService = /*#__PURE__*/function () {
+  function MessageService() {
+    _classCallCheck(this, MessageService);
+  }
+  _createClass(MessageService, null, [{
+    key: "showMessage",
+    value: function showMessage(type, message) {
+      toastr.options = {
+        closeButton: true,
+        progressBar: true,
+        positionClass: 'toast-bottom-right',
+        onclick: null,
+        showDuration: 1000,
+        hideDuration: 1000,
+        timeOut: 10000,
+        extendedTimeOut: 1000,
+        showEasing: 'swing',
+        hideEasing: 'linear',
+        showMethod: 'fadeIn',
+        hideMethod: 'fadeOut'
+      };
+      var messageHeader = '';
+      switch (type) {
+        case 'error':
+          messageHeader = RV_MEDIA_CONFIG.translations.message.error_header;
+          break;
+        case 'success':
+          messageHeader = RV_MEDIA_CONFIG.translations.message.success_header;
+          break;
+      }
+      toastr[type](message, messageHeader);
+    }
+  }, {
+    key: "handleError",
+    value: function handleError(data) {
+      if (typeof data.responseJSON !== 'undefined' && !_.isArray(data.errors)) {
+        MessageService.handleValidationError(data.responseJSON.errors);
+      } else {
+        if (typeof data.responseJSON !== 'undefined') {
+          if (typeof data.responseJSON.errors !== 'undefined') {
+            if (data.status === 422) {
+              MessageService.handleValidationError(data.responseJSON.errors);
+            }
+          } else if (typeof data.responseJSON.message !== 'undefined') {
+            MessageService.showMessage('error', data.responseJSON.message);
+          } else {
+            $.each(data.responseJSON, function (index, el) {
+              $.each(el, function (key, item) {
+                MessageService.showMessage('error', item);
+              });
+            });
+          }
+        } else {
+          MessageService.showMessage('error', data.statusText);
+        }
+      }
+    }
+  }, {
+    key: "handleValidationError",
+    value: function handleValidationError(errors) {
+      var message = '';
+      $.each(errors, function (index, item) {
+        message += item + '<br />';
+        var $input = $('*[name="' + index + '"]');
+        $input.addClass('field-has-error');
+        var $input_array = $('*[name$="[' + index + ']"]');
+        $input_array.addClass('field-has-error');
+      });
+      MessageService.showMessage('error', message);
+    }
+  }]);
+  return MessageService;
+}();
+
+/***/ }),
+
+/***/ "./node_modules/cropperjs/dist/cropper.js":
+/*!************************************************!*\
+  !*** ./node_modules/cropperjs/dist/cropper.js ***!
+  \************************************************/
+/***/ (function(module) {
+
 /*!
  * Cropper.js v1.5.13
  * https://fengyuanchen.github.io/cropperjs
@@ -8,4 +1046,3439 @@
  *
  * Date: 2022-11-20T05:30:46.114Z
  */
-t.exports=function(){"use strict";function t(t,e){var i=Object.keys(t);if(Object.getOwnPropertySymbols){var a=Object.getOwnPropertySymbols(t);e&&(a=a.filter((function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable}))),i.push.apply(i,a)}return i}function e(e){for(var i=1;i<arguments.length;i++){var a=null!=arguments[i]?arguments[i]:{};i%2?t(Object(a),!0).forEach((function(t){r(e,t,a[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(a)):t(Object(a)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(a,t))}))}return e}function i(t){return i="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},i(t)}function a(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function n(t,e){for(var i=0;i<e.length;i++){var a=e[i];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(t,a.key,a)}}function o(t,e,i){return e&&n(t.prototype,e),i&&n(t,i),Object.defineProperty(t,"prototype",{writable:!1}),t}function r(t,e,i){return e in t?Object.defineProperty(t,e,{value:i,enumerable:!0,configurable:!0,writable:!0}):t[e]=i,t}function s(t){return c(t)||h(t)||l(t)||u()}function c(t){if(Array.isArray(t))return d(t)}function h(t){if("undefined"!=typeof Symbol&&null!=t[Symbol.iterator]||null!=t["@@iterator"])return Array.from(t)}function l(t,e){if(t){if("string"==typeof t)return d(t,e);var i=Object.prototype.toString.call(t).slice(8,-1);return"Object"===i&&t.constructor&&(i=t.constructor.name),"Map"===i||"Set"===i?Array.from(t):"Arguments"===i||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(i)?d(t,e):void 0}}function d(t,e){(null==e||e>t.length)&&(e=t.length);for(var i=0,a=new Array(e);i<e;i++)a[i]=t[i];return a}function u(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var p="undefined"!=typeof window&&void 0!==window.document,f=p?window:{},m=!(!p||!f.document.documentElement)&&"ontouchstart"in f.document.documentElement,v=!!p&&"PointerEvent"in f,g="cropper",y="all",w="crop",b="move",_="zoom",x="e",M="w",C="s",k="n",D="ne",O="nw",E="se",I="sw",S="".concat(g,"-crop"),R="".concat(g,"-disabled"),j="".concat(g,"-hidden"),N="".concat(g,"-hide"),A="".concat(g,"-invisible"),T="".concat(g,"-modal"),$="".concat(g,"-move"),B="".concat(g,"Action"),L="".concat(g,"Preview"),P="crop",W="move",H="none",F="crop",z="cropend",Y="cropmove",V="cropstart",X="dblclick",G=m?"touchstart":"mousedown",U=m?"touchmove":"mousemove",Z=m?"touchend touchcancel":"mouseup",q=v?"pointerdown":G,J=v?"pointermove":U,K=v?"pointerup pointercancel":Z,Q="ready",tt="resize",et="wheel",it="zoom",at="image/jpeg",nt=/^e|w|s|n|se|sw|ne|nw|all|crop|move|zoom$/,ot=/^data:/,rt=/^data:image\/jpeg;base64,/,st=/^img|canvas$/i,ct=200,ht=100,lt={viewMode:0,dragMode:P,initialAspectRatio:NaN,aspectRatio:NaN,data:null,preview:"",responsive:!0,restore:!0,checkCrossOrigin:!0,checkOrientation:!0,modal:!0,guides:!0,center:!0,highlight:!0,background:!0,autoCrop:!0,autoCropArea:.8,movable:!0,rotatable:!0,scalable:!0,zoomable:!0,zoomOnTouch:!0,zoomOnWheel:!0,wheelZoomRatio:.1,cropBoxMovable:!0,cropBoxResizable:!0,toggleDragModeOnDblclick:!0,minCanvasWidth:0,minCanvasHeight:0,minCropBoxWidth:0,minCropBoxHeight:0,minContainerWidth:ct,minContainerHeight:ht,ready:null,cropstart:null,cropmove:null,cropend:null,crop:null,zoom:null},dt='<div class="cropper-container" touch-action="none"><div class="cropper-wrap-box"><div class="cropper-canvas"></div></div><div class="cropper-drag-box"></div><div class="cropper-crop-box"><span class="cropper-view-box"></span><span class="cropper-dashed dashed-h"></span><span class="cropper-dashed dashed-v"></span><span class="cropper-center"></span><span class="cropper-face"></span><span class="cropper-line line-e" data-cropper-action="e"></span><span class="cropper-line line-n" data-cropper-action="n"></span><span class="cropper-line line-w" data-cropper-action="w"></span><span class="cropper-line line-s" data-cropper-action="s"></span><span class="cropper-point point-e" data-cropper-action="e"></span><span class="cropper-point point-n" data-cropper-action="n"></span><span class="cropper-point point-w" data-cropper-action="w"></span><span class="cropper-point point-s" data-cropper-action="s"></span><span class="cropper-point point-ne" data-cropper-action="ne"></span><span class="cropper-point point-nw" data-cropper-action="nw"></span><span class="cropper-point point-sw" data-cropper-action="sw"></span><span class="cropper-point point-se" data-cropper-action="se"></span></div></div>',ut=Number.isNaN||f.isNaN;function pt(t){return"number"==typeof t&&!ut(t)}var ft=function(t){return t>0&&t<1/0};function mt(t){return void 0===t}function vt(t){return"object"===i(t)&&null!==t}var gt=Object.prototype.hasOwnProperty;function yt(t){if(!vt(t))return!1;try{var e=t.constructor,i=e.prototype;return e&&i&&gt.call(i,"isPrototypeOf")}catch(t){return!1}}function wt(t){return"function"==typeof t}var bt=Array.prototype.slice;function _t(t){return Array.from?Array.from(t):bt.call(t)}function xt(t,e){return t&&wt(e)&&(Array.isArray(t)||pt(t.length)?_t(t).forEach((function(i,a){e.call(t,i,a,t)})):vt(t)&&Object.keys(t).forEach((function(i){e.call(t,t[i],i,t)}))),t}var Mt=Object.assign||function(t){for(var e=arguments.length,i=new Array(e>1?e-1:0),a=1;a<e;a++)i[a-1]=arguments[a];return vt(t)&&i.length>0&&i.forEach((function(e){vt(e)&&Object.keys(e).forEach((function(i){t[i]=e[i]}))})),t},Ct=/\.\d*(?:0|9){12}\d*$/;function kt(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1e11;return Ct.test(t)?Math.round(t*e)/e:t}var Dt=/^width|height|left|top|marginLeft|marginTop$/;function Ot(t,e){var i=t.style;xt(e,(function(t,e){Dt.test(e)&&pt(t)&&(t="".concat(t,"px")),i[e]=t}))}function Et(t,e){return t.classList?t.classList.contains(e):t.className.indexOf(e)>-1}function It(t,e){if(e)if(pt(t.length))xt(t,(function(t){It(t,e)}));else if(t.classList)t.classList.add(e);else{var i=t.className.trim();i?i.indexOf(e)<0&&(t.className="".concat(i," ").concat(e)):t.className=e}}function St(t,e){e&&(pt(t.length)?xt(t,(function(t){St(t,e)})):t.classList?t.classList.remove(e):t.className.indexOf(e)>=0&&(t.className=t.className.replace(e,"")))}function Rt(t,e,i){e&&(pt(t.length)?xt(t,(function(t){Rt(t,e,i)})):i?It(t,e):St(t,e))}var jt=/([a-z\d])([A-Z])/g;function Nt(t){return t.replace(jt,"$1-$2").toLowerCase()}function At(t,e){return vt(t[e])?t[e]:t.dataset?t.dataset[e]:t.getAttribute("data-".concat(Nt(e)))}function Tt(t,e,i){vt(i)?t[e]=i:t.dataset?t.dataset[e]=i:t.setAttribute("data-".concat(Nt(e)),i)}function $t(t,e){if(vt(t[e]))try{delete t[e]}catch(i){t[e]=void 0}else if(t.dataset)try{delete t.dataset[e]}catch(i){t.dataset[e]=void 0}else t.removeAttribute("data-".concat(Nt(e)))}var Bt=/\s\s*/,Lt=function(){var t=!1;if(p){var e=!1,i=function(){},a=Object.defineProperty({},"once",{get:function(){return t=!0,e},set:function(t){e=t}});f.addEventListener("test",i,a),f.removeEventListener("test",i,a)}return t}();function Pt(t,e,i){var a=arguments.length>3&&void 0!==arguments[3]?arguments[3]:{},n=i;e.trim().split(Bt).forEach((function(e){if(!Lt){var o=t.listeners;o&&o[e]&&o[e][i]&&(n=o[e][i],delete o[e][i],0===Object.keys(o[e]).length&&delete o[e],0===Object.keys(o).length&&delete t.listeners)}t.removeEventListener(e,n,a)}))}function Wt(t,e,i){var a=arguments.length>3&&void 0!==arguments[3]?arguments[3]:{},n=i;e.trim().split(Bt).forEach((function(e){if(a.once&&!Lt){var o=t.listeners,r=void 0===o?{}:o;n=function(){delete r[e][i],t.removeEventListener(e,n,a);for(var o=arguments.length,s=new Array(o),c=0;c<o;c++)s[c]=arguments[c];i.apply(t,s)},r[e]||(r[e]={}),r[e][i]&&t.removeEventListener(e,r[e][i],a),r[e][i]=n,t.listeners=r}t.addEventListener(e,n,a)}))}function Ht(t,e,i){var a;return wt(Event)&&wt(CustomEvent)?a=new CustomEvent(e,{detail:i,bubbles:!0,cancelable:!0}):(a=document.createEvent("CustomEvent")).initCustomEvent(e,!0,!0,i),t.dispatchEvent(a)}function Ft(t){var e=t.getBoundingClientRect();return{left:e.left+(window.pageXOffset-document.documentElement.clientLeft),top:e.top+(window.pageYOffset-document.documentElement.clientTop)}}var zt=f.location,Yt=/^(\w+:)\/\/([^:/?#]*):?(\d*)/i;function Vt(t){var e=t.match(Yt);return null!==e&&(e[1]!==zt.protocol||e[2]!==zt.hostname||e[3]!==zt.port)}function Xt(t){var e="timestamp=".concat((new Date).getTime());return t+(-1===t.indexOf("?")?"?":"&")+e}function Gt(t){var e=t.rotate,i=t.scaleX,a=t.scaleY,n=t.translateX,o=t.translateY,r=[];pt(n)&&0!==n&&r.push("translateX(".concat(n,"px)")),pt(o)&&0!==o&&r.push("translateY(".concat(o,"px)")),pt(e)&&0!==e&&r.push("rotate(".concat(e,"deg)")),pt(i)&&1!==i&&r.push("scaleX(".concat(i,")")),pt(a)&&1!==a&&r.push("scaleY(".concat(a,")"));var s=r.length?r.join(" "):"none";return{WebkitTransform:s,msTransform:s,transform:s}}function Ut(t){var i=e({},t),a=0;return xt(t,(function(t,e){delete i[e],xt(i,(function(e){var i=Math.abs(t.startX-e.startX),n=Math.abs(t.startY-e.startY),o=Math.abs(t.endX-e.endX),r=Math.abs(t.endY-e.endY),s=Math.sqrt(i*i+n*n),c=(Math.sqrt(o*o+r*r)-s)/s;Math.abs(c)>Math.abs(a)&&(a=c)}))})),a}function Zt(t,i){var a=t.pageX,n=t.pageY,o={endX:a,endY:n};return i?o:e({startX:a,startY:n},o)}function qt(t){var e=0,i=0,a=0;return xt(t,(function(t){var n=t.startX,o=t.startY;e+=n,i+=o,a+=1})),{pageX:e/=a,pageY:i/=a}}function Jt(t){var e=t.aspectRatio,i=t.height,a=t.width,n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"contain",o=ft(a),r=ft(i);if(o&&r){var s=i*e;"contain"===n&&s>a||"cover"===n&&s<a?i=a/e:a=i*e}else o?i=a/e:r&&(a=i*e);return{width:a,height:i}}function Kt(t){var e=t.width,i=t.height,a=t.degree;if(90==(a=Math.abs(a)%180))return{width:i,height:e};var n=a%90*Math.PI/180,o=Math.sin(n),r=Math.cos(n),s=e*r+i*o,c=e*o+i*r;return a>90?{width:c,height:s}:{width:s,height:c}}function Qt(t,e,i,a){var n=e.aspectRatio,o=e.naturalWidth,r=e.naturalHeight,c=e.rotate,h=void 0===c?0:c,l=e.scaleX,d=void 0===l?1:l,u=e.scaleY,p=void 0===u?1:u,f=i.aspectRatio,m=i.naturalWidth,v=i.naturalHeight,g=a.fillColor,y=void 0===g?"transparent":g,w=a.imageSmoothingEnabled,b=void 0===w||w,_=a.imageSmoothingQuality,x=void 0===_?"low":_,M=a.maxWidth,C=void 0===M?1/0:M,k=a.maxHeight,D=void 0===k?1/0:k,O=a.minWidth,E=void 0===O?0:O,I=a.minHeight,S=void 0===I?0:I,R=document.createElement("canvas"),j=R.getContext("2d"),N=Jt({aspectRatio:f,width:C,height:D}),A=Jt({aspectRatio:f,width:E,height:S},"cover"),T=Math.min(N.width,Math.max(A.width,m)),$=Math.min(N.height,Math.max(A.height,v)),B=Jt({aspectRatio:n,width:C,height:D}),L=Jt({aspectRatio:n,width:E,height:S},"cover"),P=Math.min(B.width,Math.max(L.width,o)),W=Math.min(B.height,Math.max(L.height,r)),H=[-P/2,-W/2,P,W];return R.width=kt(T),R.height=kt($),j.fillStyle=y,j.fillRect(0,0,T,$),j.save(),j.translate(T/2,$/2),j.rotate(h*Math.PI/180),j.scale(d,p),j.imageSmoothingEnabled=b,j.imageSmoothingQuality=x,j.drawImage.apply(j,[t].concat(s(H.map((function(t){return Math.floor(kt(t))}))))),j.restore(),R}var te=String.fromCharCode;function ee(t,e,i){var a="";i+=e;for(var n=e;n<i;n+=1)a+=te(t.getUint8(n));return a}var ie=/^data:.*,/;function ae(t){var e=t.replace(ie,""),i=atob(e),a=new ArrayBuffer(i.length),n=new Uint8Array(a);return xt(n,(function(t,e){n[e]=i.charCodeAt(e)})),a}function ne(t,e){for(var i=[],a=8192,n=new Uint8Array(t);n.length>0;)i.push(te.apply(null,_t(n.subarray(0,a)))),n=n.subarray(a);return"data:".concat(e,";base64,").concat(btoa(i.join("")))}function oe(t){var e,i=new DataView(t);try{var a,n,o;if(255===i.getUint8(0)&&216===i.getUint8(1))for(var r=i.byteLength,s=2;s+1<r;){if(255===i.getUint8(s)&&225===i.getUint8(s+1)){n=s;break}s+=1}if(n){var c=n+10;if("Exif"===ee(i,n+4,4)){var h=i.getUint16(c);if(((a=18761===h)||19789===h)&&42===i.getUint16(c+2,a)){var l=i.getUint32(c+4,a);l>=8&&(o=c+l)}}}if(o){var d,u,p=i.getUint16(o,a);for(u=0;u<p;u+=1)if(d=o+12*u+2,274===i.getUint16(d,a)){d+=8,e=i.getUint16(d,a),i.setUint16(d,1,a);break}}}catch(t){e=1}return e}function re(t){var e=0,i=1,a=1;switch(t){case 2:i=-1;break;case 3:e=-180;break;case 4:a=-1;break;case 5:e=90,a=-1;break;case 6:e=90;break;case 7:e=90,i=-1;break;case 8:e=-90}return{rotate:e,scaleX:i,scaleY:a}}var se={render:function(){this.initContainer(),this.initCanvas(),this.initCropBox(),this.renderCanvas(),this.cropped&&this.renderCropBox()},initContainer:function(){var t=this.element,e=this.options,i=this.container,a=this.cropper,n=Number(e.minContainerWidth),o=Number(e.minContainerHeight);It(a,j),St(t,j);var r={width:Math.max(i.offsetWidth,n>=0?n:ct),height:Math.max(i.offsetHeight,o>=0?o:ht)};this.containerData=r,Ot(a,{width:r.width,height:r.height}),It(t,j),St(a,j)},initCanvas:function(){var t=this.containerData,e=this.imageData,i=this.options.viewMode,a=Math.abs(e.rotate)%180==90,n=a?e.naturalHeight:e.naturalWidth,o=a?e.naturalWidth:e.naturalHeight,r=n/o,s=t.width,c=t.height;t.height*r>t.width?3===i?s=t.height*r:c=t.width/r:3===i?c=t.width/r:s=t.height*r;var h={aspectRatio:r,naturalWidth:n,naturalHeight:o,width:s,height:c};this.canvasData=h,this.limited=1===i||2===i,this.limitCanvas(!0,!0),h.width=Math.min(Math.max(h.width,h.minWidth),h.maxWidth),h.height=Math.min(Math.max(h.height,h.minHeight),h.maxHeight),h.left=(t.width-h.width)/2,h.top=(t.height-h.height)/2,h.oldLeft=h.left,h.oldTop=h.top,this.initialCanvasData=Mt({},h)},limitCanvas:function(t,e){var i=this.options,a=this.containerData,n=this.canvasData,o=this.cropBoxData,r=i.viewMode,s=n.aspectRatio,c=this.cropped&&o;if(t){var h=Number(i.minCanvasWidth)||0,l=Number(i.minCanvasHeight)||0;r>1?(h=Math.max(h,a.width),l=Math.max(l,a.height),3===r&&(l*s>h?h=l*s:l=h/s)):r>0&&(h?h=Math.max(h,c?o.width:0):l?l=Math.max(l,c?o.height:0):c&&(h=o.width,(l=o.height)*s>h?h=l*s:l=h/s));var d=Jt({aspectRatio:s,width:h,height:l});h=d.width,l=d.height,n.minWidth=h,n.minHeight=l,n.maxWidth=1/0,n.maxHeight=1/0}if(e)if(r>(c?0:1)){var u=a.width-n.width,p=a.height-n.height;n.minLeft=Math.min(0,u),n.minTop=Math.min(0,p),n.maxLeft=Math.max(0,u),n.maxTop=Math.max(0,p),c&&this.limited&&(n.minLeft=Math.min(o.left,o.left+(o.width-n.width)),n.minTop=Math.min(o.top,o.top+(o.height-n.height)),n.maxLeft=o.left,n.maxTop=o.top,2===r&&(n.width>=a.width&&(n.minLeft=Math.min(0,u),n.maxLeft=Math.max(0,u)),n.height>=a.height&&(n.minTop=Math.min(0,p),n.maxTop=Math.max(0,p))))}else n.minLeft=-n.width,n.minTop=-n.height,n.maxLeft=a.width,n.maxTop=a.height},renderCanvas:function(t,e){var i=this.canvasData,a=this.imageData;if(e){var n=Kt({width:a.naturalWidth*Math.abs(a.scaleX||1),height:a.naturalHeight*Math.abs(a.scaleY||1),degree:a.rotate||0}),o=n.width,r=n.height,s=i.width*(o/i.naturalWidth),c=i.height*(r/i.naturalHeight);i.left-=(s-i.width)/2,i.top-=(c-i.height)/2,i.width=s,i.height=c,i.aspectRatio=o/r,i.naturalWidth=o,i.naturalHeight=r,this.limitCanvas(!0,!1)}(i.width>i.maxWidth||i.width<i.minWidth)&&(i.left=i.oldLeft),(i.height>i.maxHeight||i.height<i.minHeight)&&(i.top=i.oldTop),i.width=Math.min(Math.max(i.width,i.minWidth),i.maxWidth),i.height=Math.min(Math.max(i.height,i.minHeight),i.maxHeight),this.limitCanvas(!1,!0),i.left=Math.min(Math.max(i.left,i.minLeft),i.maxLeft),i.top=Math.min(Math.max(i.top,i.minTop),i.maxTop),i.oldLeft=i.left,i.oldTop=i.top,Ot(this.canvas,Mt({width:i.width,height:i.height},Gt({translateX:i.left,translateY:i.top}))),this.renderImage(t),this.cropped&&this.limited&&this.limitCropBox(!0,!0)},renderImage:function(t){var e=this.canvasData,i=this.imageData,a=i.naturalWidth*(e.width/e.naturalWidth),n=i.naturalHeight*(e.height/e.naturalHeight);Mt(i,{width:a,height:n,left:(e.width-a)/2,top:(e.height-n)/2}),Ot(this.image,Mt({width:i.width,height:i.height},Gt(Mt({translateX:i.left,translateY:i.top},i)))),t&&this.output()},initCropBox:function(){var t=this.options,e=this.canvasData,i=t.aspectRatio||t.initialAspectRatio,a=Number(t.autoCropArea)||.8,n={width:e.width,height:e.height};i&&(e.height*i>e.width?n.height=n.width/i:n.width=n.height*i),this.cropBoxData=n,this.limitCropBox(!0,!0),n.width=Math.min(Math.max(n.width,n.minWidth),n.maxWidth),n.height=Math.min(Math.max(n.height,n.minHeight),n.maxHeight),n.width=Math.max(n.minWidth,n.width*a),n.height=Math.max(n.minHeight,n.height*a),n.left=e.left+(e.width-n.width)/2,n.top=e.top+(e.height-n.height)/2,n.oldLeft=n.left,n.oldTop=n.top,this.initialCropBoxData=Mt({},n)},limitCropBox:function(t,e){var i=this.options,a=this.containerData,n=this.canvasData,o=this.cropBoxData,r=this.limited,s=i.aspectRatio;if(t){var c=Number(i.minCropBoxWidth)||0,h=Number(i.minCropBoxHeight)||0,l=r?Math.min(a.width,n.width,n.width+n.left,a.width-n.left):a.width,d=r?Math.min(a.height,n.height,n.height+n.top,a.height-n.top):a.height;c=Math.min(c,a.width),h=Math.min(h,a.height),s&&(c&&h?h*s>c?h=c/s:c=h*s:c?h=c/s:h&&(c=h*s),d*s>l?d=l/s:l=d*s),o.minWidth=Math.min(c,l),o.minHeight=Math.min(h,d),o.maxWidth=l,o.maxHeight=d}e&&(r?(o.minLeft=Math.max(0,n.left),o.minTop=Math.max(0,n.top),o.maxLeft=Math.min(a.width,n.left+n.width)-o.width,o.maxTop=Math.min(a.height,n.top+n.height)-o.height):(o.minLeft=0,o.minTop=0,o.maxLeft=a.width-o.width,o.maxTop=a.height-o.height))},renderCropBox:function(){var t=this.options,e=this.containerData,i=this.cropBoxData;(i.width>i.maxWidth||i.width<i.minWidth)&&(i.left=i.oldLeft),(i.height>i.maxHeight||i.height<i.minHeight)&&(i.top=i.oldTop),i.width=Math.min(Math.max(i.width,i.minWidth),i.maxWidth),i.height=Math.min(Math.max(i.height,i.minHeight),i.maxHeight),this.limitCropBox(!1,!0),i.left=Math.min(Math.max(i.left,i.minLeft),i.maxLeft),i.top=Math.min(Math.max(i.top,i.minTop),i.maxTop),i.oldLeft=i.left,i.oldTop=i.top,t.movable&&t.cropBoxMovable&&Tt(this.face,B,i.width>=e.width&&i.height>=e.height?b:y),Ot(this.cropBox,Mt({width:i.width,height:i.height},Gt({translateX:i.left,translateY:i.top}))),this.cropped&&this.limited&&this.limitCanvas(!0,!0),this.disabled||this.output()},output:function(){this.preview(),Ht(this.element,F,this.getData())}},ce={initPreview:function(){var t=this.element,e=this.crossOrigin,i=this.options.preview,a=e?this.crossOriginUrl:this.url,n=t.alt||"The image to preview",o=document.createElement("img");if(e&&(o.crossOrigin=e),o.src=a,o.alt=n,this.viewBox.appendChild(o),this.viewBoxImage=o,i){var r=i;"string"==typeof i?r=t.ownerDocument.querySelectorAll(i):i.querySelector&&(r=[i]),this.previews=r,xt(r,(function(t){var i=document.createElement("img");Tt(t,L,{width:t.offsetWidth,height:t.offsetHeight,html:t.innerHTML}),e&&(i.crossOrigin=e),i.src=a,i.alt=n,i.style.cssText='display:block;width:100%;height:auto;min-width:0!important;min-height:0!important;max-width:none!important;max-height:none!important;image-orientation:0deg!important;"',t.innerHTML="",t.appendChild(i)}))}},resetPreview:function(){xt(this.previews,(function(t){var e=At(t,L);Ot(t,{width:e.width,height:e.height}),t.innerHTML=e.html,$t(t,L)}))},preview:function(){var t=this.imageData,e=this.canvasData,i=this.cropBoxData,a=i.width,n=i.height,o=t.width,r=t.height,s=i.left-e.left-t.left,c=i.top-e.top-t.top;this.cropped&&!this.disabled&&(Ot(this.viewBoxImage,Mt({width:o,height:r},Gt(Mt({translateX:-s,translateY:-c},t)))),xt(this.previews,(function(e){var i=At(e,L),h=i.width,l=i.height,d=h,u=l,p=1;a&&(u=n*(p=h/a)),n&&u>l&&(d=a*(p=l/n),u=l),Ot(e,{width:d,height:u}),Ot(e.getElementsByTagName("img")[0],Mt({width:o*p,height:r*p},Gt(Mt({translateX:-s*p,translateY:-c*p},t))))})))}},he={bind:function(){var t=this.element,e=this.options,i=this.cropper;wt(e.cropstart)&&Wt(t,V,e.cropstart),wt(e.cropmove)&&Wt(t,Y,e.cropmove),wt(e.cropend)&&Wt(t,z,e.cropend),wt(e.crop)&&Wt(t,F,e.crop),wt(e.zoom)&&Wt(t,it,e.zoom),Wt(i,q,this.onCropStart=this.cropStart.bind(this)),e.zoomable&&e.zoomOnWheel&&Wt(i,et,this.onWheel=this.wheel.bind(this),{passive:!1,capture:!0}),e.toggleDragModeOnDblclick&&Wt(i,X,this.onDblclick=this.dblclick.bind(this)),Wt(t.ownerDocument,J,this.onCropMove=this.cropMove.bind(this)),Wt(t.ownerDocument,K,this.onCropEnd=this.cropEnd.bind(this)),e.responsive&&Wt(window,tt,this.onResize=this.resize.bind(this))},unbind:function(){var t=this.element,e=this.options,i=this.cropper;wt(e.cropstart)&&Pt(t,V,e.cropstart),wt(e.cropmove)&&Pt(t,Y,e.cropmove),wt(e.cropend)&&Pt(t,z,e.cropend),wt(e.crop)&&Pt(t,F,e.crop),wt(e.zoom)&&Pt(t,it,e.zoom),Pt(i,q,this.onCropStart),e.zoomable&&e.zoomOnWheel&&Pt(i,et,this.onWheel,{passive:!1,capture:!0}),e.toggleDragModeOnDblclick&&Pt(i,X,this.onDblclick),Pt(t.ownerDocument,J,this.onCropMove),Pt(t.ownerDocument,K,this.onCropEnd),e.responsive&&Pt(window,tt,this.onResize)}},le={resize:function(){if(!this.disabled){var t,e,i=this.options,a=this.container,n=this.containerData,o=a.offsetWidth/n.width,r=a.offsetHeight/n.height,s=Math.abs(o-1)>Math.abs(r-1)?o:r;1!==s&&(i.restore&&(t=this.getCanvasData(),e=this.getCropBoxData()),this.render(),i.restore&&(this.setCanvasData(xt(t,(function(e,i){t[i]=e*s}))),this.setCropBoxData(xt(e,(function(t,i){e[i]=t*s})))))}},dblclick:function(){this.disabled||this.options.dragMode===H||this.setDragMode(Et(this.dragBox,S)?W:P)},wheel:function(t){var e=this,i=Number(this.options.wheelZoomRatio)||.1,a=1;this.disabled||(t.preventDefault(),this.wheeling||(this.wheeling=!0,setTimeout((function(){e.wheeling=!1}),50),t.deltaY?a=t.deltaY>0?1:-1:t.wheelDelta?a=-t.wheelDelta/120:t.detail&&(a=t.detail>0?1:-1),this.zoom(-a*i,t)))},cropStart:function(t){var e=t.buttons,i=t.button;if(!(this.disabled||("mousedown"===t.type||"pointerdown"===t.type&&"mouse"===t.pointerType)&&(pt(e)&&1!==e||pt(i)&&0!==i||t.ctrlKey))){var a,n=this.options,o=this.pointers;t.changedTouches?xt(t.changedTouches,(function(t){o[t.identifier]=Zt(t)})):o[t.pointerId||0]=Zt(t),a=Object.keys(o).length>1&&n.zoomable&&n.zoomOnTouch?_:At(t.target,B),nt.test(a)&&!1!==Ht(this.element,V,{originalEvent:t,action:a})&&(t.preventDefault(),this.action=a,this.cropping=!1,a===w&&(this.cropping=!0,It(this.dragBox,T)))}},cropMove:function(t){var e=this.action;if(!this.disabled&&e){var i=this.pointers;t.preventDefault(),!1!==Ht(this.element,Y,{originalEvent:t,action:e})&&(t.changedTouches?xt(t.changedTouches,(function(t){Mt(i[t.identifier]||{},Zt(t,!0))})):Mt(i[t.pointerId||0]||{},Zt(t,!0)),this.change(t))}},cropEnd:function(t){if(!this.disabled){var e=this.action,i=this.pointers;t.changedTouches?xt(t.changedTouches,(function(t){delete i[t.identifier]})):delete i[t.pointerId||0],e&&(t.preventDefault(),Object.keys(i).length||(this.action=""),this.cropping&&(this.cropping=!1,Rt(this.dragBox,T,this.cropped&&this.options.modal)),Ht(this.element,z,{originalEvent:t,action:e}))}}},de={change:function(t){var e,i=this.options,a=this.canvasData,n=this.containerData,o=this.cropBoxData,r=this.pointers,s=this.action,c=i.aspectRatio,h=o.left,l=o.top,d=o.width,u=o.height,p=h+d,f=l+u,m=0,v=0,g=n.width,S=n.height,R=!0;!c&&t.shiftKey&&(c=d&&u?d/u:1),this.limited&&(m=o.minLeft,v=o.minTop,g=m+Math.min(n.width,a.width,a.left+a.width),S=v+Math.min(n.height,a.height,a.top+a.height));var N=r[Object.keys(r)[0]],A={x:N.endX-N.startX,y:N.endY-N.startY},T=function(t){switch(t){case x:p+A.x>g&&(A.x=g-p);break;case M:h+A.x<m&&(A.x=m-h);break;case k:l+A.y<v&&(A.y=v-l);break;case C:f+A.y>S&&(A.y=S-f)}};switch(s){case y:h+=A.x,l+=A.y;break;case x:if(A.x>=0&&(p>=g||c&&(l<=v||f>=S))){R=!1;break}T(x),(d+=A.x)<0&&(s=M,h-=d=-d),c&&(u=d/c,l+=(o.height-u)/2);break;case k:if(A.y<=0&&(l<=v||c&&(h<=m||p>=g))){R=!1;break}T(k),u-=A.y,l+=A.y,u<0&&(s=C,l-=u=-u),c&&(d=u*c,h+=(o.width-d)/2);break;case M:if(A.x<=0&&(h<=m||c&&(l<=v||f>=S))){R=!1;break}T(M),d-=A.x,h+=A.x,d<0&&(s=x,h-=d=-d),c&&(u=d/c,l+=(o.height-u)/2);break;case C:if(A.y>=0&&(f>=S||c&&(h<=m||p>=g))){R=!1;break}T(C),(u+=A.y)<0&&(s=k,l-=u=-u),c&&(d=u*c,h+=(o.width-d)/2);break;case D:if(c){if(A.y<=0&&(l<=v||p>=g)){R=!1;break}T(k),u-=A.y,l+=A.y,d=u*c}else T(k),T(x),A.x>=0?p<g?d+=A.x:A.y<=0&&l<=v&&(R=!1):d+=A.x,A.y<=0?l>v&&(u-=A.y,l+=A.y):(u-=A.y,l+=A.y);d<0&&u<0?(s=I,l-=u=-u,h-=d=-d):d<0?(s=O,h-=d=-d):u<0&&(s=E,l-=u=-u);break;case O:if(c){if(A.y<=0&&(l<=v||h<=m)){R=!1;break}T(k),u-=A.y,l+=A.y,d=u*c,h+=o.width-d}else T(k),T(M),A.x<=0?h>m?(d-=A.x,h+=A.x):A.y<=0&&l<=v&&(R=!1):(d-=A.x,h+=A.x),A.y<=0?l>v&&(u-=A.y,l+=A.y):(u-=A.y,l+=A.y);d<0&&u<0?(s=E,l-=u=-u,h-=d=-d):d<0?(s=D,h-=d=-d):u<0&&(s=I,l-=u=-u);break;case I:if(c){if(A.x<=0&&(h<=m||f>=S)){R=!1;break}T(M),d-=A.x,h+=A.x,u=d/c}else T(C),T(M),A.x<=0?h>m?(d-=A.x,h+=A.x):A.y>=0&&f>=S&&(R=!1):(d-=A.x,h+=A.x),A.y>=0?f<S&&(u+=A.y):u+=A.y;d<0&&u<0?(s=D,l-=u=-u,h-=d=-d):d<0?(s=E,h-=d=-d):u<0&&(s=O,l-=u=-u);break;case E:if(c){if(A.x>=0&&(p>=g||f>=S)){R=!1;break}T(x),u=(d+=A.x)/c}else T(C),T(x),A.x>=0?p<g?d+=A.x:A.y>=0&&f>=S&&(R=!1):d+=A.x,A.y>=0?f<S&&(u+=A.y):u+=A.y;d<0&&u<0?(s=O,l-=u=-u,h-=d=-d):d<0?(s=I,h-=d=-d):u<0&&(s=D,l-=u=-u);break;case b:this.move(A.x,A.y),R=!1;break;case _:this.zoom(Ut(r),t),R=!1;break;case w:if(!A.x||!A.y){R=!1;break}e=Ft(this.cropper),h=N.startX-e.left,l=N.startY-e.top,d=o.minWidth,u=o.minHeight,A.x>0?s=A.y>0?E:D:A.x<0&&(h-=d,s=A.y>0?I:O),A.y<0&&(l-=u),this.cropped||(St(this.cropBox,j),this.cropped=!0,this.limited&&this.limitCropBox(!0,!0))}R&&(o.width=d,o.height=u,o.left=h,o.top=l,this.action=s,this.renderCropBox()),xt(r,(function(t){t.startX=t.endX,t.startY=t.endY}))}},ue={crop:function(){return!this.ready||this.cropped||this.disabled||(this.cropped=!0,this.limitCropBox(!0,!0),this.options.modal&&It(this.dragBox,T),St(this.cropBox,j),this.setCropBoxData(this.initialCropBoxData)),this},reset:function(){return this.ready&&!this.disabled&&(this.imageData=Mt({},this.initialImageData),this.canvasData=Mt({},this.initialCanvasData),this.cropBoxData=Mt({},this.initialCropBoxData),this.renderCanvas(),this.cropped&&this.renderCropBox()),this},clear:function(){return this.cropped&&!this.disabled&&(Mt(this.cropBoxData,{left:0,top:0,width:0,height:0}),this.cropped=!1,this.renderCropBox(),this.limitCanvas(!0,!0),this.renderCanvas(),St(this.dragBox,T),It(this.cropBox,j)),this},replace:function(t){var e=arguments.length>1&&void 0!==arguments[1]&&arguments[1];return!this.disabled&&t&&(this.isImg&&(this.element.src=t),e?(this.url=t,this.image.src=t,this.ready&&(this.viewBoxImage.src=t,xt(this.previews,(function(e){e.getElementsByTagName("img")[0].src=t})))):(this.isImg&&(this.replaced=!0),this.options.data=null,this.uncreate(),this.load(t))),this},enable:function(){return this.ready&&this.disabled&&(this.disabled=!1,St(this.cropper,R)),this},disable:function(){return this.ready&&!this.disabled&&(this.disabled=!0,It(this.cropper,R)),this},destroy:function(){var t=this.element;return t[g]?(t[g]=void 0,this.isImg&&this.replaced&&(t.src=this.originalUrl),this.uncreate(),this):this},move:function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:t,i=this.canvasData,a=i.left,n=i.top;return this.moveTo(mt(t)?t:a+Number(t),mt(e)?e:n+Number(e))},moveTo:function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:t,i=this.canvasData,a=!1;return t=Number(t),e=Number(e),this.ready&&!this.disabled&&this.options.movable&&(pt(t)&&(i.left=t,a=!0),pt(e)&&(i.top=e,a=!0),a&&this.renderCanvas(!0)),this},zoom:function(t,e){var i=this.canvasData;return t=(t=Number(t))<0?1/(1-t):1+t,this.zoomTo(i.width*t/i.naturalWidth,null,e)},zoomTo:function(t,e,i){var a=this.options,n=this.canvasData,o=n.width,r=n.height,s=n.naturalWidth,c=n.naturalHeight;if((t=Number(t))>=0&&this.ready&&!this.disabled&&a.zoomable){var h=s*t,l=c*t;if(!1===Ht(this.element,it,{ratio:t,oldRatio:o/s,originalEvent:i}))return this;if(i){var d=this.pointers,u=Ft(this.cropper),p=d&&Object.keys(d).length?qt(d):{pageX:i.pageX,pageY:i.pageY};n.left-=(h-o)*((p.pageX-u.left-n.left)/o),n.top-=(l-r)*((p.pageY-u.top-n.top)/r)}else yt(e)&&pt(e.x)&&pt(e.y)?(n.left-=(h-o)*((e.x-n.left)/o),n.top-=(l-r)*((e.y-n.top)/r)):(n.left-=(h-o)/2,n.top-=(l-r)/2);n.width=h,n.height=l,this.renderCanvas(!0)}return this},rotate:function(t){return this.rotateTo((this.imageData.rotate||0)+Number(t))},rotateTo:function(t){return pt(t=Number(t))&&this.ready&&!this.disabled&&this.options.rotatable&&(this.imageData.rotate=t%360,this.renderCanvas(!0,!0)),this},scaleX:function(t){var e=this.imageData.scaleY;return this.scale(t,pt(e)?e:1)},scaleY:function(t){var e=this.imageData.scaleX;return this.scale(pt(e)?e:1,t)},scale:function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:t,i=this.imageData,a=!1;return t=Number(t),e=Number(e),this.ready&&!this.disabled&&this.options.scalable&&(pt(t)&&(i.scaleX=t,a=!0),pt(e)&&(i.scaleY=e,a=!0),a&&this.renderCanvas(!0,!0)),this},getData:function(){var t,e=arguments.length>0&&void 0!==arguments[0]&&arguments[0],i=this.options,a=this.imageData,n=this.canvasData,o=this.cropBoxData;if(this.ready&&this.cropped){t={x:o.left-n.left,y:o.top-n.top,width:o.width,height:o.height};var r=a.width/a.naturalWidth;if(xt(t,(function(e,i){t[i]=e/r})),e){var s=Math.round(t.y+t.height),c=Math.round(t.x+t.width);t.x=Math.round(t.x),t.y=Math.round(t.y),t.width=c-t.x,t.height=s-t.y}}else t={x:0,y:0,width:0,height:0};return i.rotatable&&(t.rotate=a.rotate||0),i.scalable&&(t.scaleX=a.scaleX||1,t.scaleY=a.scaleY||1),t},setData:function(t){var e=this.options,i=this.imageData,a=this.canvasData,n={};if(this.ready&&!this.disabled&&yt(t)){var o=!1;e.rotatable&&pt(t.rotate)&&t.rotate!==i.rotate&&(i.rotate=t.rotate,o=!0),e.scalable&&(pt(t.scaleX)&&t.scaleX!==i.scaleX&&(i.scaleX=t.scaleX,o=!0),pt(t.scaleY)&&t.scaleY!==i.scaleY&&(i.scaleY=t.scaleY,o=!0)),o&&this.renderCanvas(!0,!0);var r=i.width/i.naturalWidth;pt(t.x)&&(n.left=t.x*r+a.left),pt(t.y)&&(n.top=t.y*r+a.top),pt(t.width)&&(n.width=t.width*r),pt(t.height)&&(n.height=t.height*r),this.setCropBoxData(n)}return this},getContainerData:function(){return this.ready?Mt({},this.containerData):{}},getImageData:function(){return this.sized?Mt({},this.imageData):{}},getCanvasData:function(){var t=this.canvasData,e={};return this.ready&&xt(["left","top","width","height","naturalWidth","naturalHeight"],(function(i){e[i]=t[i]})),e},setCanvasData:function(t){var e=this.canvasData,i=e.aspectRatio;return this.ready&&!this.disabled&&yt(t)&&(pt(t.left)&&(e.left=t.left),pt(t.top)&&(e.top=t.top),pt(t.width)?(e.width=t.width,e.height=t.width/i):pt(t.height)&&(e.height=t.height,e.width=t.height*i),this.renderCanvas(!0)),this},getCropBoxData:function(){var t,e=this.cropBoxData;return this.ready&&this.cropped&&(t={left:e.left,top:e.top,width:e.width,height:e.height}),t||{}},setCropBoxData:function(t){var e,i,a=this.cropBoxData,n=this.options.aspectRatio;return this.ready&&this.cropped&&!this.disabled&&yt(t)&&(pt(t.left)&&(a.left=t.left),pt(t.top)&&(a.top=t.top),pt(t.width)&&t.width!==a.width&&(e=!0,a.width=t.width),pt(t.height)&&t.height!==a.height&&(i=!0,a.height=t.height),n&&(e?a.height=a.width/n:i&&(a.width=a.height*n)),this.renderCropBox()),this},getCroppedCanvas:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};if(!this.ready||!window.HTMLCanvasElement)return null;var e=this.canvasData,i=Qt(this.image,this.imageData,e,t);if(!this.cropped)return i;var a=this.getData(),n=a.x,o=a.y,r=a.width,c=a.height,h=i.width/Math.floor(e.naturalWidth);1!==h&&(n*=h,o*=h,r*=h,c*=h);var l=r/c,d=Jt({aspectRatio:l,width:t.maxWidth||1/0,height:t.maxHeight||1/0}),u=Jt({aspectRatio:l,width:t.minWidth||0,height:t.minHeight||0},"cover"),p=Jt({aspectRatio:l,width:t.width||(1!==h?i.width:r),height:t.height||(1!==h?i.height:c)}),f=p.width,m=p.height;f=Math.min(d.width,Math.max(u.width,f)),m=Math.min(d.height,Math.max(u.height,m));var v=document.createElement("canvas"),g=v.getContext("2d");v.width=kt(f),v.height=kt(m),g.fillStyle=t.fillColor||"transparent",g.fillRect(0,0,f,m);var y=t.imageSmoothingEnabled,w=void 0===y||y,b=t.imageSmoothingQuality;g.imageSmoothingEnabled=w,b&&(g.imageSmoothingQuality=b);var _,x,M,C,k,D,O=i.width,E=i.height,I=n,S=o;I<=-r||I>O?(I=0,_=0,M=0,k=0):I<=0?(M=-I,I=0,k=_=Math.min(O,r+I)):I<=O&&(M=0,k=_=Math.min(r,O-I)),_<=0||S<=-c||S>E?(S=0,x=0,C=0,D=0):S<=0?(C=-S,S=0,D=x=Math.min(E,c+S)):S<=E&&(C=0,D=x=Math.min(c,E-S));var R=[I,S,_,x];if(k>0&&D>0){var j=f/r;R.push(M*j,C*j,k*j,D*j)}return g.drawImage.apply(g,[i].concat(s(R.map((function(t){return Math.floor(kt(t))}))))),v},setAspectRatio:function(t){var e=this.options;return this.disabled||mt(t)||(e.aspectRatio=Math.max(0,t)||NaN,this.ready&&(this.initCropBox(),this.cropped&&this.renderCropBox())),this},setDragMode:function(t){var e=this.options,i=this.dragBox,a=this.face;if(this.ready&&!this.disabled){var n=t===P,o=e.movable&&t===W;t=n||o?t:H,e.dragMode=t,Tt(i,B,t),Rt(i,S,n),Rt(i,$,o),e.cropBoxMovable||(Tt(a,B,t),Rt(a,S,n),Rt(a,$,o))}return this}},pe=f.Cropper,fe=function(){function t(e){var i=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};if(a(this,t),!e||!st.test(e.tagName))throw new Error("The first argument is required and must be an <img> or <canvas> element.");this.element=e,this.options=Mt({},lt,yt(i)&&i),this.cropped=!1,this.disabled=!1,this.pointers={},this.ready=!1,this.reloading=!1,this.replaced=!1,this.sized=!1,this.sizing=!1,this.init()}return o(t,[{key:"init",value:function(){var t,e=this.element,i=e.tagName.toLowerCase();if(!e[g]){if(e[g]=this,"img"===i){if(this.isImg=!0,t=e.getAttribute("src")||"",this.originalUrl=t,!t)return;t=e.src}else"canvas"===i&&window.HTMLCanvasElement&&(t=e.toDataURL());this.load(t)}}},{key:"load",value:function(t){var e=this;if(t){this.url=t,this.imageData={};var i=this.element,a=this.options;if(a.rotatable||a.scalable||(a.checkOrientation=!1),a.checkOrientation&&window.ArrayBuffer)if(ot.test(t))rt.test(t)?this.read(ae(t)):this.clone();else{var n=new XMLHttpRequest,o=this.clone.bind(this);this.reloading=!0,this.xhr=n,n.onabort=o,n.onerror=o,n.ontimeout=o,n.onprogress=function(){n.getResponseHeader("content-type")!==at&&n.abort()},n.onload=function(){e.read(n.response)},n.onloadend=function(){e.reloading=!1,e.xhr=null},a.checkCrossOrigin&&Vt(t)&&i.crossOrigin&&(t=Xt(t)),n.open("GET",t,!0),n.responseType="arraybuffer",n.withCredentials="use-credentials"===i.crossOrigin,n.send()}else this.clone()}}},{key:"read",value:function(t){var e=this.options,i=this.imageData,a=oe(t),n=0,o=1,r=1;if(a>1){this.url=ne(t,at);var s=re(a);n=s.rotate,o=s.scaleX,r=s.scaleY}e.rotatable&&(i.rotate=n),e.scalable&&(i.scaleX=o,i.scaleY=r),this.clone()}},{key:"clone",value:function(){var t=this.element,e=this.url,i=t.crossOrigin,a=e;this.options.checkCrossOrigin&&Vt(e)&&(i||(i="anonymous"),a=Xt(e)),this.crossOrigin=i,this.crossOriginUrl=a;var n=document.createElement("img");i&&(n.crossOrigin=i),n.src=a||e,n.alt=t.alt||"The image to crop",this.image=n,n.onload=this.start.bind(this),n.onerror=this.stop.bind(this),It(n,N),t.parentNode.insertBefore(n,t.nextSibling)}},{key:"start",value:function(){var t=this,e=this.image;e.onload=null,e.onerror=null,this.sizing=!0;var i=f.navigator&&/(?:iPad|iPhone|iPod).*?AppleWebKit/i.test(f.navigator.userAgent),a=function(e,i){Mt(t.imageData,{naturalWidth:e,naturalHeight:i,aspectRatio:e/i}),t.initialImageData=Mt({},t.imageData),t.sizing=!1,t.sized=!0,t.build()};if(!e.naturalWidth||i){var n=document.createElement("img"),o=document.body||document.documentElement;this.sizingImage=n,n.onload=function(){a(n.width,n.height),i||o.removeChild(n)},n.src=e.src,i||(n.style.cssText="left:0;max-height:none!important;max-width:none!important;min-height:0!important;min-width:0!important;opacity:0;position:absolute;top:0;z-index:-1;",o.appendChild(n))}else a(e.naturalWidth,e.naturalHeight)}},{key:"stop",value:function(){var t=this.image;t.onload=null,t.onerror=null,t.parentNode.removeChild(t),this.image=null}},{key:"build",value:function(){if(this.sized&&!this.ready){var t=this.element,e=this.options,i=this.image,a=t.parentNode,n=document.createElement("div");n.innerHTML=dt;var o=n.querySelector(".".concat(g,"-container")),r=o.querySelector(".".concat(g,"-canvas")),s=o.querySelector(".".concat(g,"-drag-box")),c=o.querySelector(".".concat(g,"-crop-box")),h=c.querySelector(".".concat(g,"-face"));this.container=a,this.cropper=o,this.canvas=r,this.dragBox=s,this.cropBox=c,this.viewBox=o.querySelector(".".concat(g,"-view-box")),this.face=h,r.appendChild(i),It(t,j),a.insertBefore(o,t.nextSibling),St(i,N),this.initPreview(),this.bind(),e.initialAspectRatio=Math.max(0,e.initialAspectRatio)||NaN,e.aspectRatio=Math.max(0,e.aspectRatio)||NaN,e.viewMode=Math.max(0,Math.min(3,Math.round(e.viewMode)))||0,It(c,j),e.guides||It(c.getElementsByClassName("".concat(g,"-dashed")),j),e.center||It(c.getElementsByClassName("".concat(g,"-center")),j),e.background&&It(o,"".concat(g,"-bg")),e.highlight||It(h,A),e.cropBoxMovable&&(It(h,$),Tt(h,B,y)),e.cropBoxResizable||(It(c.getElementsByClassName("".concat(g,"-line")),j),It(c.getElementsByClassName("".concat(g,"-point")),j)),this.render(),this.ready=!0,this.setDragMode(e.dragMode),e.autoCrop&&this.crop(),this.setData(e.data),wt(e.ready)&&Wt(t,Q,e.ready,{once:!0}),Ht(t,Q)}}},{key:"unbuild",value:function(){if(this.ready){this.ready=!1,this.unbind(),this.resetPreview();var t=this.cropper.parentNode;t&&t.removeChild(this.cropper),St(this.element,j)}}},{key:"uncreate",value:function(){this.ready?(this.unbuild(),this.ready=!1,this.cropped=!1):this.sizing?(this.sizingImage.onload=null,this.sizing=!1,this.sized=!1):this.reloading?(this.xhr.onabort=null,this.xhr.abort()):this.image&&this.stop()}}],[{key:"noConflict",value:function(){return window.Cropper=pe,t}},{key:"setDefaults",value:function(t){Mt(lt,yt(t)&&t)}}]),t}();return Mt(fe.prototype,se,ce,he,le,de,ue),fe}()}},e={};function i(a){var n=e[a];if(void 0!==n)return n.exports;var o=e[a]={exports:{}};return t[a].call(o.exports,o,o.exports,i),o.exports}i.n=t=>{var e=t&&t.__esModule?()=>t.default:()=>t;return i.d(e,{a:e}),e},i.d=(t,e)=>{for(var a in e)i.o(e,a)&&!i.o(t,a)&&Object.defineProperty(t,a,{enumerable:!0,get:e[a]})},i.o=(t,e)=>Object.prototype.hasOwnProperty.call(t,e),(()=>{"use strict";var t=i(3341),e=i(3746),a=i(4669);function n(t){return n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},n(t)}function o(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function r(t,e){for(var i=0;i<e.length;i++){var a=e[i];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(t,(o=a.key,r=void 0,r=function(t,e){if("object"!==n(t)||null===t)return t;var i=t[Symbol.toPrimitive];if(void 0!==i){var a=i.call(t,e||"default");if("object"!==n(a))return a;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===e?String:Number)(t)}(o,"string"),"symbol"===n(r)?r:String(r)),a)}var o,r}function s(t,e,i){return e&&r(t.prototype,e),i&&r(t,i),Object.defineProperty(t,"prototype",{writable:!1}),t}var c=function(){function e(){o(this,e)}return s(e,null,[{key:"editorSelectFile",value:function(e){var i=t.Z.getUrlParam("CKEditor")||t.Z.getUrlParam("CKEditorFuncNum");if(window.opener&&i){var a=_.first(e);window.opener.CKEDITOR.tools.callFunction(t.Z.getUrlParam("CKEditorFuncNum"),a.full_url),window.opener&&window.close()}}}]),e}(),h=s((function i(n,r){o(this,i),window.rvMedia=window.rvMedia||{};var s=$("body");r=$.extend(!0,{multiple:!0,type:"*",onSelectFiles:function(t,e){}},r);var c=function(i){i.preventDefault();var n=$(i.currentTarget);$("#rv_media_modal").modal("show"),window.rvMedia.options=r,window.rvMedia.options.open_in="modal",window.rvMedia.$el=n,e.O.request_params.filter="everything",t.Z.storeConfig();var o=window.rvMedia.$el.data("rv-media");void 0!==o&&o.length>0&&(o=o[0],window.rvMedia.options=$.extend(!0,window.rvMedia.options,o||{}),void 0!==o.selected_file_id?window.rvMedia.options.is_popup=!0:void 0!==window.rvMedia.options.is_popup&&(window.rvMedia.options.is_popup=void 0)),0===$("#rv_media_body .rv-media-container").length?$("#rv_media_body").load(RV_MEDIA_URL.popup,(function(e){e.error&&alert(e.message),$("#rv_media_body").removeClass("media-modal-loading").closest(".modal-content").removeClass("bb-loading"),$(document).find(".rv-media-container .js-change-action[data-type=refresh]").trigger("click"),"everything"!==t.Z.getRequestParams().filter&&$(".rv-media-actions .btn.js-rv-media-change-filter-group.js-filter-by-type").hide(),a.L.destroyContext(),a.L.initContext()})):$(document).find(".rv-media-container .js-change-action[data-type=refresh]").trigger("click")};"string"==typeof n?s.off("click",n).on("click",n,c):n.off("click").on("click",c)}));window.RvMediaStandAlone=h,$(".js-insert-to-editor").off("click").on("click",(function(e){e.preventDefault();var i=t.Z.getSelectedFiles();_.size(i)>0&&c.editorSelectFile(i)})),$.fn.rvMedia=function(i){var a=$(this);e.O.request_params.filter="everything",$(document).find(".js-insert-to-editor").prop("disabled","trash"===e.O.request_params.view_in),t.Z.storeConfig(),new h(a,i)}})()})();
+
+(function (global, factory) {
+   true ? module.exports = factory() :
+  0;
+})(this, (function () { 'use strict';
+
+  function ownKeys(object, enumerableOnly) {
+    var keys = Object.keys(object);
+    if (Object.getOwnPropertySymbols) {
+      var symbols = Object.getOwnPropertySymbols(object);
+      enumerableOnly && (symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      })), keys.push.apply(keys, symbols);
+    }
+    return keys;
+  }
+  function _objectSpread2(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = null != arguments[i] ? arguments[i] : {};
+      i % 2 ? ownKeys(Object(source), !0).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+    return target;
+  }
+  function _typeof(obj) {
+    "@babel/helpers - typeof";
+
+    return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
+      return typeof obj;
+    } : function (obj) {
+      return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    }, _typeof(obj);
+  }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  function _defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+  function _createClass(Constructor, protoProps, staticProps) {
+    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) _defineProperties(Constructor, staticProps);
+    Object.defineProperty(Constructor, "prototype", {
+      writable: false
+    });
+    return Constructor;
+  }
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+    return obj;
+  }
+  function _toConsumableArray(arr) {
+    return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
+  }
+  function _arrayWithoutHoles(arr) {
+    if (Array.isArray(arr)) return _arrayLikeToArray(arr);
+  }
+  function _iterableToArray(iter) {
+    if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
+  }
+  function _unsupportedIterableToArray(o, minLen) {
+    if (!o) return;
+    if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+    var n = Object.prototype.toString.call(o).slice(8, -1);
+    if (n === "Object" && o.constructor) n = o.constructor.name;
+    if (n === "Map" || n === "Set") return Array.from(o);
+    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+  }
+  function _arrayLikeToArray(arr, len) {
+    if (len == null || len > arr.length) len = arr.length;
+    for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+    return arr2;
+  }
+  function _nonIterableSpread() {
+    throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+  }
+
+  var IS_BROWSER = typeof window !== 'undefined' && typeof window.document !== 'undefined';
+  var WINDOW = IS_BROWSER ? window : {};
+  var IS_TOUCH_DEVICE = IS_BROWSER && WINDOW.document.documentElement ? 'ontouchstart' in WINDOW.document.documentElement : false;
+  var HAS_POINTER_EVENT = IS_BROWSER ? 'PointerEvent' in WINDOW : false;
+  var NAMESPACE = 'cropper';
+
+  // Actions
+  var ACTION_ALL = 'all';
+  var ACTION_CROP = 'crop';
+  var ACTION_MOVE = 'move';
+  var ACTION_ZOOM = 'zoom';
+  var ACTION_EAST = 'e';
+  var ACTION_WEST = 'w';
+  var ACTION_SOUTH = 's';
+  var ACTION_NORTH = 'n';
+  var ACTION_NORTH_EAST = 'ne';
+  var ACTION_NORTH_WEST = 'nw';
+  var ACTION_SOUTH_EAST = 'se';
+  var ACTION_SOUTH_WEST = 'sw';
+
+  // Classes
+  var CLASS_CROP = "".concat(NAMESPACE, "-crop");
+  var CLASS_DISABLED = "".concat(NAMESPACE, "-disabled");
+  var CLASS_HIDDEN = "".concat(NAMESPACE, "-hidden");
+  var CLASS_HIDE = "".concat(NAMESPACE, "-hide");
+  var CLASS_INVISIBLE = "".concat(NAMESPACE, "-invisible");
+  var CLASS_MODAL = "".concat(NAMESPACE, "-modal");
+  var CLASS_MOVE = "".concat(NAMESPACE, "-move");
+
+  // Data keys
+  var DATA_ACTION = "".concat(NAMESPACE, "Action");
+  var DATA_PREVIEW = "".concat(NAMESPACE, "Preview");
+
+  // Drag modes
+  var DRAG_MODE_CROP = 'crop';
+  var DRAG_MODE_MOVE = 'move';
+  var DRAG_MODE_NONE = 'none';
+
+  // Events
+  var EVENT_CROP = 'crop';
+  var EVENT_CROP_END = 'cropend';
+  var EVENT_CROP_MOVE = 'cropmove';
+  var EVENT_CROP_START = 'cropstart';
+  var EVENT_DBLCLICK = 'dblclick';
+  var EVENT_TOUCH_START = IS_TOUCH_DEVICE ? 'touchstart' : 'mousedown';
+  var EVENT_TOUCH_MOVE = IS_TOUCH_DEVICE ? 'touchmove' : 'mousemove';
+  var EVENT_TOUCH_END = IS_TOUCH_DEVICE ? 'touchend touchcancel' : 'mouseup';
+  var EVENT_POINTER_DOWN = HAS_POINTER_EVENT ? 'pointerdown' : EVENT_TOUCH_START;
+  var EVENT_POINTER_MOVE = HAS_POINTER_EVENT ? 'pointermove' : EVENT_TOUCH_MOVE;
+  var EVENT_POINTER_UP = HAS_POINTER_EVENT ? 'pointerup pointercancel' : EVENT_TOUCH_END;
+  var EVENT_READY = 'ready';
+  var EVENT_RESIZE = 'resize';
+  var EVENT_WHEEL = 'wheel';
+  var EVENT_ZOOM = 'zoom';
+
+  // Mime types
+  var MIME_TYPE_JPEG = 'image/jpeg';
+
+  // RegExps
+  var REGEXP_ACTIONS = /^e|w|s|n|se|sw|ne|nw|all|crop|move|zoom$/;
+  var REGEXP_DATA_URL = /^data:/;
+  var REGEXP_DATA_URL_JPEG = /^data:image\/jpeg;base64,/;
+  var REGEXP_TAG_NAME = /^img|canvas$/i;
+
+  // Misc
+  // Inspired by the default width and height of a canvas element.
+  var MIN_CONTAINER_WIDTH = 200;
+  var MIN_CONTAINER_HEIGHT = 100;
+
+  var DEFAULTS = {
+    // Define the view mode of the cropper
+    viewMode: 0,
+    // 0, 1, 2, 3
+
+    // Define the dragging mode of the cropper
+    dragMode: DRAG_MODE_CROP,
+    // 'crop', 'move' or 'none'
+
+    // Define the initial aspect ratio of the crop box
+    initialAspectRatio: NaN,
+    // Define the aspect ratio of the crop box
+    aspectRatio: NaN,
+    // An object with the previous cropping result data
+    data: null,
+    // A selector for adding extra containers to preview
+    preview: '',
+    // Re-render the cropper when resize the window
+    responsive: true,
+    // Restore the cropped area after resize the window
+    restore: true,
+    // Check if the current image is a cross-origin image
+    checkCrossOrigin: true,
+    // Check the current image's Exif Orientation information
+    checkOrientation: true,
+    // Show the black modal
+    modal: true,
+    // Show the dashed lines for guiding
+    guides: true,
+    // Show the center indicator for guiding
+    center: true,
+    // Show the white modal to highlight the crop box
+    highlight: true,
+    // Show the grid background
+    background: true,
+    // Enable to crop the image automatically when initialize
+    autoCrop: true,
+    // Define the percentage of automatic cropping area when initializes
+    autoCropArea: 0.8,
+    // Enable to move the image
+    movable: true,
+    // Enable to rotate the image
+    rotatable: true,
+    // Enable to scale the image
+    scalable: true,
+    // Enable to zoom the image
+    zoomable: true,
+    // Enable to zoom the image by dragging touch
+    zoomOnTouch: true,
+    // Enable to zoom the image by wheeling mouse
+    zoomOnWheel: true,
+    // Define zoom ratio when zoom the image by wheeling mouse
+    wheelZoomRatio: 0.1,
+    // Enable to move the crop box
+    cropBoxMovable: true,
+    // Enable to resize the crop box
+    cropBoxResizable: true,
+    // Toggle drag mode between "crop" and "move" when click twice on the cropper
+    toggleDragModeOnDblclick: true,
+    // Size limitation
+    minCanvasWidth: 0,
+    minCanvasHeight: 0,
+    minCropBoxWidth: 0,
+    minCropBoxHeight: 0,
+    minContainerWidth: MIN_CONTAINER_WIDTH,
+    minContainerHeight: MIN_CONTAINER_HEIGHT,
+    // Shortcuts of events
+    ready: null,
+    cropstart: null,
+    cropmove: null,
+    cropend: null,
+    crop: null,
+    zoom: null
+  };
+
+  var TEMPLATE = '<div class="cropper-container" touch-action="none">' + '<div class="cropper-wrap-box">' + '<div class="cropper-canvas"></div>' + '</div>' + '<div class="cropper-drag-box"></div>' + '<div class="cropper-crop-box">' + '<span class="cropper-view-box"></span>' + '<span class="cropper-dashed dashed-h"></span>' + '<span class="cropper-dashed dashed-v"></span>' + '<span class="cropper-center"></span>' + '<span class="cropper-face"></span>' + '<span class="cropper-line line-e" data-cropper-action="e"></span>' + '<span class="cropper-line line-n" data-cropper-action="n"></span>' + '<span class="cropper-line line-w" data-cropper-action="w"></span>' + '<span class="cropper-line line-s" data-cropper-action="s"></span>' + '<span class="cropper-point point-e" data-cropper-action="e"></span>' + '<span class="cropper-point point-n" data-cropper-action="n"></span>' + '<span class="cropper-point point-w" data-cropper-action="w"></span>' + '<span class="cropper-point point-s" data-cropper-action="s"></span>' + '<span class="cropper-point point-ne" data-cropper-action="ne"></span>' + '<span class="cropper-point point-nw" data-cropper-action="nw"></span>' + '<span class="cropper-point point-sw" data-cropper-action="sw"></span>' + '<span class="cropper-point point-se" data-cropper-action="se"></span>' + '</div>' + '</div>';
+
+  /**
+   * Check if the given value is not a number.
+   */
+  var isNaN = Number.isNaN || WINDOW.isNaN;
+
+  /**
+   * Check if the given value is a number.
+   * @param {*} value - The value to check.
+   * @returns {boolean} Returns `true` if the given value is a number, else `false`.
+   */
+  function isNumber(value) {
+    return typeof value === 'number' && !isNaN(value);
+  }
+
+  /**
+   * Check if the given value is a positive number.
+   * @param {*} value - The value to check.
+   * @returns {boolean} Returns `true` if the given value is a positive number, else `false`.
+   */
+  var isPositiveNumber = function isPositiveNumber(value) {
+    return value > 0 && value < Infinity;
+  };
+
+  /**
+   * Check if the given value is undefined.
+   * @param {*} value - The value to check.
+   * @returns {boolean} Returns `true` if the given value is undefined, else `false`.
+   */
+  function isUndefined(value) {
+    return typeof value === 'undefined';
+  }
+
+  /**
+   * Check if the given value is an object.
+   * @param {*} value - The value to check.
+   * @returns {boolean} Returns `true` if the given value is an object, else `false`.
+   */
+  function isObject(value) {
+    return _typeof(value) === 'object' && value !== null;
+  }
+  var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+  /**
+   * Check if the given value is a plain object.
+   * @param {*} value - The value to check.
+   * @returns {boolean} Returns `true` if the given value is a plain object, else `false`.
+   */
+  function isPlainObject(value) {
+    if (!isObject(value)) {
+      return false;
+    }
+    try {
+      var _constructor = value.constructor;
+      var prototype = _constructor.prototype;
+      return _constructor && prototype && hasOwnProperty.call(prototype, 'isPrototypeOf');
+    } catch (error) {
+      return false;
+    }
+  }
+
+  /**
+   * Check if the given value is a function.
+   * @param {*} value - The value to check.
+   * @returns {boolean} Returns `true` if the given value is a function, else `false`.
+   */
+  function isFunction(value) {
+    return typeof value === 'function';
+  }
+  var slice = Array.prototype.slice;
+
+  /**
+   * Convert array-like or iterable object to an array.
+   * @param {*} value - The value to convert.
+   * @returns {Array} Returns a new array.
+   */
+  function toArray(value) {
+    return Array.from ? Array.from(value) : slice.call(value);
+  }
+
+  /**
+   * Iterate the given data.
+   * @param {*} data - The data to iterate.
+   * @param {Function} callback - The process function for each element.
+   * @returns {*} The original data.
+   */
+  function forEach(data, callback) {
+    if (data && isFunction(callback)) {
+      if (Array.isArray(data) || isNumber(data.length) /* array-like */) {
+        toArray(data).forEach(function (value, key) {
+          callback.call(data, value, key, data);
+        });
+      } else if (isObject(data)) {
+        Object.keys(data).forEach(function (key) {
+          callback.call(data, data[key], key, data);
+        });
+      }
+    }
+    return data;
+  }
+
+  /**
+   * Extend the given object.
+   * @param {*} target - The target object to extend.
+   * @param {*} args - The rest objects for merging to the target object.
+   * @returns {Object} The extended object.
+   */
+  var assign = Object.assign || function assign(target) {
+    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+    if (isObject(target) && args.length > 0) {
+      args.forEach(function (arg) {
+        if (isObject(arg)) {
+          Object.keys(arg).forEach(function (key) {
+            target[key] = arg[key];
+          });
+        }
+      });
+    }
+    return target;
+  };
+  var REGEXP_DECIMALS = /\.\d*(?:0|9){12}\d*$/;
+
+  /**
+   * Normalize decimal number.
+   * Check out {@link https://0.30000000000000004.com/}
+   * @param {number} value - The value to normalize.
+   * @param {number} [times=100000000000] - The times for normalizing.
+   * @returns {number} Returns the normalized number.
+   */
+  function normalizeDecimalNumber(value) {
+    var times = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 100000000000;
+    return REGEXP_DECIMALS.test(value) ? Math.round(value * times) / times : value;
+  }
+  var REGEXP_SUFFIX = /^width|height|left|top|marginLeft|marginTop$/;
+
+  /**
+   * Apply styles to the given element.
+   * @param {Element} element - The target element.
+   * @param {Object} styles - The styles for applying.
+   */
+  function setStyle(element, styles) {
+    var style = element.style;
+    forEach(styles, function (value, property) {
+      if (REGEXP_SUFFIX.test(property) && isNumber(value)) {
+        value = "".concat(value, "px");
+      }
+      style[property] = value;
+    });
+  }
+
+  /**
+   * Check if the given element has a special class.
+   * @param {Element} element - The element to check.
+   * @param {string} value - The class to search.
+   * @returns {boolean} Returns `true` if the special class was found.
+   */
+  function hasClass(element, value) {
+    return element.classList ? element.classList.contains(value) : element.className.indexOf(value) > -1;
+  }
+
+  /**
+   * Add classes to the given element.
+   * @param {Element} element - The target element.
+   * @param {string} value - The classes to be added.
+   */
+  function addClass(element, value) {
+    if (!value) {
+      return;
+    }
+    if (isNumber(element.length)) {
+      forEach(element, function (elem) {
+        addClass(elem, value);
+      });
+      return;
+    }
+    if (element.classList) {
+      element.classList.add(value);
+      return;
+    }
+    var className = element.className.trim();
+    if (!className) {
+      element.className = value;
+    } else if (className.indexOf(value) < 0) {
+      element.className = "".concat(className, " ").concat(value);
+    }
+  }
+
+  /**
+   * Remove classes from the given element.
+   * @param {Element} element - The target element.
+   * @param {string} value - The classes to be removed.
+   */
+  function removeClass(element, value) {
+    if (!value) {
+      return;
+    }
+    if (isNumber(element.length)) {
+      forEach(element, function (elem) {
+        removeClass(elem, value);
+      });
+      return;
+    }
+    if (element.classList) {
+      element.classList.remove(value);
+      return;
+    }
+    if (element.className.indexOf(value) >= 0) {
+      element.className = element.className.replace(value, '');
+    }
+  }
+
+  /**
+   * Add or remove classes from the given element.
+   * @param {Element} element - The target element.
+   * @param {string} value - The classes to be toggled.
+   * @param {boolean} added - Add only.
+   */
+  function toggleClass(element, value, added) {
+    if (!value) {
+      return;
+    }
+    if (isNumber(element.length)) {
+      forEach(element, function (elem) {
+        toggleClass(elem, value, added);
+      });
+      return;
+    }
+
+    // IE10-11 doesn't support the second parameter of `classList.toggle`
+    if (added) {
+      addClass(element, value);
+    } else {
+      removeClass(element, value);
+    }
+  }
+  var REGEXP_CAMEL_CASE = /([a-z\d])([A-Z])/g;
+
+  /**
+   * Transform the given string from camelCase to kebab-case
+   * @param {string} value - The value to transform.
+   * @returns {string} The transformed value.
+   */
+  function toParamCase(value) {
+    return value.replace(REGEXP_CAMEL_CASE, '$1-$2').toLowerCase();
+  }
+
+  /**
+   * Get data from the given element.
+   * @param {Element} element - The target element.
+   * @param {string} name - The data key to get.
+   * @returns {string} The data value.
+   */
+  function getData(element, name) {
+    if (isObject(element[name])) {
+      return element[name];
+    }
+    if (element.dataset) {
+      return element.dataset[name];
+    }
+    return element.getAttribute("data-".concat(toParamCase(name)));
+  }
+
+  /**
+   * Set data to the given element.
+   * @param {Element} element - The target element.
+   * @param {string} name - The data key to set.
+   * @param {string} data - The data value.
+   */
+  function setData(element, name, data) {
+    if (isObject(data)) {
+      element[name] = data;
+    } else if (element.dataset) {
+      element.dataset[name] = data;
+    } else {
+      element.setAttribute("data-".concat(toParamCase(name)), data);
+    }
+  }
+
+  /**
+   * Remove data from the given element.
+   * @param {Element} element - The target element.
+   * @param {string} name - The data key to remove.
+   */
+  function removeData(element, name) {
+    if (isObject(element[name])) {
+      try {
+        delete element[name];
+      } catch (error) {
+        element[name] = undefined;
+      }
+    } else if (element.dataset) {
+      // #128 Safari not allows to delete dataset property
+      try {
+        delete element.dataset[name];
+      } catch (error) {
+        element.dataset[name] = undefined;
+      }
+    } else {
+      element.removeAttribute("data-".concat(toParamCase(name)));
+    }
+  }
+  var REGEXP_SPACES = /\s\s*/;
+  var onceSupported = function () {
+    var supported = false;
+    if (IS_BROWSER) {
+      var once = false;
+      var listener = function listener() {};
+      var options = Object.defineProperty({}, 'once', {
+        get: function get() {
+          supported = true;
+          return once;
+        },
+        /**
+         * This setter can fix a `TypeError` in strict mode
+         * {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Getter_only}
+         * @param {boolean} value - The value to set
+         */
+        set: function set(value) {
+          once = value;
+        }
+      });
+      WINDOW.addEventListener('test', listener, options);
+      WINDOW.removeEventListener('test', listener, options);
+    }
+    return supported;
+  }();
+
+  /**
+   * Remove event listener from the target element.
+   * @param {Element} element - The event target.
+   * @param {string} type - The event type(s).
+   * @param {Function} listener - The event listener.
+   * @param {Object} options - The event options.
+   */
+  function removeListener(element, type, listener) {
+    var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+    var handler = listener;
+    type.trim().split(REGEXP_SPACES).forEach(function (event) {
+      if (!onceSupported) {
+        var listeners = element.listeners;
+        if (listeners && listeners[event] && listeners[event][listener]) {
+          handler = listeners[event][listener];
+          delete listeners[event][listener];
+          if (Object.keys(listeners[event]).length === 0) {
+            delete listeners[event];
+          }
+          if (Object.keys(listeners).length === 0) {
+            delete element.listeners;
+          }
+        }
+      }
+      element.removeEventListener(event, handler, options);
+    });
+  }
+
+  /**
+   * Add event listener to the target element.
+   * @param {Element} element - The event target.
+   * @param {string} type - The event type(s).
+   * @param {Function} listener - The event listener.
+   * @param {Object} options - The event options.
+   */
+  function addListener(element, type, listener) {
+    var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+    var _handler = listener;
+    type.trim().split(REGEXP_SPACES).forEach(function (event) {
+      if (options.once && !onceSupported) {
+        var _element$listeners = element.listeners,
+          listeners = _element$listeners === void 0 ? {} : _element$listeners;
+        _handler = function handler() {
+          delete listeners[event][listener];
+          element.removeEventListener(event, _handler, options);
+          for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+            args[_key2] = arguments[_key2];
+          }
+          listener.apply(element, args);
+        };
+        if (!listeners[event]) {
+          listeners[event] = {};
+        }
+        if (listeners[event][listener]) {
+          element.removeEventListener(event, listeners[event][listener], options);
+        }
+        listeners[event][listener] = _handler;
+        element.listeners = listeners;
+      }
+      element.addEventListener(event, _handler, options);
+    });
+  }
+
+  /**
+   * Dispatch event on the target element.
+   * @param {Element} element - The event target.
+   * @param {string} type - The event type(s).
+   * @param {Object} data - The additional event data.
+   * @returns {boolean} Indicate if the event is default prevented or not.
+   */
+  function dispatchEvent(element, type, data) {
+    var event;
+
+    // Event and CustomEvent on IE9-11 are global objects, not constructors
+    if (isFunction(Event) && isFunction(CustomEvent)) {
+      event = new CustomEvent(type, {
+        detail: data,
+        bubbles: true,
+        cancelable: true
+      });
+    } else {
+      event = document.createEvent('CustomEvent');
+      event.initCustomEvent(type, true, true, data);
+    }
+    return element.dispatchEvent(event);
+  }
+
+  /**
+   * Get the offset base on the document.
+   * @param {Element} element - The target element.
+   * @returns {Object} The offset data.
+   */
+  function getOffset(element) {
+    var box = element.getBoundingClientRect();
+    return {
+      left: box.left + (window.pageXOffset - document.documentElement.clientLeft),
+      top: box.top + (window.pageYOffset - document.documentElement.clientTop)
+    };
+  }
+  var location = WINDOW.location;
+  var REGEXP_ORIGINS = /^(\w+:)\/\/([^:/?#]*):?(\d*)/i;
+
+  /**
+   * Check if the given URL is a cross origin URL.
+   * @param {string} url - The target URL.
+   * @returns {boolean} Returns `true` if the given URL is a cross origin URL, else `false`.
+   */
+  function isCrossOriginURL(url) {
+    var parts = url.match(REGEXP_ORIGINS);
+    return parts !== null && (parts[1] !== location.protocol || parts[2] !== location.hostname || parts[3] !== location.port);
+  }
+
+  /**
+   * Add timestamp to the given URL.
+   * @param {string} url - The target URL.
+   * @returns {string} The result URL.
+   */
+  function addTimestamp(url) {
+    var timestamp = "timestamp=".concat(new Date().getTime());
+    return url + (url.indexOf('?') === -1 ? '?' : '&') + timestamp;
+  }
+
+  /**
+   * Get transforms base on the given object.
+   * @param {Object} obj - The target object.
+   * @returns {string} A string contains transform values.
+   */
+  function getTransforms(_ref) {
+    var rotate = _ref.rotate,
+      scaleX = _ref.scaleX,
+      scaleY = _ref.scaleY,
+      translateX = _ref.translateX,
+      translateY = _ref.translateY;
+    var values = [];
+    if (isNumber(translateX) && translateX !== 0) {
+      values.push("translateX(".concat(translateX, "px)"));
+    }
+    if (isNumber(translateY) && translateY !== 0) {
+      values.push("translateY(".concat(translateY, "px)"));
+    }
+
+    // Rotate should come first before scale to match orientation transform
+    if (isNumber(rotate) && rotate !== 0) {
+      values.push("rotate(".concat(rotate, "deg)"));
+    }
+    if (isNumber(scaleX) && scaleX !== 1) {
+      values.push("scaleX(".concat(scaleX, ")"));
+    }
+    if (isNumber(scaleY) && scaleY !== 1) {
+      values.push("scaleY(".concat(scaleY, ")"));
+    }
+    var transform = values.length ? values.join(' ') : 'none';
+    return {
+      WebkitTransform: transform,
+      msTransform: transform,
+      transform: transform
+    };
+  }
+
+  /**
+   * Get the max ratio of a group of pointers.
+   * @param {string} pointers - The target pointers.
+   * @returns {number} The result ratio.
+   */
+  function getMaxZoomRatio(pointers) {
+    var pointers2 = _objectSpread2({}, pointers);
+    var maxRatio = 0;
+    forEach(pointers, function (pointer, pointerId) {
+      delete pointers2[pointerId];
+      forEach(pointers2, function (pointer2) {
+        var x1 = Math.abs(pointer.startX - pointer2.startX);
+        var y1 = Math.abs(pointer.startY - pointer2.startY);
+        var x2 = Math.abs(pointer.endX - pointer2.endX);
+        var y2 = Math.abs(pointer.endY - pointer2.endY);
+        var z1 = Math.sqrt(x1 * x1 + y1 * y1);
+        var z2 = Math.sqrt(x2 * x2 + y2 * y2);
+        var ratio = (z2 - z1) / z1;
+        if (Math.abs(ratio) > Math.abs(maxRatio)) {
+          maxRatio = ratio;
+        }
+      });
+    });
+    return maxRatio;
+  }
+
+  /**
+   * Get a pointer from an event object.
+   * @param {Object} event - The target event object.
+   * @param {boolean} endOnly - Indicates if only returns the end point coordinate or not.
+   * @returns {Object} The result pointer contains start and/or end point coordinates.
+   */
+  function getPointer(_ref2, endOnly) {
+    var pageX = _ref2.pageX,
+      pageY = _ref2.pageY;
+    var end = {
+      endX: pageX,
+      endY: pageY
+    };
+    return endOnly ? end : _objectSpread2({
+      startX: pageX,
+      startY: pageY
+    }, end);
+  }
+
+  /**
+   * Get the center point coordinate of a group of pointers.
+   * @param {Object} pointers - The target pointers.
+   * @returns {Object} The center point coordinate.
+   */
+  function getPointersCenter(pointers) {
+    var pageX = 0;
+    var pageY = 0;
+    var count = 0;
+    forEach(pointers, function (_ref3) {
+      var startX = _ref3.startX,
+        startY = _ref3.startY;
+      pageX += startX;
+      pageY += startY;
+      count += 1;
+    });
+    pageX /= count;
+    pageY /= count;
+    return {
+      pageX: pageX,
+      pageY: pageY
+    };
+  }
+
+  /**
+   * Get the max sizes in a rectangle under the given aspect ratio.
+   * @param {Object} data - The original sizes.
+   * @param {string} [type='contain'] - The adjust type.
+   * @returns {Object} The result sizes.
+   */
+  function getAdjustedSizes(_ref4) {
+    var aspectRatio = _ref4.aspectRatio,
+      height = _ref4.height,
+      width = _ref4.width;
+    var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'contain';
+    var isValidWidth = isPositiveNumber(width);
+    var isValidHeight = isPositiveNumber(height);
+    if (isValidWidth && isValidHeight) {
+      var adjustedWidth = height * aspectRatio;
+      if (type === 'contain' && adjustedWidth > width || type === 'cover' && adjustedWidth < width) {
+        height = width / aspectRatio;
+      } else {
+        width = height * aspectRatio;
+      }
+    } else if (isValidWidth) {
+      height = width / aspectRatio;
+    } else if (isValidHeight) {
+      width = height * aspectRatio;
+    }
+    return {
+      width: width,
+      height: height
+    };
+  }
+
+  /**
+   * Get the new sizes of a rectangle after rotated.
+   * @param {Object} data - The original sizes.
+   * @returns {Object} The result sizes.
+   */
+  function getRotatedSizes(_ref5) {
+    var width = _ref5.width,
+      height = _ref5.height,
+      degree = _ref5.degree;
+    degree = Math.abs(degree) % 180;
+    if (degree === 90) {
+      return {
+        width: height,
+        height: width
+      };
+    }
+    var arc = degree % 90 * Math.PI / 180;
+    var sinArc = Math.sin(arc);
+    var cosArc = Math.cos(arc);
+    var newWidth = width * cosArc + height * sinArc;
+    var newHeight = width * sinArc + height * cosArc;
+    return degree > 90 ? {
+      width: newHeight,
+      height: newWidth
+    } : {
+      width: newWidth,
+      height: newHeight
+    };
+  }
+
+  /**
+   * Get a canvas which drew the given image.
+   * @param {HTMLImageElement} image - The image for drawing.
+   * @param {Object} imageData - The image data.
+   * @param {Object} canvasData - The canvas data.
+   * @param {Object} options - The options.
+   * @returns {HTMLCanvasElement} The result canvas.
+   */
+  function getSourceCanvas(image, _ref6, _ref7, _ref8) {
+    var imageAspectRatio = _ref6.aspectRatio,
+      imageNaturalWidth = _ref6.naturalWidth,
+      imageNaturalHeight = _ref6.naturalHeight,
+      _ref6$rotate = _ref6.rotate,
+      rotate = _ref6$rotate === void 0 ? 0 : _ref6$rotate,
+      _ref6$scaleX = _ref6.scaleX,
+      scaleX = _ref6$scaleX === void 0 ? 1 : _ref6$scaleX,
+      _ref6$scaleY = _ref6.scaleY,
+      scaleY = _ref6$scaleY === void 0 ? 1 : _ref6$scaleY;
+    var aspectRatio = _ref7.aspectRatio,
+      naturalWidth = _ref7.naturalWidth,
+      naturalHeight = _ref7.naturalHeight;
+    var _ref8$fillColor = _ref8.fillColor,
+      fillColor = _ref8$fillColor === void 0 ? 'transparent' : _ref8$fillColor,
+      _ref8$imageSmoothingE = _ref8.imageSmoothingEnabled,
+      imageSmoothingEnabled = _ref8$imageSmoothingE === void 0 ? true : _ref8$imageSmoothingE,
+      _ref8$imageSmoothingQ = _ref8.imageSmoothingQuality,
+      imageSmoothingQuality = _ref8$imageSmoothingQ === void 0 ? 'low' : _ref8$imageSmoothingQ,
+      _ref8$maxWidth = _ref8.maxWidth,
+      maxWidth = _ref8$maxWidth === void 0 ? Infinity : _ref8$maxWidth,
+      _ref8$maxHeight = _ref8.maxHeight,
+      maxHeight = _ref8$maxHeight === void 0 ? Infinity : _ref8$maxHeight,
+      _ref8$minWidth = _ref8.minWidth,
+      minWidth = _ref8$minWidth === void 0 ? 0 : _ref8$minWidth,
+      _ref8$minHeight = _ref8.minHeight,
+      minHeight = _ref8$minHeight === void 0 ? 0 : _ref8$minHeight;
+    var canvas = document.createElement('canvas');
+    var context = canvas.getContext('2d');
+    var maxSizes = getAdjustedSizes({
+      aspectRatio: aspectRatio,
+      width: maxWidth,
+      height: maxHeight
+    });
+    var minSizes = getAdjustedSizes({
+      aspectRatio: aspectRatio,
+      width: minWidth,
+      height: minHeight
+    }, 'cover');
+    var width = Math.min(maxSizes.width, Math.max(minSizes.width, naturalWidth));
+    var height = Math.min(maxSizes.height, Math.max(minSizes.height, naturalHeight));
+
+    // Note: should always use image's natural sizes for drawing as
+    // imageData.naturalWidth === canvasData.naturalHeight when rotate % 180 === 90
+    var destMaxSizes = getAdjustedSizes({
+      aspectRatio: imageAspectRatio,
+      width: maxWidth,
+      height: maxHeight
+    });
+    var destMinSizes = getAdjustedSizes({
+      aspectRatio: imageAspectRatio,
+      width: minWidth,
+      height: minHeight
+    }, 'cover');
+    var destWidth = Math.min(destMaxSizes.width, Math.max(destMinSizes.width, imageNaturalWidth));
+    var destHeight = Math.min(destMaxSizes.height, Math.max(destMinSizes.height, imageNaturalHeight));
+    var params = [-destWidth / 2, -destHeight / 2, destWidth, destHeight];
+    canvas.width = normalizeDecimalNumber(width);
+    canvas.height = normalizeDecimalNumber(height);
+    context.fillStyle = fillColor;
+    context.fillRect(0, 0, width, height);
+    context.save();
+    context.translate(width / 2, height / 2);
+    context.rotate(rotate * Math.PI / 180);
+    context.scale(scaleX, scaleY);
+    context.imageSmoothingEnabled = imageSmoothingEnabled;
+    context.imageSmoothingQuality = imageSmoothingQuality;
+    context.drawImage.apply(context, [image].concat(_toConsumableArray(params.map(function (param) {
+      return Math.floor(normalizeDecimalNumber(param));
+    }))));
+    context.restore();
+    return canvas;
+  }
+  var fromCharCode = String.fromCharCode;
+
+  /**
+   * Get string from char code in data view.
+   * @param {DataView} dataView - The data view for read.
+   * @param {number} start - The start index.
+   * @param {number} length - The read length.
+   * @returns {string} The read result.
+   */
+  function getStringFromCharCode(dataView, start, length) {
+    var str = '';
+    length += start;
+    for (var i = start; i < length; i += 1) {
+      str += fromCharCode(dataView.getUint8(i));
+    }
+    return str;
+  }
+  var REGEXP_DATA_URL_HEAD = /^data:.*,/;
+
+  /**
+   * Transform Data URL to array buffer.
+   * @param {string} dataURL - The Data URL to transform.
+   * @returns {ArrayBuffer} The result array buffer.
+   */
+  function dataURLToArrayBuffer(dataURL) {
+    var base64 = dataURL.replace(REGEXP_DATA_URL_HEAD, '');
+    var binary = atob(base64);
+    var arrayBuffer = new ArrayBuffer(binary.length);
+    var uint8 = new Uint8Array(arrayBuffer);
+    forEach(uint8, function (value, i) {
+      uint8[i] = binary.charCodeAt(i);
+    });
+    return arrayBuffer;
+  }
+
+  /**
+   * Transform array buffer to Data URL.
+   * @param {ArrayBuffer} arrayBuffer - The array buffer to transform.
+   * @param {string} mimeType - The mime type of the Data URL.
+   * @returns {string} The result Data URL.
+   */
+  function arrayBufferToDataURL(arrayBuffer, mimeType) {
+    var chunks = [];
+
+    // Chunk Typed Array for better performance (#435)
+    var chunkSize = 8192;
+    var uint8 = new Uint8Array(arrayBuffer);
+    while (uint8.length > 0) {
+      // XXX: Babel's `toConsumableArray` helper will throw error in IE or Safari 9
+      // eslint-disable-next-line prefer-spread
+      chunks.push(fromCharCode.apply(null, toArray(uint8.subarray(0, chunkSize))));
+      uint8 = uint8.subarray(chunkSize);
+    }
+    return "data:".concat(mimeType, ";base64,").concat(btoa(chunks.join('')));
+  }
+
+  /**
+   * Get orientation value from given array buffer.
+   * @param {ArrayBuffer} arrayBuffer - The array buffer to read.
+   * @returns {number} The read orientation value.
+   */
+  function resetAndGetOrientation(arrayBuffer) {
+    var dataView = new DataView(arrayBuffer);
+    var orientation;
+
+    // Ignores range error when the image does not have correct Exif information
+    try {
+      var littleEndian;
+      var app1Start;
+      var ifdStart;
+
+      // Only handle JPEG image (start by 0xFFD8)
+      if (dataView.getUint8(0) === 0xFF && dataView.getUint8(1) === 0xD8) {
+        var length = dataView.byteLength;
+        var offset = 2;
+        while (offset + 1 < length) {
+          if (dataView.getUint8(offset) === 0xFF && dataView.getUint8(offset + 1) === 0xE1) {
+            app1Start = offset;
+            break;
+          }
+          offset += 1;
+        }
+      }
+      if (app1Start) {
+        var exifIDCode = app1Start + 4;
+        var tiffOffset = app1Start + 10;
+        if (getStringFromCharCode(dataView, exifIDCode, 4) === 'Exif') {
+          var endianness = dataView.getUint16(tiffOffset);
+          littleEndian = endianness === 0x4949;
+          if (littleEndian || endianness === 0x4D4D /* bigEndian */) {
+            if (dataView.getUint16(tiffOffset + 2, littleEndian) === 0x002A) {
+              var firstIFDOffset = dataView.getUint32(tiffOffset + 4, littleEndian);
+              if (firstIFDOffset >= 0x00000008) {
+                ifdStart = tiffOffset + firstIFDOffset;
+              }
+            }
+          }
+        }
+      }
+      if (ifdStart) {
+        var _length = dataView.getUint16(ifdStart, littleEndian);
+        var _offset;
+        var i;
+        for (i = 0; i < _length; i += 1) {
+          _offset = ifdStart + i * 12 + 2;
+          if (dataView.getUint16(_offset, littleEndian) === 0x0112 /* Orientation */) {
+            // 8 is the offset of the current tag's value
+            _offset += 8;
+
+            // Get the original orientation value
+            orientation = dataView.getUint16(_offset, littleEndian);
+
+            // Override the orientation with its default value
+            dataView.setUint16(_offset, 1, littleEndian);
+            break;
+          }
+        }
+      }
+    } catch (error) {
+      orientation = 1;
+    }
+    return orientation;
+  }
+
+  /**
+   * Parse Exif Orientation value.
+   * @param {number} orientation - The orientation to parse.
+   * @returns {Object} The parsed result.
+   */
+  function parseOrientation(orientation) {
+    var rotate = 0;
+    var scaleX = 1;
+    var scaleY = 1;
+    switch (orientation) {
+      // Flip horizontal
+      case 2:
+        scaleX = -1;
+        break;
+
+      // Rotate left 180°
+      case 3:
+        rotate = -180;
+        break;
+
+      // Flip vertical
+      case 4:
+        scaleY = -1;
+        break;
+
+      // Flip vertical and rotate right 90°
+      case 5:
+        rotate = 90;
+        scaleY = -1;
+        break;
+
+      // Rotate right 90°
+      case 6:
+        rotate = 90;
+        break;
+
+      // Flip horizontal and rotate right 90°
+      case 7:
+        rotate = 90;
+        scaleX = -1;
+        break;
+
+      // Rotate left 90°
+      case 8:
+        rotate = -90;
+        break;
+    }
+    return {
+      rotate: rotate,
+      scaleX: scaleX,
+      scaleY: scaleY
+    };
+  }
+
+  var render = {
+    render: function render() {
+      this.initContainer();
+      this.initCanvas();
+      this.initCropBox();
+      this.renderCanvas();
+      if (this.cropped) {
+        this.renderCropBox();
+      }
+    },
+    initContainer: function initContainer() {
+      var element = this.element,
+        options = this.options,
+        container = this.container,
+        cropper = this.cropper;
+      var minWidth = Number(options.minContainerWidth);
+      var minHeight = Number(options.minContainerHeight);
+      addClass(cropper, CLASS_HIDDEN);
+      removeClass(element, CLASS_HIDDEN);
+      var containerData = {
+        width: Math.max(container.offsetWidth, minWidth >= 0 ? minWidth : MIN_CONTAINER_WIDTH),
+        height: Math.max(container.offsetHeight, minHeight >= 0 ? minHeight : MIN_CONTAINER_HEIGHT)
+      };
+      this.containerData = containerData;
+      setStyle(cropper, {
+        width: containerData.width,
+        height: containerData.height
+      });
+      addClass(element, CLASS_HIDDEN);
+      removeClass(cropper, CLASS_HIDDEN);
+    },
+    // Canvas (image wrapper)
+    initCanvas: function initCanvas() {
+      var containerData = this.containerData,
+        imageData = this.imageData;
+      var viewMode = this.options.viewMode;
+      var rotated = Math.abs(imageData.rotate) % 180 === 90;
+      var naturalWidth = rotated ? imageData.naturalHeight : imageData.naturalWidth;
+      var naturalHeight = rotated ? imageData.naturalWidth : imageData.naturalHeight;
+      var aspectRatio = naturalWidth / naturalHeight;
+      var canvasWidth = containerData.width;
+      var canvasHeight = containerData.height;
+      if (containerData.height * aspectRatio > containerData.width) {
+        if (viewMode === 3) {
+          canvasWidth = containerData.height * aspectRatio;
+        } else {
+          canvasHeight = containerData.width / aspectRatio;
+        }
+      } else if (viewMode === 3) {
+        canvasHeight = containerData.width / aspectRatio;
+      } else {
+        canvasWidth = containerData.height * aspectRatio;
+      }
+      var canvasData = {
+        aspectRatio: aspectRatio,
+        naturalWidth: naturalWidth,
+        naturalHeight: naturalHeight,
+        width: canvasWidth,
+        height: canvasHeight
+      };
+      this.canvasData = canvasData;
+      this.limited = viewMode === 1 || viewMode === 2;
+      this.limitCanvas(true, true);
+      canvasData.width = Math.min(Math.max(canvasData.width, canvasData.minWidth), canvasData.maxWidth);
+      canvasData.height = Math.min(Math.max(canvasData.height, canvasData.minHeight), canvasData.maxHeight);
+      canvasData.left = (containerData.width - canvasData.width) / 2;
+      canvasData.top = (containerData.height - canvasData.height) / 2;
+      canvasData.oldLeft = canvasData.left;
+      canvasData.oldTop = canvasData.top;
+      this.initialCanvasData = assign({}, canvasData);
+    },
+    limitCanvas: function limitCanvas(sizeLimited, positionLimited) {
+      var options = this.options,
+        containerData = this.containerData,
+        canvasData = this.canvasData,
+        cropBoxData = this.cropBoxData;
+      var viewMode = options.viewMode;
+      var aspectRatio = canvasData.aspectRatio;
+      var cropped = this.cropped && cropBoxData;
+      if (sizeLimited) {
+        var minCanvasWidth = Number(options.minCanvasWidth) || 0;
+        var minCanvasHeight = Number(options.minCanvasHeight) || 0;
+        if (viewMode > 1) {
+          minCanvasWidth = Math.max(minCanvasWidth, containerData.width);
+          minCanvasHeight = Math.max(minCanvasHeight, containerData.height);
+          if (viewMode === 3) {
+            if (minCanvasHeight * aspectRatio > minCanvasWidth) {
+              minCanvasWidth = minCanvasHeight * aspectRatio;
+            } else {
+              minCanvasHeight = minCanvasWidth / aspectRatio;
+            }
+          }
+        } else if (viewMode > 0) {
+          if (minCanvasWidth) {
+            minCanvasWidth = Math.max(minCanvasWidth, cropped ? cropBoxData.width : 0);
+          } else if (minCanvasHeight) {
+            minCanvasHeight = Math.max(minCanvasHeight, cropped ? cropBoxData.height : 0);
+          } else if (cropped) {
+            minCanvasWidth = cropBoxData.width;
+            minCanvasHeight = cropBoxData.height;
+            if (minCanvasHeight * aspectRatio > minCanvasWidth) {
+              minCanvasWidth = minCanvasHeight * aspectRatio;
+            } else {
+              minCanvasHeight = minCanvasWidth / aspectRatio;
+            }
+          }
+        }
+        var _getAdjustedSizes = getAdjustedSizes({
+          aspectRatio: aspectRatio,
+          width: minCanvasWidth,
+          height: minCanvasHeight
+        });
+        minCanvasWidth = _getAdjustedSizes.width;
+        minCanvasHeight = _getAdjustedSizes.height;
+        canvasData.minWidth = minCanvasWidth;
+        canvasData.minHeight = minCanvasHeight;
+        canvasData.maxWidth = Infinity;
+        canvasData.maxHeight = Infinity;
+      }
+      if (positionLimited) {
+        if (viewMode > (cropped ? 0 : 1)) {
+          var newCanvasLeft = containerData.width - canvasData.width;
+          var newCanvasTop = containerData.height - canvasData.height;
+          canvasData.minLeft = Math.min(0, newCanvasLeft);
+          canvasData.minTop = Math.min(0, newCanvasTop);
+          canvasData.maxLeft = Math.max(0, newCanvasLeft);
+          canvasData.maxTop = Math.max(0, newCanvasTop);
+          if (cropped && this.limited) {
+            canvasData.minLeft = Math.min(cropBoxData.left, cropBoxData.left + (cropBoxData.width - canvasData.width));
+            canvasData.minTop = Math.min(cropBoxData.top, cropBoxData.top + (cropBoxData.height - canvasData.height));
+            canvasData.maxLeft = cropBoxData.left;
+            canvasData.maxTop = cropBoxData.top;
+            if (viewMode === 2) {
+              if (canvasData.width >= containerData.width) {
+                canvasData.minLeft = Math.min(0, newCanvasLeft);
+                canvasData.maxLeft = Math.max(0, newCanvasLeft);
+              }
+              if (canvasData.height >= containerData.height) {
+                canvasData.minTop = Math.min(0, newCanvasTop);
+                canvasData.maxTop = Math.max(0, newCanvasTop);
+              }
+            }
+          }
+        } else {
+          canvasData.minLeft = -canvasData.width;
+          canvasData.minTop = -canvasData.height;
+          canvasData.maxLeft = containerData.width;
+          canvasData.maxTop = containerData.height;
+        }
+      }
+    },
+    renderCanvas: function renderCanvas(changed, transformed) {
+      var canvasData = this.canvasData,
+        imageData = this.imageData;
+      if (transformed) {
+        var _getRotatedSizes = getRotatedSizes({
+            width: imageData.naturalWidth * Math.abs(imageData.scaleX || 1),
+            height: imageData.naturalHeight * Math.abs(imageData.scaleY || 1),
+            degree: imageData.rotate || 0
+          }),
+          naturalWidth = _getRotatedSizes.width,
+          naturalHeight = _getRotatedSizes.height;
+        var width = canvasData.width * (naturalWidth / canvasData.naturalWidth);
+        var height = canvasData.height * (naturalHeight / canvasData.naturalHeight);
+        canvasData.left -= (width - canvasData.width) / 2;
+        canvasData.top -= (height - canvasData.height) / 2;
+        canvasData.width = width;
+        canvasData.height = height;
+        canvasData.aspectRatio = naturalWidth / naturalHeight;
+        canvasData.naturalWidth = naturalWidth;
+        canvasData.naturalHeight = naturalHeight;
+        this.limitCanvas(true, false);
+      }
+      if (canvasData.width > canvasData.maxWidth || canvasData.width < canvasData.minWidth) {
+        canvasData.left = canvasData.oldLeft;
+      }
+      if (canvasData.height > canvasData.maxHeight || canvasData.height < canvasData.minHeight) {
+        canvasData.top = canvasData.oldTop;
+      }
+      canvasData.width = Math.min(Math.max(canvasData.width, canvasData.minWidth), canvasData.maxWidth);
+      canvasData.height = Math.min(Math.max(canvasData.height, canvasData.minHeight), canvasData.maxHeight);
+      this.limitCanvas(false, true);
+      canvasData.left = Math.min(Math.max(canvasData.left, canvasData.minLeft), canvasData.maxLeft);
+      canvasData.top = Math.min(Math.max(canvasData.top, canvasData.minTop), canvasData.maxTop);
+      canvasData.oldLeft = canvasData.left;
+      canvasData.oldTop = canvasData.top;
+      setStyle(this.canvas, assign({
+        width: canvasData.width,
+        height: canvasData.height
+      }, getTransforms({
+        translateX: canvasData.left,
+        translateY: canvasData.top
+      })));
+      this.renderImage(changed);
+      if (this.cropped && this.limited) {
+        this.limitCropBox(true, true);
+      }
+    },
+    renderImage: function renderImage(changed) {
+      var canvasData = this.canvasData,
+        imageData = this.imageData;
+      var width = imageData.naturalWidth * (canvasData.width / canvasData.naturalWidth);
+      var height = imageData.naturalHeight * (canvasData.height / canvasData.naturalHeight);
+      assign(imageData, {
+        width: width,
+        height: height,
+        left: (canvasData.width - width) / 2,
+        top: (canvasData.height - height) / 2
+      });
+      setStyle(this.image, assign({
+        width: imageData.width,
+        height: imageData.height
+      }, getTransforms(assign({
+        translateX: imageData.left,
+        translateY: imageData.top
+      }, imageData))));
+      if (changed) {
+        this.output();
+      }
+    },
+    initCropBox: function initCropBox() {
+      var options = this.options,
+        canvasData = this.canvasData;
+      var aspectRatio = options.aspectRatio || options.initialAspectRatio;
+      var autoCropArea = Number(options.autoCropArea) || 0.8;
+      var cropBoxData = {
+        width: canvasData.width,
+        height: canvasData.height
+      };
+      if (aspectRatio) {
+        if (canvasData.height * aspectRatio > canvasData.width) {
+          cropBoxData.height = cropBoxData.width / aspectRatio;
+        } else {
+          cropBoxData.width = cropBoxData.height * aspectRatio;
+        }
+      }
+      this.cropBoxData = cropBoxData;
+      this.limitCropBox(true, true);
+
+      // Initialize auto crop area
+      cropBoxData.width = Math.min(Math.max(cropBoxData.width, cropBoxData.minWidth), cropBoxData.maxWidth);
+      cropBoxData.height = Math.min(Math.max(cropBoxData.height, cropBoxData.minHeight), cropBoxData.maxHeight);
+
+      // The width/height of auto crop area must large than "minWidth/Height"
+      cropBoxData.width = Math.max(cropBoxData.minWidth, cropBoxData.width * autoCropArea);
+      cropBoxData.height = Math.max(cropBoxData.minHeight, cropBoxData.height * autoCropArea);
+      cropBoxData.left = canvasData.left + (canvasData.width - cropBoxData.width) / 2;
+      cropBoxData.top = canvasData.top + (canvasData.height - cropBoxData.height) / 2;
+      cropBoxData.oldLeft = cropBoxData.left;
+      cropBoxData.oldTop = cropBoxData.top;
+      this.initialCropBoxData = assign({}, cropBoxData);
+    },
+    limitCropBox: function limitCropBox(sizeLimited, positionLimited) {
+      var options = this.options,
+        containerData = this.containerData,
+        canvasData = this.canvasData,
+        cropBoxData = this.cropBoxData,
+        limited = this.limited;
+      var aspectRatio = options.aspectRatio;
+      if (sizeLimited) {
+        var minCropBoxWidth = Number(options.minCropBoxWidth) || 0;
+        var minCropBoxHeight = Number(options.minCropBoxHeight) || 0;
+        var maxCropBoxWidth = limited ? Math.min(containerData.width, canvasData.width, canvasData.width + canvasData.left, containerData.width - canvasData.left) : containerData.width;
+        var maxCropBoxHeight = limited ? Math.min(containerData.height, canvasData.height, canvasData.height + canvasData.top, containerData.height - canvasData.top) : containerData.height;
+
+        // The min/maxCropBoxWidth/Height must be less than container's width/height
+        minCropBoxWidth = Math.min(minCropBoxWidth, containerData.width);
+        minCropBoxHeight = Math.min(minCropBoxHeight, containerData.height);
+        if (aspectRatio) {
+          if (minCropBoxWidth && minCropBoxHeight) {
+            if (minCropBoxHeight * aspectRatio > minCropBoxWidth) {
+              minCropBoxHeight = minCropBoxWidth / aspectRatio;
+            } else {
+              minCropBoxWidth = minCropBoxHeight * aspectRatio;
+            }
+          } else if (minCropBoxWidth) {
+            minCropBoxHeight = minCropBoxWidth / aspectRatio;
+          } else if (minCropBoxHeight) {
+            minCropBoxWidth = minCropBoxHeight * aspectRatio;
+          }
+          if (maxCropBoxHeight * aspectRatio > maxCropBoxWidth) {
+            maxCropBoxHeight = maxCropBoxWidth / aspectRatio;
+          } else {
+            maxCropBoxWidth = maxCropBoxHeight * aspectRatio;
+          }
+        }
+
+        // The minWidth/Height must be less than maxWidth/Height
+        cropBoxData.minWidth = Math.min(minCropBoxWidth, maxCropBoxWidth);
+        cropBoxData.minHeight = Math.min(minCropBoxHeight, maxCropBoxHeight);
+        cropBoxData.maxWidth = maxCropBoxWidth;
+        cropBoxData.maxHeight = maxCropBoxHeight;
+      }
+      if (positionLimited) {
+        if (limited) {
+          cropBoxData.minLeft = Math.max(0, canvasData.left);
+          cropBoxData.minTop = Math.max(0, canvasData.top);
+          cropBoxData.maxLeft = Math.min(containerData.width, canvasData.left + canvasData.width) - cropBoxData.width;
+          cropBoxData.maxTop = Math.min(containerData.height, canvasData.top + canvasData.height) - cropBoxData.height;
+        } else {
+          cropBoxData.minLeft = 0;
+          cropBoxData.minTop = 0;
+          cropBoxData.maxLeft = containerData.width - cropBoxData.width;
+          cropBoxData.maxTop = containerData.height - cropBoxData.height;
+        }
+      }
+    },
+    renderCropBox: function renderCropBox() {
+      var options = this.options,
+        containerData = this.containerData,
+        cropBoxData = this.cropBoxData;
+      if (cropBoxData.width > cropBoxData.maxWidth || cropBoxData.width < cropBoxData.minWidth) {
+        cropBoxData.left = cropBoxData.oldLeft;
+      }
+      if (cropBoxData.height > cropBoxData.maxHeight || cropBoxData.height < cropBoxData.minHeight) {
+        cropBoxData.top = cropBoxData.oldTop;
+      }
+      cropBoxData.width = Math.min(Math.max(cropBoxData.width, cropBoxData.minWidth), cropBoxData.maxWidth);
+      cropBoxData.height = Math.min(Math.max(cropBoxData.height, cropBoxData.minHeight), cropBoxData.maxHeight);
+      this.limitCropBox(false, true);
+      cropBoxData.left = Math.min(Math.max(cropBoxData.left, cropBoxData.minLeft), cropBoxData.maxLeft);
+      cropBoxData.top = Math.min(Math.max(cropBoxData.top, cropBoxData.minTop), cropBoxData.maxTop);
+      cropBoxData.oldLeft = cropBoxData.left;
+      cropBoxData.oldTop = cropBoxData.top;
+      if (options.movable && options.cropBoxMovable) {
+        // Turn to move the canvas when the crop box is equal to the container
+        setData(this.face, DATA_ACTION, cropBoxData.width >= containerData.width && cropBoxData.height >= containerData.height ? ACTION_MOVE : ACTION_ALL);
+      }
+      setStyle(this.cropBox, assign({
+        width: cropBoxData.width,
+        height: cropBoxData.height
+      }, getTransforms({
+        translateX: cropBoxData.left,
+        translateY: cropBoxData.top
+      })));
+      if (this.cropped && this.limited) {
+        this.limitCanvas(true, true);
+      }
+      if (!this.disabled) {
+        this.output();
+      }
+    },
+    output: function output() {
+      this.preview();
+      dispatchEvent(this.element, EVENT_CROP, this.getData());
+    }
+  };
+
+  var preview = {
+    initPreview: function initPreview() {
+      var element = this.element,
+        crossOrigin = this.crossOrigin;
+      var preview = this.options.preview;
+      var url = crossOrigin ? this.crossOriginUrl : this.url;
+      var alt = element.alt || 'The image to preview';
+      var image = document.createElement('img');
+      if (crossOrigin) {
+        image.crossOrigin = crossOrigin;
+      }
+      image.src = url;
+      image.alt = alt;
+      this.viewBox.appendChild(image);
+      this.viewBoxImage = image;
+      if (!preview) {
+        return;
+      }
+      var previews = preview;
+      if (typeof preview === 'string') {
+        previews = element.ownerDocument.querySelectorAll(preview);
+      } else if (preview.querySelector) {
+        previews = [preview];
+      }
+      this.previews = previews;
+      forEach(previews, function (el) {
+        var img = document.createElement('img');
+
+        // Save the original size for recover
+        setData(el, DATA_PREVIEW, {
+          width: el.offsetWidth,
+          height: el.offsetHeight,
+          html: el.innerHTML
+        });
+        if (crossOrigin) {
+          img.crossOrigin = crossOrigin;
+        }
+        img.src = url;
+        img.alt = alt;
+
+        /**
+         * Override img element styles
+         * Add `display:block` to avoid margin top issue
+         * Add `height:auto` to override `height` attribute on IE8
+         * (Occur only when margin-top <= -height)
+         */
+        img.style.cssText = 'display:block;' + 'width:100%;' + 'height:auto;' + 'min-width:0!important;' + 'min-height:0!important;' + 'max-width:none!important;' + 'max-height:none!important;' + 'image-orientation:0deg!important;"';
+        el.innerHTML = '';
+        el.appendChild(img);
+      });
+    },
+    resetPreview: function resetPreview() {
+      forEach(this.previews, function (element) {
+        var data = getData(element, DATA_PREVIEW);
+        setStyle(element, {
+          width: data.width,
+          height: data.height
+        });
+        element.innerHTML = data.html;
+        removeData(element, DATA_PREVIEW);
+      });
+    },
+    preview: function preview() {
+      var imageData = this.imageData,
+        canvasData = this.canvasData,
+        cropBoxData = this.cropBoxData;
+      var cropBoxWidth = cropBoxData.width,
+        cropBoxHeight = cropBoxData.height;
+      var width = imageData.width,
+        height = imageData.height;
+      var left = cropBoxData.left - canvasData.left - imageData.left;
+      var top = cropBoxData.top - canvasData.top - imageData.top;
+      if (!this.cropped || this.disabled) {
+        return;
+      }
+      setStyle(this.viewBoxImage, assign({
+        width: width,
+        height: height
+      }, getTransforms(assign({
+        translateX: -left,
+        translateY: -top
+      }, imageData))));
+      forEach(this.previews, function (element) {
+        var data = getData(element, DATA_PREVIEW);
+        var originalWidth = data.width;
+        var originalHeight = data.height;
+        var newWidth = originalWidth;
+        var newHeight = originalHeight;
+        var ratio = 1;
+        if (cropBoxWidth) {
+          ratio = originalWidth / cropBoxWidth;
+          newHeight = cropBoxHeight * ratio;
+        }
+        if (cropBoxHeight && newHeight > originalHeight) {
+          ratio = originalHeight / cropBoxHeight;
+          newWidth = cropBoxWidth * ratio;
+          newHeight = originalHeight;
+        }
+        setStyle(element, {
+          width: newWidth,
+          height: newHeight
+        });
+        setStyle(element.getElementsByTagName('img')[0], assign({
+          width: width * ratio,
+          height: height * ratio
+        }, getTransforms(assign({
+          translateX: -left * ratio,
+          translateY: -top * ratio
+        }, imageData))));
+      });
+    }
+  };
+
+  var events = {
+    bind: function bind() {
+      var element = this.element,
+        options = this.options,
+        cropper = this.cropper;
+      if (isFunction(options.cropstart)) {
+        addListener(element, EVENT_CROP_START, options.cropstart);
+      }
+      if (isFunction(options.cropmove)) {
+        addListener(element, EVENT_CROP_MOVE, options.cropmove);
+      }
+      if (isFunction(options.cropend)) {
+        addListener(element, EVENT_CROP_END, options.cropend);
+      }
+      if (isFunction(options.crop)) {
+        addListener(element, EVENT_CROP, options.crop);
+      }
+      if (isFunction(options.zoom)) {
+        addListener(element, EVENT_ZOOM, options.zoom);
+      }
+      addListener(cropper, EVENT_POINTER_DOWN, this.onCropStart = this.cropStart.bind(this));
+      if (options.zoomable && options.zoomOnWheel) {
+        addListener(cropper, EVENT_WHEEL, this.onWheel = this.wheel.bind(this), {
+          passive: false,
+          capture: true
+        });
+      }
+      if (options.toggleDragModeOnDblclick) {
+        addListener(cropper, EVENT_DBLCLICK, this.onDblclick = this.dblclick.bind(this));
+      }
+      addListener(element.ownerDocument, EVENT_POINTER_MOVE, this.onCropMove = this.cropMove.bind(this));
+      addListener(element.ownerDocument, EVENT_POINTER_UP, this.onCropEnd = this.cropEnd.bind(this));
+      if (options.responsive) {
+        addListener(window, EVENT_RESIZE, this.onResize = this.resize.bind(this));
+      }
+    },
+    unbind: function unbind() {
+      var element = this.element,
+        options = this.options,
+        cropper = this.cropper;
+      if (isFunction(options.cropstart)) {
+        removeListener(element, EVENT_CROP_START, options.cropstart);
+      }
+      if (isFunction(options.cropmove)) {
+        removeListener(element, EVENT_CROP_MOVE, options.cropmove);
+      }
+      if (isFunction(options.cropend)) {
+        removeListener(element, EVENT_CROP_END, options.cropend);
+      }
+      if (isFunction(options.crop)) {
+        removeListener(element, EVENT_CROP, options.crop);
+      }
+      if (isFunction(options.zoom)) {
+        removeListener(element, EVENT_ZOOM, options.zoom);
+      }
+      removeListener(cropper, EVENT_POINTER_DOWN, this.onCropStart);
+      if (options.zoomable && options.zoomOnWheel) {
+        removeListener(cropper, EVENT_WHEEL, this.onWheel, {
+          passive: false,
+          capture: true
+        });
+      }
+      if (options.toggleDragModeOnDblclick) {
+        removeListener(cropper, EVENT_DBLCLICK, this.onDblclick);
+      }
+      removeListener(element.ownerDocument, EVENT_POINTER_MOVE, this.onCropMove);
+      removeListener(element.ownerDocument, EVENT_POINTER_UP, this.onCropEnd);
+      if (options.responsive) {
+        removeListener(window, EVENT_RESIZE, this.onResize);
+      }
+    }
+  };
+
+  var handlers = {
+    resize: function resize() {
+      if (this.disabled) {
+        return;
+      }
+      var options = this.options,
+        container = this.container,
+        containerData = this.containerData;
+      var ratioX = container.offsetWidth / containerData.width;
+      var ratioY = container.offsetHeight / containerData.height;
+      var ratio = Math.abs(ratioX - 1) > Math.abs(ratioY - 1) ? ratioX : ratioY;
+
+      // Resize when width changed or height changed
+      if (ratio !== 1) {
+        var canvasData;
+        var cropBoxData;
+        if (options.restore) {
+          canvasData = this.getCanvasData();
+          cropBoxData = this.getCropBoxData();
+        }
+        this.render();
+        if (options.restore) {
+          this.setCanvasData(forEach(canvasData, function (n, i) {
+            canvasData[i] = n * ratio;
+          }));
+          this.setCropBoxData(forEach(cropBoxData, function (n, i) {
+            cropBoxData[i] = n * ratio;
+          }));
+        }
+      }
+    },
+    dblclick: function dblclick() {
+      if (this.disabled || this.options.dragMode === DRAG_MODE_NONE) {
+        return;
+      }
+      this.setDragMode(hasClass(this.dragBox, CLASS_CROP) ? DRAG_MODE_MOVE : DRAG_MODE_CROP);
+    },
+    wheel: function wheel(event) {
+      var _this = this;
+      var ratio = Number(this.options.wheelZoomRatio) || 0.1;
+      var delta = 1;
+      if (this.disabled) {
+        return;
+      }
+      event.preventDefault();
+
+      // Limit wheel speed to prevent zoom too fast (#21)
+      if (this.wheeling) {
+        return;
+      }
+      this.wheeling = true;
+      setTimeout(function () {
+        _this.wheeling = false;
+      }, 50);
+      if (event.deltaY) {
+        delta = event.deltaY > 0 ? 1 : -1;
+      } else if (event.wheelDelta) {
+        delta = -event.wheelDelta / 120;
+      } else if (event.detail) {
+        delta = event.detail > 0 ? 1 : -1;
+      }
+      this.zoom(-delta * ratio, event);
+    },
+    cropStart: function cropStart(event) {
+      var buttons = event.buttons,
+        button = event.button;
+      if (this.disabled
+
+      // Handle mouse event and pointer event and ignore touch event
+      || (event.type === 'mousedown' || event.type === 'pointerdown' && event.pointerType === 'mouse') && (
+      // No primary button (Usually the left button)
+      isNumber(buttons) && buttons !== 1 || isNumber(button) && button !== 0
+
+      // Open context menu
+      || event.ctrlKey)) {
+        return;
+      }
+      var options = this.options,
+        pointers = this.pointers;
+      var action;
+      if (event.changedTouches) {
+        // Handle touch event
+        forEach(event.changedTouches, function (touch) {
+          pointers[touch.identifier] = getPointer(touch);
+        });
+      } else {
+        // Handle mouse event and pointer event
+        pointers[event.pointerId || 0] = getPointer(event);
+      }
+      if (Object.keys(pointers).length > 1 && options.zoomable && options.zoomOnTouch) {
+        action = ACTION_ZOOM;
+      } else {
+        action = getData(event.target, DATA_ACTION);
+      }
+      if (!REGEXP_ACTIONS.test(action)) {
+        return;
+      }
+      if (dispatchEvent(this.element, EVENT_CROP_START, {
+        originalEvent: event,
+        action: action
+      }) === false) {
+        return;
+      }
+
+      // This line is required for preventing page zooming in iOS browsers
+      event.preventDefault();
+      this.action = action;
+      this.cropping = false;
+      if (action === ACTION_CROP) {
+        this.cropping = true;
+        addClass(this.dragBox, CLASS_MODAL);
+      }
+    },
+    cropMove: function cropMove(event) {
+      var action = this.action;
+      if (this.disabled || !action) {
+        return;
+      }
+      var pointers = this.pointers;
+      event.preventDefault();
+      if (dispatchEvent(this.element, EVENT_CROP_MOVE, {
+        originalEvent: event,
+        action: action
+      }) === false) {
+        return;
+      }
+      if (event.changedTouches) {
+        forEach(event.changedTouches, function (touch) {
+          // The first parameter should not be undefined (#432)
+          assign(pointers[touch.identifier] || {}, getPointer(touch, true));
+        });
+      } else {
+        assign(pointers[event.pointerId || 0] || {}, getPointer(event, true));
+      }
+      this.change(event);
+    },
+    cropEnd: function cropEnd(event) {
+      if (this.disabled) {
+        return;
+      }
+      var action = this.action,
+        pointers = this.pointers;
+      if (event.changedTouches) {
+        forEach(event.changedTouches, function (touch) {
+          delete pointers[touch.identifier];
+        });
+      } else {
+        delete pointers[event.pointerId || 0];
+      }
+      if (!action) {
+        return;
+      }
+      event.preventDefault();
+      if (!Object.keys(pointers).length) {
+        this.action = '';
+      }
+      if (this.cropping) {
+        this.cropping = false;
+        toggleClass(this.dragBox, CLASS_MODAL, this.cropped && this.options.modal);
+      }
+      dispatchEvent(this.element, EVENT_CROP_END, {
+        originalEvent: event,
+        action: action
+      });
+    }
+  };
+
+  var change = {
+    change: function change(event) {
+      var options = this.options,
+        canvasData = this.canvasData,
+        containerData = this.containerData,
+        cropBoxData = this.cropBoxData,
+        pointers = this.pointers;
+      var action = this.action;
+      var aspectRatio = options.aspectRatio;
+      var left = cropBoxData.left,
+        top = cropBoxData.top,
+        width = cropBoxData.width,
+        height = cropBoxData.height;
+      var right = left + width;
+      var bottom = top + height;
+      var minLeft = 0;
+      var minTop = 0;
+      var maxWidth = containerData.width;
+      var maxHeight = containerData.height;
+      var renderable = true;
+      var offset;
+
+      // Locking aspect ratio in "free mode" by holding shift key
+      if (!aspectRatio && event.shiftKey) {
+        aspectRatio = width && height ? width / height : 1;
+      }
+      if (this.limited) {
+        minLeft = cropBoxData.minLeft;
+        minTop = cropBoxData.minTop;
+        maxWidth = minLeft + Math.min(containerData.width, canvasData.width, canvasData.left + canvasData.width);
+        maxHeight = minTop + Math.min(containerData.height, canvasData.height, canvasData.top + canvasData.height);
+      }
+      var pointer = pointers[Object.keys(pointers)[0]];
+      var range = {
+        x: pointer.endX - pointer.startX,
+        y: pointer.endY - pointer.startY
+      };
+      var check = function check(side) {
+        switch (side) {
+          case ACTION_EAST:
+            if (right + range.x > maxWidth) {
+              range.x = maxWidth - right;
+            }
+            break;
+          case ACTION_WEST:
+            if (left + range.x < minLeft) {
+              range.x = minLeft - left;
+            }
+            break;
+          case ACTION_NORTH:
+            if (top + range.y < minTop) {
+              range.y = minTop - top;
+            }
+            break;
+          case ACTION_SOUTH:
+            if (bottom + range.y > maxHeight) {
+              range.y = maxHeight - bottom;
+            }
+            break;
+        }
+      };
+      switch (action) {
+        // Move crop box
+        case ACTION_ALL:
+          left += range.x;
+          top += range.y;
+          break;
+
+        // Resize crop box
+        case ACTION_EAST:
+          if (range.x >= 0 && (right >= maxWidth || aspectRatio && (top <= minTop || bottom >= maxHeight))) {
+            renderable = false;
+            break;
+          }
+          check(ACTION_EAST);
+          width += range.x;
+          if (width < 0) {
+            action = ACTION_WEST;
+            width = -width;
+            left -= width;
+          }
+          if (aspectRatio) {
+            height = width / aspectRatio;
+            top += (cropBoxData.height - height) / 2;
+          }
+          break;
+        case ACTION_NORTH:
+          if (range.y <= 0 && (top <= minTop || aspectRatio && (left <= minLeft || right >= maxWidth))) {
+            renderable = false;
+            break;
+          }
+          check(ACTION_NORTH);
+          height -= range.y;
+          top += range.y;
+          if (height < 0) {
+            action = ACTION_SOUTH;
+            height = -height;
+            top -= height;
+          }
+          if (aspectRatio) {
+            width = height * aspectRatio;
+            left += (cropBoxData.width - width) / 2;
+          }
+          break;
+        case ACTION_WEST:
+          if (range.x <= 0 && (left <= minLeft || aspectRatio && (top <= minTop || bottom >= maxHeight))) {
+            renderable = false;
+            break;
+          }
+          check(ACTION_WEST);
+          width -= range.x;
+          left += range.x;
+          if (width < 0) {
+            action = ACTION_EAST;
+            width = -width;
+            left -= width;
+          }
+          if (aspectRatio) {
+            height = width / aspectRatio;
+            top += (cropBoxData.height - height) / 2;
+          }
+          break;
+        case ACTION_SOUTH:
+          if (range.y >= 0 && (bottom >= maxHeight || aspectRatio && (left <= minLeft || right >= maxWidth))) {
+            renderable = false;
+            break;
+          }
+          check(ACTION_SOUTH);
+          height += range.y;
+          if (height < 0) {
+            action = ACTION_NORTH;
+            height = -height;
+            top -= height;
+          }
+          if (aspectRatio) {
+            width = height * aspectRatio;
+            left += (cropBoxData.width - width) / 2;
+          }
+          break;
+        case ACTION_NORTH_EAST:
+          if (aspectRatio) {
+            if (range.y <= 0 && (top <= minTop || right >= maxWidth)) {
+              renderable = false;
+              break;
+            }
+            check(ACTION_NORTH);
+            height -= range.y;
+            top += range.y;
+            width = height * aspectRatio;
+          } else {
+            check(ACTION_NORTH);
+            check(ACTION_EAST);
+            if (range.x >= 0) {
+              if (right < maxWidth) {
+                width += range.x;
+              } else if (range.y <= 0 && top <= minTop) {
+                renderable = false;
+              }
+            } else {
+              width += range.x;
+            }
+            if (range.y <= 0) {
+              if (top > minTop) {
+                height -= range.y;
+                top += range.y;
+              }
+            } else {
+              height -= range.y;
+              top += range.y;
+            }
+          }
+          if (width < 0 && height < 0) {
+            action = ACTION_SOUTH_WEST;
+            height = -height;
+            width = -width;
+            top -= height;
+            left -= width;
+          } else if (width < 0) {
+            action = ACTION_NORTH_WEST;
+            width = -width;
+            left -= width;
+          } else if (height < 0) {
+            action = ACTION_SOUTH_EAST;
+            height = -height;
+            top -= height;
+          }
+          break;
+        case ACTION_NORTH_WEST:
+          if (aspectRatio) {
+            if (range.y <= 0 && (top <= minTop || left <= minLeft)) {
+              renderable = false;
+              break;
+            }
+            check(ACTION_NORTH);
+            height -= range.y;
+            top += range.y;
+            width = height * aspectRatio;
+            left += cropBoxData.width - width;
+          } else {
+            check(ACTION_NORTH);
+            check(ACTION_WEST);
+            if (range.x <= 0) {
+              if (left > minLeft) {
+                width -= range.x;
+                left += range.x;
+              } else if (range.y <= 0 && top <= minTop) {
+                renderable = false;
+              }
+            } else {
+              width -= range.x;
+              left += range.x;
+            }
+            if (range.y <= 0) {
+              if (top > minTop) {
+                height -= range.y;
+                top += range.y;
+              }
+            } else {
+              height -= range.y;
+              top += range.y;
+            }
+          }
+          if (width < 0 && height < 0) {
+            action = ACTION_SOUTH_EAST;
+            height = -height;
+            width = -width;
+            top -= height;
+            left -= width;
+          } else if (width < 0) {
+            action = ACTION_NORTH_EAST;
+            width = -width;
+            left -= width;
+          } else if (height < 0) {
+            action = ACTION_SOUTH_WEST;
+            height = -height;
+            top -= height;
+          }
+          break;
+        case ACTION_SOUTH_WEST:
+          if (aspectRatio) {
+            if (range.x <= 0 && (left <= minLeft || bottom >= maxHeight)) {
+              renderable = false;
+              break;
+            }
+            check(ACTION_WEST);
+            width -= range.x;
+            left += range.x;
+            height = width / aspectRatio;
+          } else {
+            check(ACTION_SOUTH);
+            check(ACTION_WEST);
+            if (range.x <= 0) {
+              if (left > minLeft) {
+                width -= range.x;
+                left += range.x;
+              } else if (range.y >= 0 && bottom >= maxHeight) {
+                renderable = false;
+              }
+            } else {
+              width -= range.x;
+              left += range.x;
+            }
+            if (range.y >= 0) {
+              if (bottom < maxHeight) {
+                height += range.y;
+              }
+            } else {
+              height += range.y;
+            }
+          }
+          if (width < 0 && height < 0) {
+            action = ACTION_NORTH_EAST;
+            height = -height;
+            width = -width;
+            top -= height;
+            left -= width;
+          } else if (width < 0) {
+            action = ACTION_SOUTH_EAST;
+            width = -width;
+            left -= width;
+          } else if (height < 0) {
+            action = ACTION_NORTH_WEST;
+            height = -height;
+            top -= height;
+          }
+          break;
+        case ACTION_SOUTH_EAST:
+          if (aspectRatio) {
+            if (range.x >= 0 && (right >= maxWidth || bottom >= maxHeight)) {
+              renderable = false;
+              break;
+            }
+            check(ACTION_EAST);
+            width += range.x;
+            height = width / aspectRatio;
+          } else {
+            check(ACTION_SOUTH);
+            check(ACTION_EAST);
+            if (range.x >= 0) {
+              if (right < maxWidth) {
+                width += range.x;
+              } else if (range.y >= 0 && bottom >= maxHeight) {
+                renderable = false;
+              }
+            } else {
+              width += range.x;
+            }
+            if (range.y >= 0) {
+              if (bottom < maxHeight) {
+                height += range.y;
+              }
+            } else {
+              height += range.y;
+            }
+          }
+          if (width < 0 && height < 0) {
+            action = ACTION_NORTH_WEST;
+            height = -height;
+            width = -width;
+            top -= height;
+            left -= width;
+          } else if (width < 0) {
+            action = ACTION_SOUTH_WEST;
+            width = -width;
+            left -= width;
+          } else if (height < 0) {
+            action = ACTION_NORTH_EAST;
+            height = -height;
+            top -= height;
+          }
+          break;
+
+        // Move canvas
+        case ACTION_MOVE:
+          this.move(range.x, range.y);
+          renderable = false;
+          break;
+
+        // Zoom canvas
+        case ACTION_ZOOM:
+          this.zoom(getMaxZoomRatio(pointers), event);
+          renderable = false;
+          break;
+
+        // Create crop box
+        case ACTION_CROP:
+          if (!range.x || !range.y) {
+            renderable = false;
+            break;
+          }
+          offset = getOffset(this.cropper);
+          left = pointer.startX - offset.left;
+          top = pointer.startY - offset.top;
+          width = cropBoxData.minWidth;
+          height = cropBoxData.minHeight;
+          if (range.x > 0) {
+            action = range.y > 0 ? ACTION_SOUTH_EAST : ACTION_NORTH_EAST;
+          } else if (range.x < 0) {
+            left -= width;
+            action = range.y > 0 ? ACTION_SOUTH_WEST : ACTION_NORTH_WEST;
+          }
+          if (range.y < 0) {
+            top -= height;
+          }
+
+          // Show the crop box if is hidden
+          if (!this.cropped) {
+            removeClass(this.cropBox, CLASS_HIDDEN);
+            this.cropped = true;
+            if (this.limited) {
+              this.limitCropBox(true, true);
+            }
+          }
+          break;
+      }
+      if (renderable) {
+        cropBoxData.width = width;
+        cropBoxData.height = height;
+        cropBoxData.left = left;
+        cropBoxData.top = top;
+        this.action = action;
+        this.renderCropBox();
+      }
+
+      // Override
+      forEach(pointers, function (p) {
+        p.startX = p.endX;
+        p.startY = p.endY;
+      });
+    }
+  };
+
+  var methods = {
+    // Show the crop box manually
+    crop: function crop() {
+      if (this.ready && !this.cropped && !this.disabled) {
+        this.cropped = true;
+        this.limitCropBox(true, true);
+        if (this.options.modal) {
+          addClass(this.dragBox, CLASS_MODAL);
+        }
+        removeClass(this.cropBox, CLASS_HIDDEN);
+        this.setCropBoxData(this.initialCropBoxData);
+      }
+      return this;
+    },
+    // Reset the image and crop box to their initial states
+    reset: function reset() {
+      if (this.ready && !this.disabled) {
+        this.imageData = assign({}, this.initialImageData);
+        this.canvasData = assign({}, this.initialCanvasData);
+        this.cropBoxData = assign({}, this.initialCropBoxData);
+        this.renderCanvas();
+        if (this.cropped) {
+          this.renderCropBox();
+        }
+      }
+      return this;
+    },
+    // Clear the crop box
+    clear: function clear() {
+      if (this.cropped && !this.disabled) {
+        assign(this.cropBoxData, {
+          left: 0,
+          top: 0,
+          width: 0,
+          height: 0
+        });
+        this.cropped = false;
+        this.renderCropBox();
+        this.limitCanvas(true, true);
+
+        // Render canvas after crop box rendered
+        this.renderCanvas();
+        removeClass(this.dragBox, CLASS_MODAL);
+        addClass(this.cropBox, CLASS_HIDDEN);
+      }
+      return this;
+    },
+    /**
+     * Replace the image's src and rebuild the cropper
+     * @param {string} url - The new URL.
+     * @param {boolean} [hasSameSize] - Indicate if the new image has the same size as the old one.
+     * @returns {Cropper} this
+     */
+    replace: function replace(url) {
+      var hasSameSize = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      if (!this.disabled && url) {
+        if (this.isImg) {
+          this.element.src = url;
+        }
+        if (hasSameSize) {
+          this.url = url;
+          this.image.src = url;
+          if (this.ready) {
+            this.viewBoxImage.src = url;
+            forEach(this.previews, function (element) {
+              element.getElementsByTagName('img')[0].src = url;
+            });
+          }
+        } else {
+          if (this.isImg) {
+            this.replaced = true;
+          }
+          this.options.data = null;
+          this.uncreate();
+          this.load(url);
+        }
+      }
+      return this;
+    },
+    // Enable (unfreeze) the cropper
+    enable: function enable() {
+      if (this.ready && this.disabled) {
+        this.disabled = false;
+        removeClass(this.cropper, CLASS_DISABLED);
+      }
+      return this;
+    },
+    // Disable (freeze) the cropper
+    disable: function disable() {
+      if (this.ready && !this.disabled) {
+        this.disabled = true;
+        addClass(this.cropper, CLASS_DISABLED);
+      }
+      return this;
+    },
+    /**
+     * Destroy the cropper and remove the instance from the image
+     * @returns {Cropper} this
+     */
+    destroy: function destroy() {
+      var element = this.element;
+      if (!element[NAMESPACE]) {
+        return this;
+      }
+      element[NAMESPACE] = undefined;
+      if (this.isImg && this.replaced) {
+        element.src = this.originalUrl;
+      }
+      this.uncreate();
+      return this;
+    },
+    /**
+     * Move the canvas with relative offsets
+     * @param {number} offsetX - The relative offset distance on the x-axis.
+     * @param {number} [offsetY=offsetX] - The relative offset distance on the y-axis.
+     * @returns {Cropper} this
+     */
+    move: function move(offsetX) {
+      var offsetY = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : offsetX;
+      var _this$canvasData = this.canvasData,
+        left = _this$canvasData.left,
+        top = _this$canvasData.top;
+      return this.moveTo(isUndefined(offsetX) ? offsetX : left + Number(offsetX), isUndefined(offsetY) ? offsetY : top + Number(offsetY));
+    },
+    /**
+     * Move the canvas to an absolute point
+     * @param {number} x - The x-axis coordinate.
+     * @param {number} [y=x] - The y-axis coordinate.
+     * @returns {Cropper} this
+     */
+    moveTo: function moveTo(x) {
+      var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : x;
+      var canvasData = this.canvasData;
+      var changed = false;
+      x = Number(x);
+      y = Number(y);
+      if (this.ready && !this.disabled && this.options.movable) {
+        if (isNumber(x)) {
+          canvasData.left = x;
+          changed = true;
+        }
+        if (isNumber(y)) {
+          canvasData.top = y;
+          changed = true;
+        }
+        if (changed) {
+          this.renderCanvas(true);
+        }
+      }
+      return this;
+    },
+    /**
+     * Zoom the canvas with a relative ratio
+     * @param {number} ratio - The target ratio.
+     * @param {Event} _originalEvent - The original event if any.
+     * @returns {Cropper} this
+     */
+    zoom: function zoom(ratio, _originalEvent) {
+      var canvasData = this.canvasData;
+      ratio = Number(ratio);
+      if (ratio < 0) {
+        ratio = 1 / (1 - ratio);
+      } else {
+        ratio = 1 + ratio;
+      }
+      return this.zoomTo(canvasData.width * ratio / canvasData.naturalWidth, null, _originalEvent);
+    },
+    /**
+     * Zoom the canvas to an absolute ratio
+     * @param {number} ratio - The target ratio.
+     * @param {Object} pivot - The zoom pivot point coordinate.
+     * @param {Event} _originalEvent - The original event if any.
+     * @returns {Cropper} this
+     */
+    zoomTo: function zoomTo(ratio, pivot, _originalEvent) {
+      var options = this.options,
+        canvasData = this.canvasData;
+      var width = canvasData.width,
+        height = canvasData.height,
+        naturalWidth = canvasData.naturalWidth,
+        naturalHeight = canvasData.naturalHeight;
+      ratio = Number(ratio);
+      if (ratio >= 0 && this.ready && !this.disabled && options.zoomable) {
+        var newWidth = naturalWidth * ratio;
+        var newHeight = naturalHeight * ratio;
+        if (dispatchEvent(this.element, EVENT_ZOOM, {
+          ratio: ratio,
+          oldRatio: width / naturalWidth,
+          originalEvent: _originalEvent
+        }) === false) {
+          return this;
+        }
+        if (_originalEvent) {
+          var pointers = this.pointers;
+          var offset = getOffset(this.cropper);
+          var center = pointers && Object.keys(pointers).length ? getPointersCenter(pointers) : {
+            pageX: _originalEvent.pageX,
+            pageY: _originalEvent.pageY
+          };
+
+          // Zoom from the triggering point of the event
+          canvasData.left -= (newWidth - width) * ((center.pageX - offset.left - canvasData.left) / width);
+          canvasData.top -= (newHeight - height) * ((center.pageY - offset.top - canvasData.top) / height);
+        } else if (isPlainObject(pivot) && isNumber(pivot.x) && isNumber(pivot.y)) {
+          canvasData.left -= (newWidth - width) * ((pivot.x - canvasData.left) / width);
+          canvasData.top -= (newHeight - height) * ((pivot.y - canvasData.top) / height);
+        } else {
+          // Zoom from the center of the canvas
+          canvasData.left -= (newWidth - width) / 2;
+          canvasData.top -= (newHeight - height) / 2;
+        }
+        canvasData.width = newWidth;
+        canvasData.height = newHeight;
+        this.renderCanvas(true);
+      }
+      return this;
+    },
+    /**
+     * Rotate the canvas with a relative degree
+     * @param {number} degree - The rotate degree.
+     * @returns {Cropper} this
+     */
+    rotate: function rotate(degree) {
+      return this.rotateTo((this.imageData.rotate || 0) + Number(degree));
+    },
+    /**
+     * Rotate the canvas to an absolute degree
+     * @param {number} degree - The rotate degree.
+     * @returns {Cropper} this
+     */
+    rotateTo: function rotateTo(degree) {
+      degree = Number(degree);
+      if (isNumber(degree) && this.ready && !this.disabled && this.options.rotatable) {
+        this.imageData.rotate = degree % 360;
+        this.renderCanvas(true, true);
+      }
+      return this;
+    },
+    /**
+     * Scale the image on the x-axis.
+     * @param {number} scaleX - The scale ratio on the x-axis.
+     * @returns {Cropper} this
+     */
+    scaleX: function scaleX(_scaleX) {
+      var scaleY = this.imageData.scaleY;
+      return this.scale(_scaleX, isNumber(scaleY) ? scaleY : 1);
+    },
+    /**
+     * Scale the image on the y-axis.
+     * @param {number} scaleY - The scale ratio on the y-axis.
+     * @returns {Cropper} this
+     */
+    scaleY: function scaleY(_scaleY) {
+      var scaleX = this.imageData.scaleX;
+      return this.scale(isNumber(scaleX) ? scaleX : 1, _scaleY);
+    },
+    /**
+     * Scale the image
+     * @param {number} scaleX - The scale ratio on the x-axis.
+     * @param {number} [scaleY=scaleX] - The scale ratio on the y-axis.
+     * @returns {Cropper} this
+     */
+    scale: function scale(scaleX) {
+      var scaleY = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : scaleX;
+      var imageData = this.imageData;
+      var transformed = false;
+      scaleX = Number(scaleX);
+      scaleY = Number(scaleY);
+      if (this.ready && !this.disabled && this.options.scalable) {
+        if (isNumber(scaleX)) {
+          imageData.scaleX = scaleX;
+          transformed = true;
+        }
+        if (isNumber(scaleY)) {
+          imageData.scaleY = scaleY;
+          transformed = true;
+        }
+        if (transformed) {
+          this.renderCanvas(true, true);
+        }
+      }
+      return this;
+    },
+    /**
+     * Get the cropped area position and size data (base on the original image)
+     * @param {boolean} [rounded=false] - Indicate if round the data values or not.
+     * @returns {Object} The result cropped data.
+     */
+    getData: function getData() {
+      var rounded = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+      var options = this.options,
+        imageData = this.imageData,
+        canvasData = this.canvasData,
+        cropBoxData = this.cropBoxData;
+      var data;
+      if (this.ready && this.cropped) {
+        data = {
+          x: cropBoxData.left - canvasData.left,
+          y: cropBoxData.top - canvasData.top,
+          width: cropBoxData.width,
+          height: cropBoxData.height
+        };
+        var ratio = imageData.width / imageData.naturalWidth;
+        forEach(data, function (n, i) {
+          data[i] = n / ratio;
+        });
+        if (rounded) {
+          // In case rounding off leads to extra 1px in right or bottom border
+          // we should round the top-left corner and the dimension (#343).
+          var bottom = Math.round(data.y + data.height);
+          var right = Math.round(data.x + data.width);
+          data.x = Math.round(data.x);
+          data.y = Math.round(data.y);
+          data.width = right - data.x;
+          data.height = bottom - data.y;
+        }
+      } else {
+        data = {
+          x: 0,
+          y: 0,
+          width: 0,
+          height: 0
+        };
+      }
+      if (options.rotatable) {
+        data.rotate = imageData.rotate || 0;
+      }
+      if (options.scalable) {
+        data.scaleX = imageData.scaleX || 1;
+        data.scaleY = imageData.scaleY || 1;
+      }
+      return data;
+    },
+    /**
+     * Set the cropped area position and size with new data
+     * @param {Object} data - The new data.
+     * @returns {Cropper} this
+     */
+    setData: function setData(data) {
+      var options = this.options,
+        imageData = this.imageData,
+        canvasData = this.canvasData;
+      var cropBoxData = {};
+      if (this.ready && !this.disabled && isPlainObject(data)) {
+        var transformed = false;
+        if (options.rotatable) {
+          if (isNumber(data.rotate) && data.rotate !== imageData.rotate) {
+            imageData.rotate = data.rotate;
+            transformed = true;
+          }
+        }
+        if (options.scalable) {
+          if (isNumber(data.scaleX) && data.scaleX !== imageData.scaleX) {
+            imageData.scaleX = data.scaleX;
+            transformed = true;
+          }
+          if (isNumber(data.scaleY) && data.scaleY !== imageData.scaleY) {
+            imageData.scaleY = data.scaleY;
+            transformed = true;
+          }
+        }
+        if (transformed) {
+          this.renderCanvas(true, true);
+        }
+        var ratio = imageData.width / imageData.naturalWidth;
+        if (isNumber(data.x)) {
+          cropBoxData.left = data.x * ratio + canvasData.left;
+        }
+        if (isNumber(data.y)) {
+          cropBoxData.top = data.y * ratio + canvasData.top;
+        }
+        if (isNumber(data.width)) {
+          cropBoxData.width = data.width * ratio;
+        }
+        if (isNumber(data.height)) {
+          cropBoxData.height = data.height * ratio;
+        }
+        this.setCropBoxData(cropBoxData);
+      }
+      return this;
+    },
+    /**
+     * Get the container size data.
+     * @returns {Object} The result container data.
+     */
+    getContainerData: function getContainerData() {
+      return this.ready ? assign({}, this.containerData) : {};
+    },
+    /**
+     * Get the image position and size data.
+     * @returns {Object} The result image data.
+     */
+    getImageData: function getImageData() {
+      return this.sized ? assign({}, this.imageData) : {};
+    },
+    /**
+     * Get the canvas position and size data.
+     * @returns {Object} The result canvas data.
+     */
+    getCanvasData: function getCanvasData() {
+      var canvasData = this.canvasData;
+      var data = {};
+      if (this.ready) {
+        forEach(['left', 'top', 'width', 'height', 'naturalWidth', 'naturalHeight'], function (n) {
+          data[n] = canvasData[n];
+        });
+      }
+      return data;
+    },
+    /**
+     * Set the canvas position and size with new data.
+     * @param {Object} data - The new canvas data.
+     * @returns {Cropper} this
+     */
+    setCanvasData: function setCanvasData(data) {
+      var canvasData = this.canvasData;
+      var aspectRatio = canvasData.aspectRatio;
+      if (this.ready && !this.disabled && isPlainObject(data)) {
+        if (isNumber(data.left)) {
+          canvasData.left = data.left;
+        }
+        if (isNumber(data.top)) {
+          canvasData.top = data.top;
+        }
+        if (isNumber(data.width)) {
+          canvasData.width = data.width;
+          canvasData.height = data.width / aspectRatio;
+        } else if (isNumber(data.height)) {
+          canvasData.height = data.height;
+          canvasData.width = data.height * aspectRatio;
+        }
+        this.renderCanvas(true);
+      }
+      return this;
+    },
+    /**
+     * Get the crop box position and size data.
+     * @returns {Object} The result crop box data.
+     */
+    getCropBoxData: function getCropBoxData() {
+      var cropBoxData = this.cropBoxData;
+      var data;
+      if (this.ready && this.cropped) {
+        data = {
+          left: cropBoxData.left,
+          top: cropBoxData.top,
+          width: cropBoxData.width,
+          height: cropBoxData.height
+        };
+      }
+      return data || {};
+    },
+    /**
+     * Set the crop box position and size with new data.
+     * @param {Object} data - The new crop box data.
+     * @returns {Cropper} this
+     */
+    setCropBoxData: function setCropBoxData(data) {
+      var cropBoxData = this.cropBoxData;
+      var aspectRatio = this.options.aspectRatio;
+      var widthChanged;
+      var heightChanged;
+      if (this.ready && this.cropped && !this.disabled && isPlainObject(data)) {
+        if (isNumber(data.left)) {
+          cropBoxData.left = data.left;
+        }
+        if (isNumber(data.top)) {
+          cropBoxData.top = data.top;
+        }
+        if (isNumber(data.width) && data.width !== cropBoxData.width) {
+          widthChanged = true;
+          cropBoxData.width = data.width;
+        }
+        if (isNumber(data.height) && data.height !== cropBoxData.height) {
+          heightChanged = true;
+          cropBoxData.height = data.height;
+        }
+        if (aspectRatio) {
+          if (widthChanged) {
+            cropBoxData.height = cropBoxData.width / aspectRatio;
+          } else if (heightChanged) {
+            cropBoxData.width = cropBoxData.height * aspectRatio;
+          }
+        }
+        this.renderCropBox();
+      }
+      return this;
+    },
+    /**
+     * Get a canvas drawn the cropped image.
+     * @param {Object} [options={}] - The config options.
+     * @returns {HTMLCanvasElement} - The result canvas.
+     */
+    getCroppedCanvas: function getCroppedCanvas() {
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      if (!this.ready || !window.HTMLCanvasElement) {
+        return null;
+      }
+      var canvasData = this.canvasData;
+      var source = getSourceCanvas(this.image, this.imageData, canvasData, options);
+
+      // Returns the source canvas if it is not cropped.
+      if (!this.cropped) {
+        return source;
+      }
+      var _this$getData = this.getData(),
+        initialX = _this$getData.x,
+        initialY = _this$getData.y,
+        initialWidth = _this$getData.width,
+        initialHeight = _this$getData.height;
+      var ratio = source.width / Math.floor(canvasData.naturalWidth);
+      if (ratio !== 1) {
+        initialX *= ratio;
+        initialY *= ratio;
+        initialWidth *= ratio;
+        initialHeight *= ratio;
+      }
+      var aspectRatio = initialWidth / initialHeight;
+      var maxSizes = getAdjustedSizes({
+        aspectRatio: aspectRatio,
+        width: options.maxWidth || Infinity,
+        height: options.maxHeight || Infinity
+      });
+      var minSizes = getAdjustedSizes({
+        aspectRatio: aspectRatio,
+        width: options.minWidth || 0,
+        height: options.minHeight || 0
+      }, 'cover');
+      var _getAdjustedSizes = getAdjustedSizes({
+          aspectRatio: aspectRatio,
+          width: options.width || (ratio !== 1 ? source.width : initialWidth),
+          height: options.height || (ratio !== 1 ? source.height : initialHeight)
+        }),
+        width = _getAdjustedSizes.width,
+        height = _getAdjustedSizes.height;
+      width = Math.min(maxSizes.width, Math.max(minSizes.width, width));
+      height = Math.min(maxSizes.height, Math.max(minSizes.height, height));
+      var canvas = document.createElement('canvas');
+      var context = canvas.getContext('2d');
+      canvas.width = normalizeDecimalNumber(width);
+      canvas.height = normalizeDecimalNumber(height);
+      context.fillStyle = options.fillColor || 'transparent';
+      context.fillRect(0, 0, width, height);
+      var _options$imageSmoothi = options.imageSmoothingEnabled,
+        imageSmoothingEnabled = _options$imageSmoothi === void 0 ? true : _options$imageSmoothi,
+        imageSmoothingQuality = options.imageSmoothingQuality;
+      context.imageSmoothingEnabled = imageSmoothingEnabled;
+      if (imageSmoothingQuality) {
+        context.imageSmoothingQuality = imageSmoothingQuality;
+      }
+
+      // https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D.drawImage
+      var sourceWidth = source.width;
+      var sourceHeight = source.height;
+
+      // Source canvas parameters
+      var srcX = initialX;
+      var srcY = initialY;
+      var srcWidth;
+      var srcHeight;
+
+      // Destination canvas parameters
+      var dstX;
+      var dstY;
+      var dstWidth;
+      var dstHeight;
+      if (srcX <= -initialWidth || srcX > sourceWidth) {
+        srcX = 0;
+        srcWidth = 0;
+        dstX = 0;
+        dstWidth = 0;
+      } else if (srcX <= 0) {
+        dstX = -srcX;
+        srcX = 0;
+        srcWidth = Math.min(sourceWidth, initialWidth + srcX);
+        dstWidth = srcWidth;
+      } else if (srcX <= sourceWidth) {
+        dstX = 0;
+        srcWidth = Math.min(initialWidth, sourceWidth - srcX);
+        dstWidth = srcWidth;
+      }
+      if (srcWidth <= 0 || srcY <= -initialHeight || srcY > sourceHeight) {
+        srcY = 0;
+        srcHeight = 0;
+        dstY = 0;
+        dstHeight = 0;
+      } else if (srcY <= 0) {
+        dstY = -srcY;
+        srcY = 0;
+        srcHeight = Math.min(sourceHeight, initialHeight + srcY);
+        dstHeight = srcHeight;
+      } else if (srcY <= sourceHeight) {
+        dstY = 0;
+        srcHeight = Math.min(initialHeight, sourceHeight - srcY);
+        dstHeight = srcHeight;
+      }
+      var params = [srcX, srcY, srcWidth, srcHeight];
+
+      // Avoid "IndexSizeError"
+      if (dstWidth > 0 && dstHeight > 0) {
+        var scale = width / initialWidth;
+        params.push(dstX * scale, dstY * scale, dstWidth * scale, dstHeight * scale);
+      }
+
+      // All the numerical parameters should be integer for `drawImage`
+      // https://github.com/fengyuanchen/cropper/issues/476
+      context.drawImage.apply(context, [source].concat(_toConsumableArray(params.map(function (param) {
+        return Math.floor(normalizeDecimalNumber(param));
+      }))));
+      return canvas;
+    },
+    /**
+     * Change the aspect ratio of the crop box.
+     * @param {number} aspectRatio - The new aspect ratio.
+     * @returns {Cropper} this
+     */
+    setAspectRatio: function setAspectRatio(aspectRatio) {
+      var options = this.options;
+      if (!this.disabled && !isUndefined(aspectRatio)) {
+        // 0 -> NaN
+        options.aspectRatio = Math.max(0, aspectRatio) || NaN;
+        if (this.ready) {
+          this.initCropBox();
+          if (this.cropped) {
+            this.renderCropBox();
+          }
+        }
+      }
+      return this;
+    },
+    /**
+     * Change the drag mode.
+     * @param {string} mode - The new drag mode.
+     * @returns {Cropper} this
+     */
+    setDragMode: function setDragMode(mode) {
+      var options = this.options,
+        dragBox = this.dragBox,
+        face = this.face;
+      if (this.ready && !this.disabled) {
+        var croppable = mode === DRAG_MODE_CROP;
+        var movable = options.movable && mode === DRAG_MODE_MOVE;
+        mode = croppable || movable ? mode : DRAG_MODE_NONE;
+        options.dragMode = mode;
+        setData(dragBox, DATA_ACTION, mode);
+        toggleClass(dragBox, CLASS_CROP, croppable);
+        toggleClass(dragBox, CLASS_MOVE, movable);
+        if (!options.cropBoxMovable) {
+          // Sync drag mode to crop box when it is not movable
+          setData(face, DATA_ACTION, mode);
+          toggleClass(face, CLASS_CROP, croppable);
+          toggleClass(face, CLASS_MOVE, movable);
+        }
+      }
+      return this;
+    }
+  };
+
+  var AnotherCropper = WINDOW.Cropper;
+  var Cropper = /*#__PURE__*/function () {
+    /**
+     * Create a new Cropper.
+     * @param {Element} element - The target element for cropping.
+     * @param {Object} [options={}] - The configuration options.
+     */
+    function Cropper(element) {
+      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      _classCallCheck(this, Cropper);
+      if (!element || !REGEXP_TAG_NAME.test(element.tagName)) {
+        throw new Error('The first argument is required and must be an <img> or <canvas> element.');
+      }
+      this.element = element;
+      this.options = assign({}, DEFAULTS, isPlainObject(options) && options);
+      this.cropped = false;
+      this.disabled = false;
+      this.pointers = {};
+      this.ready = false;
+      this.reloading = false;
+      this.replaced = false;
+      this.sized = false;
+      this.sizing = false;
+      this.init();
+    }
+    _createClass(Cropper, [{
+      key: "init",
+      value: function init() {
+        var element = this.element;
+        var tagName = element.tagName.toLowerCase();
+        var url;
+        if (element[NAMESPACE]) {
+          return;
+        }
+        element[NAMESPACE] = this;
+        if (tagName === 'img') {
+          this.isImg = true;
+
+          // e.g.: "img/picture.jpg"
+          url = element.getAttribute('src') || '';
+          this.originalUrl = url;
+
+          // Stop when it's a blank image
+          if (!url) {
+            return;
+          }
+
+          // e.g.: "https://example.com/img/picture.jpg"
+          url = element.src;
+        } else if (tagName === 'canvas' && window.HTMLCanvasElement) {
+          url = element.toDataURL();
+        }
+        this.load(url);
+      }
+    }, {
+      key: "load",
+      value: function load(url) {
+        var _this = this;
+        if (!url) {
+          return;
+        }
+        this.url = url;
+        this.imageData = {};
+        var element = this.element,
+          options = this.options;
+        if (!options.rotatable && !options.scalable) {
+          options.checkOrientation = false;
+        }
+
+        // Only IE10+ supports Typed Arrays
+        if (!options.checkOrientation || !window.ArrayBuffer) {
+          this.clone();
+          return;
+        }
+
+        // Detect the mime type of the image directly if it is a Data URL
+        if (REGEXP_DATA_URL.test(url)) {
+          // Read ArrayBuffer from Data URL of JPEG images directly for better performance
+          if (REGEXP_DATA_URL_JPEG.test(url)) {
+            this.read(dataURLToArrayBuffer(url));
+          } else {
+            // Only a JPEG image may contains Exif Orientation information,
+            // the rest types of Data URLs are not necessary to check orientation at all.
+            this.clone();
+          }
+          return;
+        }
+
+        // 1. Detect the mime type of the image by a XMLHttpRequest.
+        // 2. Load the image as ArrayBuffer for reading orientation if its a JPEG image.
+        var xhr = new XMLHttpRequest();
+        var clone = this.clone.bind(this);
+        this.reloading = true;
+        this.xhr = xhr;
+
+        // 1. Cross origin requests are only supported for protocol schemes:
+        // http, https, data, chrome, chrome-extension.
+        // 2. Access to XMLHttpRequest from a Data URL will be blocked by CORS policy
+        // in some browsers as IE11 and Safari.
+        xhr.onabort = clone;
+        xhr.onerror = clone;
+        xhr.ontimeout = clone;
+        xhr.onprogress = function () {
+          // Abort the request directly if it not a JPEG image for better performance
+          if (xhr.getResponseHeader('content-type') !== MIME_TYPE_JPEG) {
+            xhr.abort();
+          }
+        };
+        xhr.onload = function () {
+          _this.read(xhr.response);
+        };
+        xhr.onloadend = function () {
+          _this.reloading = false;
+          _this.xhr = null;
+        };
+
+        // Bust cache when there is a "crossOrigin" property to avoid browser cache error
+        if (options.checkCrossOrigin && isCrossOriginURL(url) && element.crossOrigin) {
+          url = addTimestamp(url);
+        }
+
+        // The third parameter is required for avoiding side-effect (#682)
+        xhr.open('GET', url, true);
+        xhr.responseType = 'arraybuffer';
+        xhr.withCredentials = element.crossOrigin === 'use-credentials';
+        xhr.send();
+      }
+    }, {
+      key: "read",
+      value: function read(arrayBuffer) {
+        var options = this.options,
+          imageData = this.imageData;
+
+        // Reset the orientation value to its default value 1
+        // as some iOS browsers will render image with its orientation
+        var orientation = resetAndGetOrientation(arrayBuffer);
+        var rotate = 0;
+        var scaleX = 1;
+        var scaleY = 1;
+        if (orientation > 1) {
+          // Generate a new URL which has the default orientation value
+          this.url = arrayBufferToDataURL(arrayBuffer, MIME_TYPE_JPEG);
+          var _parseOrientation = parseOrientation(orientation);
+          rotate = _parseOrientation.rotate;
+          scaleX = _parseOrientation.scaleX;
+          scaleY = _parseOrientation.scaleY;
+        }
+        if (options.rotatable) {
+          imageData.rotate = rotate;
+        }
+        if (options.scalable) {
+          imageData.scaleX = scaleX;
+          imageData.scaleY = scaleY;
+        }
+        this.clone();
+      }
+    }, {
+      key: "clone",
+      value: function clone() {
+        var element = this.element,
+          url = this.url;
+        var crossOrigin = element.crossOrigin;
+        var crossOriginUrl = url;
+        if (this.options.checkCrossOrigin && isCrossOriginURL(url)) {
+          if (!crossOrigin) {
+            crossOrigin = 'anonymous';
+          }
+
+          // Bust cache when there is not a "crossOrigin" property (#519)
+          crossOriginUrl = addTimestamp(url);
+        }
+        this.crossOrigin = crossOrigin;
+        this.crossOriginUrl = crossOriginUrl;
+        var image = document.createElement('img');
+        if (crossOrigin) {
+          image.crossOrigin = crossOrigin;
+        }
+        image.src = crossOriginUrl || url;
+        image.alt = element.alt || 'The image to crop';
+        this.image = image;
+        image.onload = this.start.bind(this);
+        image.onerror = this.stop.bind(this);
+        addClass(image, CLASS_HIDE);
+        element.parentNode.insertBefore(image, element.nextSibling);
+      }
+    }, {
+      key: "start",
+      value: function start() {
+        var _this2 = this;
+        var image = this.image;
+        image.onload = null;
+        image.onerror = null;
+        this.sizing = true;
+
+        // Match all browsers that use WebKit as the layout engine in iOS devices,
+        // such as Safari for iOS, Chrome for iOS, and in-app browsers.
+        var isIOSWebKit = WINDOW.navigator && /(?:iPad|iPhone|iPod).*?AppleWebKit/i.test(WINDOW.navigator.userAgent);
+        var done = function done(naturalWidth, naturalHeight) {
+          assign(_this2.imageData, {
+            naturalWidth: naturalWidth,
+            naturalHeight: naturalHeight,
+            aspectRatio: naturalWidth / naturalHeight
+          });
+          _this2.initialImageData = assign({}, _this2.imageData);
+          _this2.sizing = false;
+          _this2.sized = true;
+          _this2.build();
+        };
+
+        // Most modern browsers (excepts iOS WebKit)
+        if (image.naturalWidth && !isIOSWebKit) {
+          done(image.naturalWidth, image.naturalHeight);
+          return;
+        }
+        var sizingImage = document.createElement('img');
+        var body = document.body || document.documentElement;
+        this.sizingImage = sizingImage;
+        sizingImage.onload = function () {
+          done(sizingImage.width, sizingImage.height);
+          if (!isIOSWebKit) {
+            body.removeChild(sizingImage);
+          }
+        };
+        sizingImage.src = image.src;
+
+        // iOS WebKit will convert the image automatically
+        // with its orientation once append it into DOM (#279)
+        if (!isIOSWebKit) {
+          sizingImage.style.cssText = 'left:0;' + 'max-height:none!important;' + 'max-width:none!important;' + 'min-height:0!important;' + 'min-width:0!important;' + 'opacity:0;' + 'position:absolute;' + 'top:0;' + 'z-index:-1;';
+          body.appendChild(sizingImage);
+        }
+      }
+    }, {
+      key: "stop",
+      value: function stop() {
+        var image = this.image;
+        image.onload = null;
+        image.onerror = null;
+        image.parentNode.removeChild(image);
+        this.image = null;
+      }
+    }, {
+      key: "build",
+      value: function build() {
+        if (!this.sized || this.ready) {
+          return;
+        }
+        var element = this.element,
+          options = this.options,
+          image = this.image;
+
+        // Create cropper elements
+        var container = element.parentNode;
+        var template = document.createElement('div');
+        template.innerHTML = TEMPLATE;
+        var cropper = template.querySelector(".".concat(NAMESPACE, "-container"));
+        var canvas = cropper.querySelector(".".concat(NAMESPACE, "-canvas"));
+        var dragBox = cropper.querySelector(".".concat(NAMESPACE, "-drag-box"));
+        var cropBox = cropper.querySelector(".".concat(NAMESPACE, "-crop-box"));
+        var face = cropBox.querySelector(".".concat(NAMESPACE, "-face"));
+        this.container = container;
+        this.cropper = cropper;
+        this.canvas = canvas;
+        this.dragBox = dragBox;
+        this.cropBox = cropBox;
+        this.viewBox = cropper.querySelector(".".concat(NAMESPACE, "-view-box"));
+        this.face = face;
+        canvas.appendChild(image);
+
+        // Hide the original image
+        addClass(element, CLASS_HIDDEN);
+
+        // Inserts the cropper after to the current image
+        container.insertBefore(cropper, element.nextSibling);
+
+        // Show the hidden image
+        removeClass(image, CLASS_HIDE);
+        this.initPreview();
+        this.bind();
+        options.initialAspectRatio = Math.max(0, options.initialAspectRatio) || NaN;
+        options.aspectRatio = Math.max(0, options.aspectRatio) || NaN;
+        options.viewMode = Math.max(0, Math.min(3, Math.round(options.viewMode))) || 0;
+        addClass(cropBox, CLASS_HIDDEN);
+        if (!options.guides) {
+          addClass(cropBox.getElementsByClassName("".concat(NAMESPACE, "-dashed")), CLASS_HIDDEN);
+        }
+        if (!options.center) {
+          addClass(cropBox.getElementsByClassName("".concat(NAMESPACE, "-center")), CLASS_HIDDEN);
+        }
+        if (options.background) {
+          addClass(cropper, "".concat(NAMESPACE, "-bg"));
+        }
+        if (!options.highlight) {
+          addClass(face, CLASS_INVISIBLE);
+        }
+        if (options.cropBoxMovable) {
+          addClass(face, CLASS_MOVE);
+          setData(face, DATA_ACTION, ACTION_ALL);
+        }
+        if (!options.cropBoxResizable) {
+          addClass(cropBox.getElementsByClassName("".concat(NAMESPACE, "-line")), CLASS_HIDDEN);
+          addClass(cropBox.getElementsByClassName("".concat(NAMESPACE, "-point")), CLASS_HIDDEN);
+        }
+        this.render();
+        this.ready = true;
+        this.setDragMode(options.dragMode);
+        if (options.autoCrop) {
+          this.crop();
+        }
+        this.setData(options.data);
+        if (isFunction(options.ready)) {
+          addListener(element, EVENT_READY, options.ready, {
+            once: true
+          });
+        }
+        dispatchEvent(element, EVENT_READY);
+      }
+    }, {
+      key: "unbuild",
+      value: function unbuild() {
+        if (!this.ready) {
+          return;
+        }
+        this.ready = false;
+        this.unbind();
+        this.resetPreview();
+        var parentNode = this.cropper.parentNode;
+        if (parentNode) {
+          parentNode.removeChild(this.cropper);
+        }
+        removeClass(this.element, CLASS_HIDDEN);
+      }
+    }, {
+      key: "uncreate",
+      value: function uncreate() {
+        if (this.ready) {
+          this.unbuild();
+          this.ready = false;
+          this.cropped = false;
+        } else if (this.sizing) {
+          this.sizingImage.onload = null;
+          this.sizing = false;
+          this.sized = false;
+        } else if (this.reloading) {
+          this.xhr.onabort = null;
+          this.xhr.abort();
+        } else if (this.image) {
+          this.stop();
+        }
+      }
+
+      /**
+       * Get the no conflict cropper class.
+       * @returns {Cropper} The cropper class.
+       */
+    }], [{
+      key: "noConflict",
+      value: function noConflict() {
+        window.Cropper = AnotherCropper;
+        return Cropper;
+      }
+
+      /**
+       * Change the default options.
+       * @param {Object} options - The new default options.
+       */
+    }, {
+      key: "setDefaults",
+      value: function setDefaults(options) {
+        assign(DEFAULTS, isPlainObject(options) && options);
+      }
+    }]);
+    return Cropper;
+  }();
+  assign(Cropper.prototype, render, preview, events, handlers, change, methods);
+
+  return Cropper;
+
+}));
+
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+(() => {
+"use strict";
+/*!**************************************************************!*\
+  !*** ./platform/core/media/resources/assets/js/integrate.js ***!
+  \**************************************************************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   EditorService: () => (/* binding */ EditorService)
+/* harmony export */ });
+/* harmony import */ var _App_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App/Helpers/Helpers */ "./platform/core/media/resources/assets/js/App/Helpers/Helpers.js");
+/* harmony import */ var _App_Config_MediaConfig__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App/Config/MediaConfig */ "./platform/core/media/resources/assets/js/App/Config/MediaConfig.js");
+/* harmony import */ var _App_Services_ContextMenuService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App/Services/ContextMenuService */ "./platform/core/media/resources/assets/js/App/Services/ContextMenuService.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+
+
+
+var EditorService = /*#__PURE__*/function () {
+  function EditorService() {
+    _classCallCheck(this, EditorService);
+  }
+  _createClass(EditorService, null, [{
+    key: "editorSelectFile",
+    value: function editorSelectFile(selectedFiles) {
+      var is_ckeditor = _App_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_0__.Helpers.getUrlParam('CKEditor') || _App_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_0__.Helpers.getUrlParam('CKEditorFuncNum');
+      if (window.opener && is_ckeditor) {
+        var firstItem = _.first(selectedFiles);
+        window.opener.CKEDITOR.tools.callFunction(_App_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_0__.Helpers.getUrlParam('CKEditorFuncNum'), firstItem.full_url);
+        if (window.opener) {
+          window.close();
+        }
+      } else {
+        // No WYSIWYG editor found, use custom method.
+      }
+    }
+  }]);
+  return EditorService;
+}();
+var rvMedia = /*#__PURE__*/_createClass(function rvMedia(selector, options) {
+  _classCallCheck(this, rvMedia);
+  window.rvMedia = window.rvMedia || {};
+  var $body = $('body');
+  var defaultOptions = {
+    multiple: true,
+    type: '*',
+    onSelectFiles: function onSelectFiles(files, $el) {}
+  };
+  options = $.extend(true, defaultOptions, options);
+  var clickCallback = function clickCallback(event) {
+    event.preventDefault();
+    var $current = $(event.currentTarget);
+    $('#rv_media_modal').modal('show');
+    window.rvMedia.options = options;
+    window.rvMedia.options.open_in = 'modal';
+    window.rvMedia.$el = $current;
+    _App_Config_MediaConfig__WEBPACK_IMPORTED_MODULE_1__.MediaConfig.request_params.filter = 'everything';
+    _App_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_0__.Helpers.storeConfig();
+    var elementOptions = window.rvMedia.$el.data('rv-media');
+    if (typeof elementOptions !== 'undefined' && elementOptions.length > 0) {
+      elementOptions = elementOptions[0];
+      window.rvMedia.options = $.extend(true, window.rvMedia.options, elementOptions || {});
+      if (typeof elementOptions.selected_file_id !== 'undefined') {
+        window.rvMedia.options.is_popup = true;
+      } else if (typeof window.rvMedia.options.is_popup !== 'undefined') {
+        window.rvMedia.options.is_popup = undefined;
+      }
+    }
+    if ($('#rv_media_body .rv-media-container').length === 0) {
+      $('#rv_media_body').load(RV_MEDIA_URL.popup, function (data) {
+        if (data.error) {
+          alert(data.message);
+        }
+        $('#rv_media_body').removeClass('media-modal-loading').closest('.modal-content').removeClass('bb-loading');
+        $(document).find('.rv-media-container .js-change-action[data-type=refresh]').trigger('click');
+        if (_App_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_0__.Helpers.getRequestParams().filter !== 'everything') {
+          $('.rv-media-actions .btn.js-rv-media-change-filter-group.js-filter-by-type').hide();
+        }
+        _App_Services_ContextMenuService__WEBPACK_IMPORTED_MODULE_2__.ContextMenuService.destroyContext();
+        _App_Services_ContextMenuService__WEBPACK_IMPORTED_MODULE_2__.ContextMenuService.initContext();
+      });
+    } else {
+      $(document).find('.rv-media-container .js-change-action[data-type=refresh]').trigger('click');
+    }
+  };
+  if (typeof selector === 'string') {
+    $body.off('click', selector).on('click', selector, clickCallback);
+  } else {
+    selector.off('click').on('click', clickCallback);
+  }
+});
+window.RvMediaStandAlone = rvMedia;
+$('.js-insert-to-editor').off('click').on('click', function (event) {
+  event.preventDefault();
+  var selectedFiles = _App_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_0__.Helpers.getSelectedFiles();
+  if (_.size(selectedFiles) > 0) {
+    EditorService.editorSelectFile(selectedFiles);
+  }
+});
+$.fn.rvMedia = function (options) {
+  var $selector = $(this);
+  _App_Config_MediaConfig__WEBPACK_IMPORTED_MODULE_1__.MediaConfig.request_params.filter = 'everything';
+  $(document).find('.js-insert-to-editor').prop('disabled', _App_Config_MediaConfig__WEBPACK_IMPORTED_MODULE_1__.MediaConfig.request_params.view_in === 'trash');
+  _App_Helpers_Helpers__WEBPACK_IMPORTED_MODULE_0__.Helpers.storeConfig();
+  new rvMedia($selector, options);
+};
+})();
+
+/******/ })()
+;

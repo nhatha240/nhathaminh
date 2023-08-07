@@ -1,1 +1,56 @@
-(()=>{function o(e){return o="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(o){return typeof o}:function(o){return o&&"function"==typeof Symbol&&o.constructor===Symbol&&o!==Symbol.prototype?"symbol":typeof o},o(e)}function e(e,r){for(var t=0;t<r.length;t++){var n=r[t];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,(i=n.key,a=void 0,a=function(e,r){if("object"!==o(e)||null===e)return e;var t=e[Symbol.toPrimitive];if(void 0!==t){var n=t.call(e,r||"default");if("object"!==o(n))return n;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===r?String:Number)(e)}(i,"string"),"symbol"===o(a)?a:String(a)),n)}var i,a}var r=function(){function o(){!function(o,e){if(!(o instanceof e))throw new TypeError("Cannot call a class as a function")}(this,o)}var r,t,n;return r=o,(t=[{key:"init",value:function(){$(document).on("click",".approve-vendor-for-selling-button",(function(o){o.preventDefault(),$("#confirm-approve-vendor-for-selling-button").data("action",$(o.currentTarget).prop("href")),$("#approve-vendor-for-selling-modal").modal("show")})),$(document).on("click","#confirm-approve-vendor-for-selling-button",(function(o){o.preventDefault();var e=$(o.currentTarget);e.addClass("button-loading"),$.ajax({type:"POST",cache:!1,url:e.data("action"),success:function(o){o.error?Botble.showError(o.message):(Botble.showSuccess(o.message),window.location.href=route("marketplace.unverified-vendors.index")),e.removeClass("button-loading"),e.closest(".modal").modal("hide")},error:function(o){Botble.handleError(o),e.removeClass("button-loading")}})}))}}])&&e(r.prototype,t),n&&e(r,n),Object.defineProperty(r,"prototype",{writable:!1}),o}();$(document).ready((function(){(new r).init()}))})();
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+/*!********************************************************************************!*\
+  !*** ./platform/plugins/marketplace/resources/assets/js/marketplace-vendor.js ***!
+  \********************************************************************************/
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+var MarketplaceVendorManagement = /*#__PURE__*/function () {
+  function MarketplaceVendorManagement() {
+    _classCallCheck(this, MarketplaceVendorManagement);
+  }
+  _createClass(MarketplaceVendorManagement, [{
+    key: "init",
+    value: function init() {
+      $(document).on('click', '.approve-vendor-for-selling-button', function (event) {
+        event.preventDefault();
+        $('#confirm-approve-vendor-for-selling-button').data('action', $(event.currentTarget).prop('href'));
+        $('#approve-vendor-for-selling-modal').modal('show');
+      });
+      $(document).on('click', '#confirm-approve-vendor-for-selling-button', function (event) {
+        event.preventDefault();
+        var _self = $(event.currentTarget);
+        _self.addClass('button-loading');
+        $.ajax({
+          type: 'POST',
+          cache: false,
+          url: _self.data('action'),
+          success: function success(res) {
+            if (!res.error) {
+              Botble.showSuccess(res.message);
+              window.location.href = route('marketplace.unverified-vendors.index');
+            } else {
+              Botble.showError(res.message);
+            }
+            _self.removeClass('button-loading');
+            _self.closest('.modal').modal('hide');
+          },
+          error: function error(res) {
+            Botble.handleError(res);
+            _self.removeClass('button-loading');
+          }
+        });
+      });
+    }
+  }]);
+  return MarketplaceVendorManagement;
+}();
+$(document).ready(function () {
+  new MarketplaceVendorManagement().init();
+});
+/******/ })()
+;

@@ -13,18 +13,18 @@
 
 @section('content')
     <div id="main-settings">
-        <license-component
+        {{-- <license-component
             verify-url="{{ route('settings.license.verify') }}"
             activate-license-url="{{ route('settings.license.activate') }}"
             deactivate-license-url="{{ route('settings.license.deactivate') }}"
             reset-license-url="{{ route('settings.license.reset') }}"
             manage-license="{{ auth()->user()->hasPermission('core.manage.license') ? 'yes' : 'no' }}"
-        ></license-component>
+        ></license-component> --}}
     </div>
 
     <div class="max-width-1200">
         {!! Form::open(['route' => ['settings.edit']]) !!}
-            <x-core-setting::section
+            {{-- <x-core-setting::section
                 :title="trans('core/setting::setting.general.general_block')"
                 :description="trans('core/setting::setting.general.description')"
             >
@@ -67,7 +67,7 @@
                         {{ trans('core/setting::setting.general.enable_send_error_reporting_via_email') }}
                     </label>
                 </x-core-setting::form-group>
-            </x-core-setting::section>
+            </x-core-setting::section> --}}
 
             <x-core-setting::section
                 :title="trans('core/setting::setting.general.admin_appearance_title')"
@@ -105,14 +105,14 @@
                     ]"
                 />
 
-                <x-core-setting::radio
+                {{-- <x-core-setting::radio
                     name="rich_editor"
                     :label="trans('core/setting::setting.general.rich_editor')"
                     :value="BaseHelper::getRichEditor()"
                     :options="BaseHelper::availableRichEditors()"
-                />
+                /> --}}
 
-                <x-core-setting::select
+                {{-- <x-core-setting::select
                     name="default_admin_theme"
                     :label="trans('core/setting::setting.general.default_admin_theme')"
                     :options="array_map(fn($item) => Str::studly($item), array_combine(array_keys(Assets::getThemes()), array_keys(Assets::getThemes())))"
@@ -125,10 +125,10 @@
                         :label="trans('core/setting::setting.general.enable_change_admin_theme')"
                         :value="setting('enable_change_admin_theme')"
                     />
-                @endif
+                @endif --}}
             </x-core-setting::section>
 
-            <x-core-setting::section
+            {{-- <x-core-setting::section
                 :title="trans('core/setting::setting.general.cache_block')"
                 :description="trans('core/setting::setting.general.cache_description')"
             >
@@ -162,9 +162,8 @@
                     :label="trans('core/setting::setting.general.cache_admin_menu')"
                     :value="setting('cache_admin_menu_enable')"
                 />
-            </x-core-setting::section>
-
-            {!! apply_filters(BASE_FILTER_AFTER_SETTING_CONTENT, null) !!}
+            </x-core-setting::section> --}}
+            {{-- {!! apply_filters(BASE_FILTER_AFTER_SETTING_CONTENT, null) !!} --}}
 
             <div class="flexbox-annotated-section" style="border: none">
                 <div class="flexbox-annotated-section-annotation">&nbsp;</div>

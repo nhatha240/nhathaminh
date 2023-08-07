@@ -9,7 +9,7 @@ return [
     'active_success' => 'Activate theme :name successfully!',
     'active' => 'Active',
     'activated' => 'Activated',
-    'appearance' => 'Appearance',
+    'appearance' => 'cài đặt thông tin web site',
     'theme_options' => 'Theme options',
     'save_changes' => 'Save Changes',
     'developer_mode' => 'Developer Mode Enabled',

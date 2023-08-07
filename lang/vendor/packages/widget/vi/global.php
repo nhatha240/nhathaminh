@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'name' => 'Widgets',
+    'name' => 'Tiện ích',
     'create' => 'New widget',
     'edit' => 'Edit widget',
     'available' => 'Tiện ích có sẵn',

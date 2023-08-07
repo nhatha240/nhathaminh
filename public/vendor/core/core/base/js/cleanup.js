@@ -1,1 +1,46 @@
-(()=>{"use strict";$(document).ready((function(){$(document).on("click",".btn-trigger-cleanup",(function(e){e.preventDefault(),$("#cleanup-modal").modal("show")})),$(document).on("click","#cleanup-submit-action",(function(e){e.preventDefault(),e.stopPropagation();var o=$(e.currentTarget);o.addClass("button-loading");var a=$("#form-cleanup-database"),t=$("#cleanup-modal");$.ajax({type:"POST",cache:!1,url:a.prop("action"),data:new FormData(a[0]),contentType:!1,processData:!1,success:function(e){e.error?Botble.showError(e.message):Botble.showSuccess(e.message),o.removeClass("button-loading"),t.modal("hide")},error:function(e){o.removeClass("button-loading"),t.modal("hide"),Botble.handleError(e)}})}))}))})();
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+var __webpack_exports__ = {};
+/*!***********************************************************!*\
+  !*** ./platform/core/base/resources/assets/js/cleanup.js ***!
+  \***********************************************************/
+
+
+$(document).ready(function () {
+  $(document).on('click', '.btn-trigger-cleanup', function (event) {
+    event.preventDefault();
+    $('#cleanup-modal').modal('show');
+  });
+  $(document).on('click', '#cleanup-submit-action', function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    var _self = $(event.currentTarget);
+    _self.addClass('button-loading');
+    var $form = $('#form-cleanup-database');
+    var $modal = $('#cleanup-modal');
+    $.ajax({
+      type: 'POST',
+      cache: false,
+      url: $form.prop('action'),
+      data: new FormData($form[0]),
+      contentType: false,
+      processData: false,
+      success: function success(res) {
+        if (!res.error) {
+          Botble.showSuccess(res.message);
+        } else {
+          Botble.showError(res.message);
+        }
+        _self.removeClass('button-loading');
+        $modal.modal('hide');
+      },
+      error: function error(res) {
+        _self.removeClass('button-loading');
+        $modal.modal('hide');
+        Botble.handleError(res);
+      }
+    });
+  });
+});
+/******/ })()
+;

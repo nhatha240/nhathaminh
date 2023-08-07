@@ -1,1 +1,224 @@
-(()=>{function t(e){return t="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},t(e)}function e(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,a(r.key),r)}}function n(t,e,n){return(e=a(e))in t?Object.defineProperty(t,e,{value:n,enumerable:!0,configurable:!0,writable:!0}):t[e]=n,t}function a(e){var n=function(e,n){if("object"!==t(e)||null===e)return e;var a=e[Symbol.toPrimitive];if(void 0!==a){var r=a.call(e,n||"default");if("object"!==t(r))return r;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===n?String:Number)(e)}(e,"string");return"symbol"===t(n)?n:String(n)}var r=function(){function t(){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,t),n(this,"callAjax",(function(t,e,n){var a=!(arguments.length>3&&void 0!==arguments[3])||arguments[3],r=this,o={attributes:t,_:+new Date},i=e.attr("id");r.xhr=$.ajax({url:e.data("target"),type:"GET",data:o,beforeSend:function(){window.onBeforeChangeSwatches&&"function"==typeof window.onBeforeChangeSwatches&&window.onBeforeChangeSwatches(t,e)},success:function(t){if(window.onChangeSwatchesSuccess&&"function"==typeof window.onChangeSwatchesSuccess&&window.onChangeSwatchesSuccess(t,e),!t.data.error_message){t.data.selected_attributes&&(n={},$.each(t.data.selected_attributes,(function(t,e){n[e.set_slug]=e.slug})));var c=new URL(window.location);r.updateSelectingAttributes(n,$("#"+i)),$.each(n,(function(t,e){c.searchParams.set(t,e)})),a&&c!=window.location.href?window.history.pushState({formData:o,data:t,product_attributes_id:i,slugAttributes:n},t.message,c):window.history.replaceState({formData:o,data:t,product_attributes_id:i,slugAttributes:n},t.message,c)}},complete:function(t){window.onChangeSwatchesComplete&&"function"==typeof window.onChangeSwatchesComplete&&window.onChangeSwatchesComplete(t,e)},error:function(t){window.onChangeSwatchesError&&"function"==typeof window.onChangeSwatchesError&&window.onChangeSwatchesError(t,e)}})})),n(this,"updateSelectingAttributes",(function(t,e){$.each(t,(function(t,n){var a=e.find(".attribute-swatches-wrapper[data-slug="+t+"]");if(a.length)if("dropdown"==a.data("type")){var r=a.find("select option[data-slug="+n+"]").val();a.find("select").val(r)}else a.find("input:checked").prop("checked",!1),a.find("input[data-slug="+n+"]").prop("checked",!0)}))})),n(this,"parseParamsSearch",(function(t){for(var e,n=arguments.length>1&&void 0!==arguments[1]&&arguments[1],a=t||window.location.search.substring(1),r=/([^&=]+)=?([^&]*)/g,o=/\+/g,i=function(t){return decodeURIComponent(t.replace(o," "))},c={};e=r.exec(a);){var u=i(e[1]),s=i(e[2]);"[]"==u.substring(u.length-2)?(n&&(u=u.substring(0,u.length-2)),(c[u]||(c[u]=[])).push(s)):c[u]=s}return c})),this.xhr=null,this.handleEvents()}var a,r,o;return a=t,(r=[{key:"handleEvents",value:function(){var t=this,e=$("body");e.on("click",".product-attributes .visual-swatch label, .product-attributes .text-swatch label",(function(t){t.preventDefault();var e=$(t.currentTarget),n=e.find("input[type=radio]");if(n.is(":checked"))return!1;n.prop("checked",!0),e.closest(".visual-swatch").find("input[type=radio]:checked").length<1&&n.prop("checked",!0),n.trigger("change")})),e.off("change").on("change",".product-attributes input, .product-attributes select",(function(e){var n=$(e.currentTarget).closest(".product-attributes");t.getProductVariation(n)})),$(".product-attribute-swatches").length&&window.addEventListener("popstate",(function(e){var n;if(null!==(n=e.state)&&void 0!==n&&n.product_attributes_id){var a=$("#"+e.state.product_attributes_id);window.onChangeSwatchesSuccess&&"function"==typeof window.onChangeSwatchesSuccess&&window.onChangeSwatchesSuccess(e.state.data,a),e.state.slugAttributes&&t.updateSelectingAttributes(e.state.slugAttributes,a)}else $(".product-attribute-swatches").each((function(e,n){var a=t.parseParamsSearch(),r=[],o={},i=$(n);a&&Object.keys(a).length&&$.each(a,(function(t,e){var n,a=i.find(".attribute-swatches-wrapper[data-slug="+t+"]");a.length&&(n="dropdown"==a.data("type")?a.find("option[data-slug="+e+"]").val():a.find("input[data-slug="+e+"]").val())&&(r.push(n),o[t]=n)})),t.callAjax(r,i,o,!1)}))}),!1)}},{key:"getProductVariation",value:function(t){var e=this,n=[],a={};e.xhr&&(e.xhr.abort(),e.xhr=null),t.find(".attribute-swatches-wrapper").each((function(t,e){var r,o=$(e),i=(r="dropdown"===o.data("type")?o.find("select option:selected"):o.find("input[type=radio]:checked")).data("slug"),c=r.val();if(c){var u=o.find(".attribute-swatch").data("slug");a[u]=i,n.push(c)}})),e.callAjax(n,t,a)}}])&&e(a.prototype,r),o&&e(a,o),Object.defineProperty(a,"prototype",{writable:!1}),t}();$((function(){new r}))})();
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+/*!***********************************************************************************!*\
+  !*** ./platform/plugins/ecommerce/resources/assets/js/change-product-swatches.js ***!
+  \***********************************************************************************/
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+var ChangeProductSwatches = /*#__PURE__*/function () {
+  function ChangeProductSwatches() {
+    _classCallCheck(this, ChangeProductSwatches);
+    _defineProperty(this, "callAjax", function (attributes, $productAttributes, slugAttributes) {
+      var updateUrl = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+      var _self = this;
+      var formData = {
+        attributes: attributes,
+        _: +new Date()
+      };
+      var id = $productAttributes.attr('id');
+      _self.xhr = $.ajax({
+        url: $productAttributes.data('target'),
+        type: 'GET',
+        data: formData,
+        beforeSend: function beforeSend() {
+          if (window.onBeforeChangeSwatches && typeof window.onBeforeChangeSwatches === 'function') {
+            window.onBeforeChangeSwatches(attributes, $productAttributes);
+          }
+        },
+        success: function success(res) {
+          if (window.onChangeSwatchesSuccess && typeof window.onChangeSwatchesSuccess === 'function') {
+            window.onChangeSwatchesSuccess(res, $productAttributes);
+          }
+          if (!res.data.error_message) {
+            if (res.data.selected_attributes) {
+              slugAttributes = {};
+              $.each(res.data.selected_attributes, function (index, item) {
+                slugAttributes[item.set_slug] = item.slug;
+              });
+            }
+            var url = new URL(window.location);
+            _self.updateSelectingAttributes(slugAttributes, $('#' + id));
+            $.each(slugAttributes, function (name, value) {
+              url.searchParams.set(name, value);
+            });
+            if (updateUrl && url != window.location.href) {
+              window.history.pushState({
+                formData: formData,
+                data: res,
+                product_attributes_id: id,
+                slugAttributes: slugAttributes
+              }, res.message, url);
+            } else {
+              window.history.replaceState({
+                formData: formData,
+                data: res,
+                product_attributes_id: id,
+                slugAttributes: slugAttributes
+              }, res.message, url);
+            }
+          }
+        },
+        complete: function complete(res) {
+          if (window.onChangeSwatchesComplete && typeof window.onChangeSwatchesComplete === 'function') {
+            window.onChangeSwatchesComplete(res, $productAttributes);
+          }
+        },
+        error: function error(res) {
+          if (window.onChangeSwatchesError && typeof window.onChangeSwatchesError === 'function') {
+            window.onChangeSwatchesError(res, $productAttributes);
+          }
+        }
+      });
+    });
+    _defineProperty(this, "updateSelectingAttributes", function (slugAttributes, $el) {
+      $.each(slugAttributes, function (key, slug) {
+        var $parent = $el.find('.attribute-swatches-wrapper[data-slug=' + key + ']');
+        if ($parent.length) {
+          if ($parent.data('type') == 'dropdown') {
+            var selected = $parent.find('select option[data-slug=' + slug + ']').val();
+            $parent.find('select').val(selected);
+          } else {
+            $parent.find('input:checked').prop('checked', false);
+            $parent.find('input[data-slug=' + slug + ']').prop('checked', true);
+          }
+        }
+      });
+    });
+    _defineProperty(this, "parseParamsSearch", function (query) {
+      var includeArray = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      var pairs = query || window.location.search.substring(1);
+      var re = /([^&=]+)=?([^&]*)/g;
+      var decodeRE = /\+/g; // Regex for replacing addition symbol with a space
+      var decode = function decode(str) {
+        return decodeURIComponent(str.replace(decodeRE, ' '));
+      };
+      var params = {},
+        e;
+      while (e = re.exec(pairs)) {
+        var k = decode(e[1]),
+          v = decode(e[2]);
+        if (k.substring(k.length - 2) == '[]') {
+          if (includeArray) {
+            k = k.substring(0, k.length - 2);
+          }
+          (params[k] || (params[k] = [])).push(v);
+        } else params[k] = v;
+      }
+      return params;
+    });
+    this.xhr = null;
+    this.handleEvents();
+  }
+  _createClass(ChangeProductSwatches, [{
+    key: "handleEvents",
+    value: function handleEvents() {
+      var _self = this;
+      var $body = $('body');
+      $body.on('click', '.product-attributes .visual-swatch label, .product-attributes .text-swatch label', function (e) {
+        e.preventDefault();
+        var $this = $(e.currentTarget);
+        var $radio = $this.find('input[type=radio]');
+        if ($radio.is(':checked')) {
+          return false;
+        }
+        $radio.prop('checked', true);
+        if ($this.closest('.visual-swatch').find('input[type=radio]:checked').length < 1) {
+          $radio.prop('checked', true);
+        }
+        $radio.trigger('change');
+      });
+      $body.off('change').on('change', '.product-attributes input, .product-attributes select', function (event) {
+        var $this = $(event.currentTarget);
+        var $parent = $this.closest('.product-attributes');
+        _self.getProductVariation($parent);
+      });
+      if ($('.product-attribute-swatches').length) {
+        window.addEventListener('popstate', function (e) {
+          var _e$state;
+          if ((_e$state = e.state) !== null && _e$state !== void 0 && _e$state.product_attributes_id) {
+            var $el = $('#' + e.state.product_attributes_id);
+            if (window.onChangeSwatchesSuccess && typeof window.onChangeSwatchesSuccess === 'function') {
+              window.onChangeSwatchesSuccess(e.state.data, $el);
+            }
+            if (e.state.slugAttributes) {
+              _self.updateSelectingAttributes(e.state.slugAttributes, $el);
+            }
+          } else {
+            $('.product-attribute-swatches').each(function (i, el) {
+              var params = _self.parseParamsSearch();
+              var attributes = [];
+              var slugAttributes = {};
+              var $el = $(el);
+              if (params && Object.keys(params).length) {
+                $.each(params, function (key, slug) {
+                  var $parent = $el.find('.attribute-swatches-wrapper[data-slug=' + key + ']');
+                  if ($parent.length) {
+                    var value;
+                    if ($parent.data('type') == 'dropdown') {
+                      value = $parent.find('option[data-slug=' + slug + ']').val();
+                    } else {
+                      value = $parent.find('input[data-slug=' + slug + ']').val();
+                    }
+                    if (value) {
+                      attributes.push(value);
+                      slugAttributes[key] = value;
+                    }
+                  }
+                });
+              }
+              _self.callAjax(attributes, $el, slugAttributes, false);
+            });
+          }
+        }, false);
+      }
+    }
+  }, {
+    key: "getProductVariation",
+    value: function getProductVariation($productAttributes) {
+      var _self = this;
+      var attributes = [];
+      var slugAttributes = {};
+
+      /**
+       * Break current request
+       */
+      if (_self.xhr) {
+        _self.xhr.abort();
+        _self.xhr = null;
+      }
+
+      /**
+       * Get attributes
+       */
+      var $attributeSwatches = $productAttributes.find('.attribute-swatches-wrapper');
+      $attributeSwatches.each(function (index, el) {
+        var $current = $(el);
+        var $input;
+        if ($current.data('type') === 'dropdown') {
+          $input = $current.find('select option:selected');
+        } else {
+          $input = $current.find('input[type=radio]:checked');
+        }
+        var slug = $input.data('slug');
+        var value = $input.val();
+        if (value) {
+          var setSlug = $current.find('.attribute-swatch').data('slug');
+          slugAttributes[setSlug] = slug;
+          attributes.push(value);
+        }
+      });
+      _self.callAjax(attributes, $productAttributes, slugAttributes);
+    }
+  }]);
+  return ChangeProductSwatches;
+}();
+$(function () {
+  new ChangeProductSwatches();
+});
+/******/ })()
+;

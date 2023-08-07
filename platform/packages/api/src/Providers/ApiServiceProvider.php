@@ -38,15 +38,16 @@ class ApiServiceProvider extends ServiceProvider
             }
 
             dashboard_menu()
-                ->registerItem([
-                    'id' => 'cms-packages-api',
-                    'priority' => 9999,
-                    'parent_id' => 'cms-core-settings',
-                    'name' => 'packages/api::api.settings',
-                    'icon' => null,
-                    'url' => route('api.settings'),
-                    'permissions' => ['api.settings'],
-                ]);
+                // ->registerItem([
+                //     'id' => 'cms-packages-api',
+                //     'priority' => 9999,
+                //     'parent_id' => 'cms-core-settings',
+                //     'name' => 'packages/api::api.settings',
+                //     'icon' => null,
+                //     'url' => route('api.settings'),
+                //     'permissions' => ['api.settings'],
+                // ])
+                ;
         });
 
         $this->app->booted(function () {

@@ -31,12 +31,7 @@ export default {
 
     methods: {
         checkUpdate() {
-            axios.get(this.checkUpdateUrl).then((res) => {
-                if (!res.data.error && res.data.data.has_new_version) {
-                    this.hasNewVersion = true
-                    this.message = res.data.message
-                }
-            })
+            this.hasNewVersion = false
         },
     },
 }

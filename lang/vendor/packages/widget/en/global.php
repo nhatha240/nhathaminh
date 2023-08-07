@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'name' => 'Widgets',
+    'name' => 'Tiện ích',
     'create' => 'New widget',
     'edit' => 'Edit widget',
     'delete' => 'Delete',
-    'available' => 'Available Widgets',
+    'available' => 'Tiện ích hữu dụng',
     'instruction' => 'To activate a widget drag it to a sidebar or click on it. To deactivate a widget and delete its settings, drag it back.',
     'number_tag_display' => 'Number tags will be display',
     'number_post_display' => 'Number posts will be display',

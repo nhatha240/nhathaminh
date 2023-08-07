@@ -1,1 +1,373 @@
-(()=>{function t(e){return t="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},t(e)}function e(t,e){var n="undefined"!=typeof Symbol&&t[Symbol.iterator]||t["@@iterator"];if(!n){if(Array.isArray(t)||(n=function(t,e){if(!t)return;if("string"==typeof t)return r(t,e);var n=Object.prototype.toString.call(t).slice(8,-1);"Object"===n&&t.constructor&&(n=t.constructor.name);if("Map"===n||"Set"===n)return Array.from(t);if("Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))return r(t,e)}(t))||e&&t&&"number"==typeof t.length){n&&(t=n);var o=0,a=function(){};return{s:a,n:function(){return o>=t.length?{done:!0}:{done:!1,value:t[o++]}},e:function(t){throw t},f:a}}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var i,u=!0,c=!1;return{s:function(){n=n.call(t)},n:function(){var t=n.next();return u=t.done,t},e:function(t){c=!0,i=t},f:function(){try{u||null==n.return||n.return()}finally{if(c)throw i}}}}function r(t,e){(null==e||e>t.length)&&(e=t.length);for(var r=0,n=new Array(e);r<e;r++)n[r]=t[r];return n}function n(){"use strict";/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */n=function(){return e};var e={},r=Object.prototype,o=r.hasOwnProperty,a=Object.defineProperty||function(t,e,r){t[e]=r.value},i="function"==typeof Symbol?Symbol:{},u=i.iterator||"@@iterator",c=i.asyncIterator||"@@asyncIterator",l=i.toStringTag||"@@toStringTag";function s(t,e,r){return Object.defineProperty(t,e,{value:r,enumerable:!0,configurable:!0,writable:!0}),t[e]}try{s({},"")}catch(t){s=function(t,e,r){return t[e]=r}}function f(t,e,r,n){var o=e&&e.prototype instanceof d?e:d,i=Object.create(o.prototype),u=new L(n||[]);return a(i,"_invoke",{value:E(t,r,u)}),i}function p(t,e,r){try{return{type:"normal",arg:t.call(e,r)}}catch(t){return{type:"throw",arg:t}}}e.wrap=f;var h={};function d(){}function v(){}function m(){}var g={};s(g,u,(function(){return this}));var y=Object.getPrototypeOf,b=y&&y(y(P([])));b&&b!==r&&o.call(b,u)&&(g=b);var w=m.prototype=d.prototype=Object.create(g);function x(t){["next","throw","return"].forEach((function(e){s(t,e,(function(t){return this._invoke(e,t)}))}))}function k(e,r){function n(a,i,u,c){var l=p(e[a],e,i);if("throw"!==l.type){var s=l.arg,f=s.value;return f&&"object"==t(f)&&o.call(f,"__await")?r.resolve(f.__await).then((function(t){n("next",t,u,c)}),(function(t){n("throw",t,u,c)})):r.resolve(f).then((function(t){s.value=t,u(s)}),(function(t){return n("throw",t,u,c)}))}c(l.arg)}var i;a(this,"_invoke",{value:function(t,e){function o(){return new r((function(r,o){n(t,e,r,o)}))}return i=i?i.then(o,o):o()}})}function E(t,e,r){var n="suspendedStart";return function(o,a){if("executing"===n)throw new Error("Generator is already running");if("completed"===n){if("throw"===o)throw a;return $()}for(r.method=o,r.arg=a;;){var i=r.delegate;if(i){var u=S(i,r);if(u){if(u===h)continue;return u}}if("next"===r.method)r.sent=r._sent=r.arg;else if("throw"===r.method){if("suspendedStart"===n)throw n="completed",r.arg;r.dispatchException(r.arg)}else"return"===r.method&&r.abrupt("return",r.arg);n="executing";var c=p(t,e,r);if("normal"===c.type){if(n=r.done?"completed":"suspendedYield",c.arg===h)continue;return{value:c.arg,done:r.done}}"throw"===c.type&&(n="completed",r.method="throw",r.arg=c.arg)}}}function S(t,e){var r=e.method,n=t.iterator[r];if(void 0===n)return e.delegate=null,"throw"===r&&t.iterator.return&&(e.method="return",e.arg=void 0,S(t,e),"throw"===e.method)||"return"!==r&&(e.method="throw",e.arg=new TypeError("The iterator does not provide a '"+r+"' method")),h;var o=p(n,t.iterator,e.arg);if("throw"===o.type)return e.method="throw",e.arg=o.arg,e.delegate=null,h;var a=o.arg;return a?a.done?(e[t.resultName]=a.value,e.next=t.nextLoc,"return"!==e.method&&(e.method="next",e.arg=void 0),e.delegate=null,h):a:(e.method="throw",e.arg=new TypeError("iterator result is not an object"),e.delegate=null,h)}function j(t){var e={tryLoc:t[0]};1 in t&&(e.catchLoc=t[1]),2 in t&&(e.finallyLoc=t[2],e.afterLoc=t[3]),this.tryEntries.push(e)}function O(t){var e=t.completion||{};e.type="normal",delete e.arg,t.completion=e}function L(t){this.tryEntries=[{tryLoc:"root"}],t.forEach(j,this),this.reset(!0)}function P(t){if(t){var e=t[u];if(e)return e.call(t);if("function"==typeof t.next)return t;if(!isNaN(t.length)){var r=-1,n=function e(){for(;++r<t.length;)if(o.call(t,r))return e.value=t[r],e.done=!1,e;return e.value=void 0,e.done=!0,e};return n.next=n}}return{next:$}}function $(){return{value:void 0,done:!0}}return v.prototype=m,a(w,"constructor",{value:m,configurable:!0}),a(m,"constructor",{value:v,configurable:!0}),v.displayName=s(m,l,"GeneratorFunction"),e.isGeneratorFunction=function(t){var e="function"==typeof t&&t.constructor;return!!e&&(e===v||"GeneratorFunction"===(e.displayName||e.name))},e.mark=function(t){return Object.setPrototypeOf?Object.setPrototypeOf(t,m):(t.__proto__=m,s(t,l,"GeneratorFunction")),t.prototype=Object.create(w),t},e.awrap=function(t){return{__await:t}},x(k.prototype),s(k.prototype,c,(function(){return this})),e.AsyncIterator=k,e.async=function(t,r,n,o,a){void 0===a&&(a=Promise);var i=new k(f(t,r,n,o),a);return e.isGeneratorFunction(r)?i:i.next().then((function(t){return t.done?t.value:i.next()}))},x(w),s(w,l,"Generator"),s(w,u,(function(){return this})),s(w,"toString",(function(){return"[object Generator]"})),e.keys=function(t){var e=Object(t),r=[];for(var n in e)r.push(n);return r.reverse(),function t(){for(;r.length;){var n=r.pop();if(n in e)return t.value=n,t.done=!1,t}return t.done=!0,t}},e.values=P,L.prototype={constructor:L,reset:function(t){if(this.prev=0,this.next=0,this.sent=this._sent=void 0,this.done=!1,this.delegate=null,this.method="next",this.arg=void 0,this.tryEntries.forEach(O),!t)for(var e in this)"t"===e.charAt(0)&&o.call(this,e)&&!isNaN(+e.slice(1))&&(this[e]=void 0)},stop:function(){this.done=!0;var t=this.tryEntries[0].completion;if("throw"===t.type)throw t.arg;return this.rval},dispatchException:function(t){if(this.done)throw t;var e=this;function r(r,n){return i.type="throw",i.arg=t,e.next=r,n&&(e.method="next",e.arg=void 0),!!n}for(var n=this.tryEntries.length-1;n>=0;--n){var a=this.tryEntries[n],i=a.completion;if("root"===a.tryLoc)return r("end");if(a.tryLoc<=this.prev){var u=o.call(a,"catchLoc"),c=o.call(a,"finallyLoc");if(u&&c){if(this.prev<a.catchLoc)return r(a.catchLoc,!0);if(this.prev<a.finallyLoc)return r(a.finallyLoc)}else if(u){if(this.prev<a.catchLoc)return r(a.catchLoc,!0)}else{if(!c)throw new Error("try statement without catch or finally");if(this.prev<a.finallyLoc)return r(a.finallyLoc)}}}},abrupt:function(t,e){for(var r=this.tryEntries.length-1;r>=0;--r){var n=this.tryEntries[r];if(n.tryLoc<=this.prev&&o.call(n,"finallyLoc")&&this.prev<n.finallyLoc){var a=n;break}}a&&("break"===t||"continue"===t)&&a.tryLoc<=e&&e<=a.finallyLoc&&(a=null);var i=a?a.completion:{};return i.type=t,i.arg=e,a?(this.method="next",this.next=a.finallyLoc,h):this.complete(i)},complete:function(t,e){if("throw"===t.type)throw t.arg;return"break"===t.type||"continue"===t.type?this.next=t.arg:"return"===t.type?(this.rval=this.arg=t.arg,this.method="return",this.next="end"):"normal"===t.type&&e&&(this.next=e),h},finish:function(t){for(var e=this.tryEntries.length-1;e>=0;--e){var r=this.tryEntries[e];if(r.finallyLoc===t)return this.complete(r.completion,r.afterLoc),O(r),h}},catch:function(t){for(var e=this.tryEntries.length-1;e>=0;--e){var r=this.tryEntries[e];if(r.tryLoc===t){var n=r.completion;if("throw"===n.type){var o=n.arg;O(r)}return o}}throw new Error("illegal catch attempt")},delegateYield:function(t,e,r){return this.delegate={iterator:P(t),resultName:e,nextLoc:r},"next"===this.method&&(this.arg=void 0),h}},e}function o(t,e,r,n,o,a,i){try{var u=t[a](i),c=u.value}catch(t){return void r(t)}u.done?e(c):Promise.resolve(c).then(n,o)}function a(t){return function(){var e=this,r=arguments;return new Promise((function(n,a){var i=t.apply(e,r);function u(t){o(i,n,a,u,c,"next",t)}function c(t){o(i,n,a,u,c,"throw",t)}u(void 0)}))}}function i(e,r){for(var n=0;n<r.length;n++){var o=r[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,(a=o.key,i=void 0,i=function(e,r){if("object"!==t(e)||null===e)return e;var n=e[Symbol.toPrimitive];if(void 0!==n){var o=n.call(e,r||"default");if("object"!==t(o))return o;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===r?String:Number)(e)}(a,"string"),"symbol"===t(i)?i:String(i)),o)}var a,i}var u=function(){function t(){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,t)}var r,o,u,c,l;return r=t,o=[{key:"init",value:function(){var t=this;$(document).on("click",".btn-trigger-remove-plugin",(function(t){t.preventDefault(),$("#confirm-remove-plugin-button").data("plugin",$(t.currentTarget).data("plugin")),$("#remove-plugin-modal").modal("show")})),$(document).on("click","#confirm-remove-plugin-button",(function(t){t.preventDefault();var e=$(t.currentTarget);e.addClass("button-loading"),$.ajax({url:route("plugins.remove",{plugin:e.data("plugin")}),type:"POST",data:{_method:"DELETE"},success:function(t){t.error?Botble.showError(t.message):(Botble.showSuccess(t.message),window.location.reload()),e.removeClass("button-loading"),$("#remove-plugin-modal").modal("hide")},error:function(t){Botble.handleError(t),e.removeClass("button-loading"),$("#remove-plugin-modal").modal("hide")}})})),$(document).on("click",".btn-trigger-update-plugin",(function(t){t.preventDefault();var e=$(t.currentTarget),r=e.data("uuid");e.addClass("button-loading"),e.attr("disabled",!0),$.ajax({url:route("plugins.marketplace.ajax.update",{id:r}),type:"POST",success:function(t){t.error?(Botble.showError(t.message),e.removeClass("button-loading"),e.removeAttr("disabled",!0),t.data&&t.data.redirect&&window.location.href):(Botble.showSuccess(t.message),setTimeout((function(){window.location.reload()}),2e3))},error:function(t){Botble.handleError(t),e.removeClass("button-loading"),e.removeAttr("disabled",!0)}})})),$(document).on("click",".btn-trigger-change-status",function(){var e=a(n().mark((function e(r){var o,i;return n().wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(r.preventDefault(),(o=$(r.currentTarget)).addClass("button-loading"),i=o.data("plugin"),1!==o.data("status")){e.next=8;break}return e.next=7,t.activateOrDeactivatePlugin(i);case 7:return e.abrupt("return");case 8:$.ajax({url:route("plugins.check-requirement",{name:i}),type:"POST",success:function(){var e=a(n().mark((function e(r){var a,u,c,l;return n().wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(a=r.error,u=r.data,c=r.message,!a){e.next=13;break}if(!u||!u.existing_plugins_on_marketplace){e.next=10;break}return(l=$("#confirm-install-plugin-modal")).find(".modal-body #requirement-message").html(c),l.find('input[name="plugin_name"]').val(i),l.find('input[name="ids"]').val(u.existing_plugins_on_marketplace),l.modal("show"),o.removeClass("button-loading"),e.abrupt("return");case 10:Botble.showError(c),e.next=15;break;case 13:return e.next=15,t.activateOrDeactivatePlugin(i);case 15:o.removeClass("button-loading");case 16:case"end":return e.stop()}}),e)})));return function(t){return e.apply(this,arguments)}}(),error:function(t){Botble.handleError(t),o.removeClass("button-loading")}});case 9:case"end":return e.stop()}}),e)})));return function(t){return e.apply(this,arguments)}}()),$(document).on("click","#confirm-install-plugin-button",function(){var r=a(n().mark((function r(o){var a,i,u,c,l,s,f,p,h,d,v,m;return n().wrap((function(r){for(;;)switch(r.prev=r.next){case 0:(a=$(o.currentTarget)).addClass("button-loading"),i=a.parent().parent(),u=i.find('input[name="plugin_name"]').val(),c=i.find('input[name="ids"]').val(),l=[],s=e(c.split(",")),r.prev=7,s.s();case 9:if((f=s.n()).done){r.next=17;break}return p=f.value,r.next=13,t.installPlugin(p);case 13:(h=r.sent)&&l.push(h.name);case 15:r.next=9;break;case 17:r.next=22;break;case 19:r.prev=19,r.t0=r.catch(7),s.e(r.t0);case 22:return r.prev=22,s.f(),r.finish(22);case 25:d=0,v=l;case 26:if(!(d<v.length)){r.next=33;break}return m=v[d],r.next=30,t.activateOrDeactivatePlugin(m,!1);case 30:d++,r.next=26;break;case 33:return r.next=35,t.activateOrDeactivatePlugin(u);case 35:a.removeClass("button-loading"),a.text(a.data("text"));case 37:case"end":return r.stop()}}),r,null,[[7,19,22,25]])})));return function(t){return r.apply(this,arguments)}}()),this.checkUpdate()}},{key:"checkUpdate",value:function(){var t=this;$.ajax({url:route("plugins.marketplace.ajax.check-update"),type:"POST",success:function(e){e.data&&Object.keys(e.data).forEach((function(r){var n=e.data[r],o=$('[data-check-update="'+n.name+'"]');t.checkVersion(o.data("version"),n.version)&&(o.show(),o.attr("data-uuid",n.id))}))}})}},{key:"checkVersion",value:function(t,e){for(var r=t.toString().split("."),n=e.toString().split("."),o=Math.max(r.length,n.length),a=0;a<o;a++){var i=~~r[a];if(~~n[a]>i)return!0}return!1}},{key:"activateOrDeactivatePlugin",value:(l=a(n().mark((function t(e){var r,o=arguments;return n().wrap((function(t){for(;;)switch(t.prev=t.next){case 0:return r=!(o.length>1&&void 0!==o[1])||o[1],t.next=3,$.ajax({url:route("plugins.change.status",{name:e}),type:"POST",data:{_method:"PUT"},success:function(t){if(!t.error)return Botble.showSuccess(t.message),void(r&&($("#plugin-list #app-"+e).load(window.location.href+" #plugin-list #app-"+e+" > *"),window.location.reload()));Botble.showError(t.message)},error:function(t){Botble.handleError(t)}});case 3:case"end":return t.stop()}}),t)}))),function(t){return l.apply(this,arguments)})},{key:"installPlugin",value:(c=a(n().mark((function t(e){var r;return n().wrap((function(t){for(;;)switch(t.prev=t.next){case 0:return r=null,t.next=3,$.ajax({method:"POST",url:route("plugins.marketplace.ajax.install",{id:e}),success:function(t){return r=t.error?[]:t.data},error:function(t){Botble.handleError(t)}});case 3:return t.abrupt("return",r);case 4:case"end":return t.stop()}}),t)}))),function(t){return c.apply(this,arguments)})}],o&&i(r.prototype,o),u&&i(r,u),Object.defineProperty(r,"prototype",{writable:!1}),t}();$(document).ready((function(){(new u).init()}))})();
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+/*!***************************************************************************!*\
+  !*** ./platform/packages/plugin-management/resources/assets/js/plugin.js ***!
+  \***************************************************************************/
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+var PluginManagement = /*#__PURE__*/function () {
+  function PluginManagement() {
+    _classCallCheck(this, PluginManagement);
+  }
+  _createClass(PluginManagement, [{
+    key: "init",
+    value: function init() {
+      var _this = this;
+      $(document).on('click', '.btn-trigger-remove-plugin', function (event) {
+        event.preventDefault();
+        $('#confirm-remove-plugin-button').data('plugin', $(event.currentTarget).data('plugin'));
+        $('#remove-plugin-modal').modal('show');
+      });
+      $(document).on('click', '#confirm-remove-plugin-button', function (event) {
+        event.preventDefault();
+        var _self = $(event.currentTarget);
+        _self.addClass('button-loading');
+        $.ajax({
+          url: route('plugins.remove', {
+            plugin: _self.data('plugin')
+          }),
+          type: 'POST',
+          data: {
+            _method: 'DELETE'
+          },
+          success: function success(data) {
+            if (data.error) {
+              Botble.showError(data.message);
+            } else {
+              Botble.showSuccess(data.message);
+              window.location.reload();
+            }
+            _self.removeClass('button-loading');
+            $('#remove-plugin-modal').modal('hide');
+          },
+          error: function error(data) {
+            Botble.handleError(data);
+            _self.removeClass('button-loading');
+            $('#remove-plugin-modal').modal('hide');
+          }
+        });
+      });
+      $(document).on('click', '.btn-trigger-update-plugin', function (event) {
+        event.preventDefault();
+        var _self = $(event.currentTarget);
+        var uuid = _self.data('uuid');
+        _self.addClass('button-loading');
+        _self.attr('disabled', true);
+        $.ajax({
+          url: route('plugins.marketplace.ajax.update', {
+            id: uuid
+          }),
+          type: 'POST',
+          success: function success(data) {
+            if (data.error) {
+              Botble.showError(data.message);
+              _self.removeClass('button-loading');
+              _self.removeAttr('disabled', true);
+              if (data.data && data.data.redirect) {
+                window.location.href;
+              }
+            } else {
+              Botble.showSuccess(data.message);
+              setTimeout(function () {
+                window.location.reload();
+              }, 2000);
+            }
+          },
+          error: function error(data) {
+            Botble.handleError(data);
+            _self.removeClass('button-loading');
+            _self.removeAttr('disabled', true);
+          }
+        });
+      });
+      $(document).on('click', '.btn-trigger-change-status', /*#__PURE__*/function () {
+        var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(event) {
+          var _self, pluginName;
+          return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+            while (1) switch (_context2.prev = _context2.next) {
+              case 0:
+                event.preventDefault();
+                _self = $(event.currentTarget);
+                _self.addClass('button-loading');
+                pluginName = _self.data('plugin');
+                if (!(_self.data('status') === 1)) {
+                  _context2.next = 8;
+                  break;
+                }
+                _context2.next = 7;
+                return _this.activateOrDeactivatePlugin(pluginName);
+              case 7:
+                return _context2.abrupt("return");
+              case 8:
+                $.ajax({
+                  url: route('plugins.check-requirement', {
+                    name: pluginName
+                  }),
+                  type: 'POST',
+                  success: function () {
+                    var _success = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(response) {
+                      var error, data, message, $modal;
+                      return _regeneratorRuntime().wrap(function _callee$(_context) {
+                        while (1) switch (_context.prev = _context.next) {
+                          case 0:
+                            error = response.error, data = response.data, message = response.message;
+                            if (!error) {
+                              _context.next = 13;
+                              break;
+                            }
+                            if (!(data && data.existing_plugins_on_marketplace)) {
+                              _context.next = 10;
+                              break;
+                            }
+                            $modal = $('#confirm-install-plugin-modal');
+                            $modal.find('.modal-body #requirement-message').html(message);
+                            $modal.find('input[name="plugin_name"]').val(pluginName);
+                            $modal.find('input[name="ids"]').val(data.existing_plugins_on_marketplace);
+                            $modal.modal('show');
+                            _self.removeClass('button-loading');
+                            return _context.abrupt("return");
+                          case 10:
+                            Botble.showError(message);
+                            _context.next = 15;
+                            break;
+                          case 13:
+                            _context.next = 15;
+                            return _this.activateOrDeactivatePlugin(pluginName);
+                          case 15:
+                            _self.removeClass('button-loading');
+                          case 16:
+                          case "end":
+                            return _context.stop();
+                        }
+                      }, _callee);
+                    }));
+                    function success(_x2) {
+                      return _success.apply(this, arguments);
+                    }
+                    return success;
+                  }(),
+                  error: function error(_error) {
+                    Botble.handleError(_error);
+                    _self.removeClass('button-loading');
+                  }
+                });
+              case 9:
+              case "end":
+                return _context2.stop();
+            }
+          }, _callee2);
+        }));
+        return function (_x) {
+          return _ref.apply(this, arguments);
+        };
+      }());
+      $(document).on('click', '#confirm-install-plugin-button', /*#__PURE__*/function () {
+        var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(event) {
+          var _self, $body, pluginName, pluginIds, activatedPlugins, _iterator, _step, pluginId, response, _i, _activatedPlugins, _pluginName;
+          return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+            while (1) switch (_context3.prev = _context3.next) {
+              case 0:
+                _self = $(event.currentTarget);
+                _self.addClass('button-loading');
+                $body = _self.parent().parent();
+                pluginName = $body.find('input[name="plugin_name"]').val();
+                pluginIds = $body.find('input[name="ids"]').val();
+                activatedPlugins = [];
+                _iterator = _createForOfIteratorHelper(pluginIds.split(','));
+                _context3.prev = 7;
+                _iterator.s();
+              case 9:
+                if ((_step = _iterator.n()).done) {
+                  _context3.next = 17;
+                  break;
+                }
+                pluginId = _step.value;
+                _context3.next = 13;
+                return _this.installPlugin(pluginId);
+              case 13:
+                response = _context3.sent;
+                if (response) {
+                  activatedPlugins.push(response.name);
+                }
+              case 15:
+                _context3.next = 9;
+                break;
+              case 17:
+                _context3.next = 22;
+                break;
+              case 19:
+                _context3.prev = 19;
+                _context3.t0 = _context3["catch"](7);
+                _iterator.e(_context3.t0);
+              case 22:
+                _context3.prev = 22;
+                _iterator.f();
+                return _context3.finish(22);
+              case 25:
+                _i = 0, _activatedPlugins = activatedPlugins;
+              case 26:
+                if (!(_i < _activatedPlugins.length)) {
+                  _context3.next = 33;
+                  break;
+                }
+                _pluginName = _activatedPlugins[_i];
+                _context3.next = 30;
+                return _this.activateOrDeactivatePlugin(_pluginName, false);
+              case 30:
+                _i++;
+                _context3.next = 26;
+                break;
+              case 33:
+                _context3.next = 35;
+                return _this.activateOrDeactivatePlugin(pluginName);
+              case 35:
+                _self.removeClass('button-loading');
+                _self.text(_self.data('text'));
+              case 37:
+              case "end":
+                return _context3.stop();
+            }
+          }, _callee3, null, [[7, 19, 22, 25]]);
+        }));
+        return function (_x3) {
+          return _ref2.apply(this, arguments);
+        };
+      }());
+      this.checkUpdate();
+    }
+  }, {
+    key: "checkUpdate",
+    value: function checkUpdate() {
+      var _this2 = this;
+      $.ajax({
+        url: route('plugins.marketplace.ajax.check-update'),
+        type: 'POST',
+        success: function success(data) {
+          if (!data.data) {
+            return;
+          }
+          Object.keys(data.data).forEach(function (key) {
+            var plugin = data.data[key];
+            var element = $('[data-check-update="' + plugin.name + '"]');
+            var $checkVersion = _this2.checkVersion(element.data('version'), plugin.version);
+            if ($checkVersion) {
+              element.show();
+              element.attr('data-uuid', plugin.id);
+            }
+          });
+        }
+      });
+    }
+  }, {
+    key: "checkVersion",
+    value: function checkVersion(currentVersion, latestVersion) {
+      var current = currentVersion.toString().split('.');
+      var latest = latestVersion.toString().split('.');
+      var length = Math.max(current.length, latest.length);
+      for (var i = 0; i < length; i++) {
+        var oldVer = ~~current[i];
+        var newVer = ~~latest[i];
+        if (newVer > oldVer) {
+          return true;
+        }
+      }
+      return false;
+    }
+  }, {
+    key: "activateOrDeactivatePlugin",
+    value: function () {
+      var _activateOrDeactivatePlugin = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(pluginName) {
+        var reload,
+          _args4 = arguments;
+        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+          while (1) switch (_context4.prev = _context4.next) {
+            case 0:
+              reload = _args4.length > 1 && _args4[1] !== undefined ? _args4[1] : true;
+              _context4.next = 3;
+              return $.ajax({
+                url: route('plugins.change.status', {
+                  name: pluginName
+                }),
+                type: 'POST',
+                data: {
+                  _method: 'PUT'
+                },
+                success: function success(data) {
+                  if (!data.error) {
+                    Botble.showSuccess(data.message);
+                    if (reload) {
+                      $('#plugin-list #app-' + pluginName).load(window.location.href + ' #plugin-list #app-' + pluginName + ' > *');
+                      window.location.reload();
+                    }
+                    return;
+                  }
+                  Botble.showError(data.message);
+                },
+                error: function error(data) {
+                  Botble.handleError(data);
+                }
+              });
+            case 3:
+            case "end":
+              return _context4.stop();
+          }
+        }, _callee4);
+      }));
+      function activateOrDeactivatePlugin(_x4) {
+        return _activateOrDeactivatePlugin.apply(this, arguments);
+      }
+      return activateOrDeactivatePlugin;
+    }()
+  }, {
+    key: "installPlugin",
+    value: function () {
+      var _installPlugin = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(id) {
+        var data;
+        return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+          while (1) switch (_context5.prev = _context5.next) {
+            case 0:
+              data = null;
+              _context5.next = 3;
+              return $.ajax({
+                method: 'POST',
+                url: route('plugins.marketplace.ajax.install', {
+                  id: id
+                }),
+                success: function success(response) {
+                  return data = response.error ? [] : response.data;
+                },
+                error: function error(_error2) {
+                  Botble.handleError(_error2);
+                }
+              });
+            case 3:
+              return _context5.abrupt("return", data);
+            case 4:
+            case "end":
+              return _context5.stop();
+          }
+        }, _callee5);
+      }));
+      function installPlugin(_x5) {
+        return _installPlugin.apply(this, arguments);
+      }
+      return installPlugin;
+    }()
+  }]);
+  return PluginManagement;
+}();
+$(document).ready(function () {
+  new PluginManagement().init();
+});
+/******/ })()
+;
